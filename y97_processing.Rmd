@@ -1,0 +1,523 @@
+---
+title: 'NLSY97: cleaning and ready to merge'
+author: "Kai Song"
+date: "2025-09-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(fixest)
+library(did)
+library(stringr)
+library(ggplot2)
+library(stargazer)
+library(here)
+```
+# Introduction: 
+
+This data file input the Y97_2909.csv and Y97_2909_child_count.csv, and transformed into the long form stored at 4_int\df_long_Y97.\\
+
+The output includes the following groups of variables:
+
+1. **Identification**  
+   - `id`, `year`
+2. **Demographic**  
+   - `sex`, `is_black`, `is_hispanic`, `age`, `family_size`, `child_count`, `area`
+3. **Income and Employment**  
+   - `income`, `occ_group` (occupation group)
+4. **Child Related**  
+   - `never_have_child`  
+   - `year_of_first_born`  
+   - `child_count`
+5. **Flags**  
+   - `has_child`: indicator for having a child in the household during observation (2008–2022)  
+   - `not_yet_treated`: pre–first-childbirth periods (for those with a first birth between 2008–2022)  
+   - `related_year`, `related_year_bin`: current year minus the year of first birth
+6. **Soda**  
+   - `soda`, `log_soda`
+7. **Normative Agents**  
+   - `normative_agent`: medical professionals  
+   - `dietitian`: career code 3030
+8. **Other Variables**  
+   - `diabetes`: diagnosed with diabetes  
+
+# Read in data and variables
+This part isnt presented in the HTML document, please refer to the mardown code.
+```{r,include=FALSE}
+NLSY97 <- read_csv("1_input/Y97_2909.csv")
+child_count <- read_csv("1_input/Y97_2909_child_count.csv")
+
+name_varlabels <- c("PUBID - YTH ID CODE 1997",
+"KEY!SEX (SYMBOL) 1997",
+"KEY!RACE_ETHNICITY (SYMBOL) 1997",
+"CV_AGE_INT_DATE 2009",
+"CV_INCOME_FAMILY 2009",
+"CV_HH_SIZE 2009",
+"CV_HH_UNDER_18 2009",
+"CV_MSA 2009",
+"FREQUENCY THAT R CONSUMES SUGARY DRINK 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L1 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L2 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L3 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L4 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L5 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L6 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L7 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L8 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L9 2009",
+"CV_AGE_INT_DATE 2010",
+"CV_INCOME_FAMILY 2010",
+"CV_HH_SIZE 2010",
+"CV_HH_UNDER_18 2010",
+"CV_MSA 2010",
+"FREQUENCY THAT R CONSUMES SUGARY DRINK 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L1 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L2 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L3 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L4 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L5 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L6 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L7 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L8 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L9 2010",
+"CV_AGE_INT_DATE 2011",
+"CV_INCOME_FAMILY 2011",
+"CV_HH_SIZE 2011",
+"CV_HH_UNDER_18 2011",
+"CV_MSA 2011",
+"FREQUENCY THAT R CONSUMES SUGARY DRINK 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L1 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L2 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L3 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L4 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L5 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L6 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L7 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L8 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L9 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L13 2011",
+"CHRONIC CONDITION - DIABETES 2013",
+"CV_AGE_INT_DATE 2015",
+"CV_INCOME_FAMILY 2015",
+"CV_HH_SIZE 2015",
+"CV_HH_UNDER_18 2015",
+"CV_MSA 2015",
+"FREQUENCY THAT R CONSUMES SUGARY DRINK 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L1 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L2 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L3 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L4 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L5 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L6 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L7 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L8 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L9 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L10 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L11 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L12 2015",
+"CV_CHILD_BIRTH_DATE L1 2021",
+"CV_CHILD_BIRTH_DATE L2 2021",
+"CV_CHILD_BIRTH_DATE L3 2021",
+"CV_CHILD_BIRTH_DATE L4 2021",
+"CV_CHILD_BIRTH_DATE L5 2021",
+"CV_CHILD_BIRTH_DATE L6 2021",
+"CV_CHILD_BIRTH_DATE L7 2021",
+"CV_CHILD_BIRTH_DATE L8 2021",
+"CV_CHILD_BIRTH_DATE L9 2021",
+"CV_CHILD_BIRTH_DATE L10 2021",
+"CV_CHILD_BIRTH_DATE L11 2021",
+"CV_CHILD_BIRTH_DATE L12 2021",
+"CV_CHILD_BIRTH_DATE L13 2021",
+"CV_CHILD_BIRTH_DATE L14 2021",
+"CV_CHILD_BIRTH_DATE L15 2021"
+)
+
+occupation_columns <- c(
+  "YEMP OCC/JOB CODE (ROS ITEM) L1 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L2 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L3 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L4 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L5 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L6 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L7 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L8 2009",
+"YEMP OCC/JOB CODE (ROS ITEM) L9 2009",
+  "YEMP OCC/JOB CODE (ROS ITEM) L1 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L2 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L3 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L4 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L5 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L6 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L7 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L8 2010",
+"YEMP OCC/JOB CODE (ROS ITEM) L9 2010",
+  "YEMP OCC/JOB CODE (ROS ITEM) L1 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L2 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L3 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L4 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L5 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L6 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L7 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L8 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L9 2011",
+"YEMP OCC/JOB CODE (ROS ITEM) L13 2011",
+ "YEMP OCC/JOB CODE (ROS ITEM) L1 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L2 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L3 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L4 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L5 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L6 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L7 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L8 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L9 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L10 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L11 2015",
+"YEMP OCC/JOB CODE (ROS ITEM) L12 2015"
+)
+
+occ_groups_raw <- c("10 TO 430: Executive, Administrative and Managerial Occupations",
+"500 TO 950: Management Related Occupations",
+"1000 TO 1240: Mathematical and Computer Scientists",
+"1300 TO 1560: Engineers, Architects, Surveyers, Engineering and Related Technicians",
+"1600 TO 1760: Physical Scientists",
+"1800 TO 1860: Social Scientists and Related Workers",
+"1900 TO 1960: Life, Physical and Social Science Technicians",
+"2000 TO 2060: Counselors, Sociala and Religious Workers",
+"2100 TO 2150: Lawyers, Judges and Legal Support Workers",
+"2200 TO 2340: Teachers",
+"2400 TO 2550: Education, Training and Library Workers",
+"2600 TO 2760: Entertainers and Performers, Sports and Related Workers",
+"2800 TO 2960: Media and Communications Workers",
+"3000 TO 3260: Health Diagnosing and Treating Practitioners",
+"3300 TO 3650: Health Care Technical and Support Occupations",
+"3700 TO 3950: Protective Service Occupations",
+"4000 TO 4160: Food Preparation and Serving Related Occupations",
+"4200 TO 4250: Cleaning and Building Service Occupations",
+"4300 TO 4430: Entertainment Attendants and Related Workers",
+"4460: Funeral Related Occupations",
+"4500 TO 4650: Personal Care and Service Workers",
+"4700 TO 4960: Sales and Related Workers",
+"5000 TO 5930: Office and Administrative Support Workers",
+"6000 TO 6130: Farming, Fishing and Forestry Occupations",
+"6200 TO 6940: Construction Trade and Extraction Workers",
+"7000 TO 7620: Installation, Maintenance and Repairs Workers",
+"7700 TO 7750: Production and Operating Workers",
+"7800 TO 7850: Food Preparation Occupations",
+"7900 TO 8960: Setters, Operators and Tenders",
+"9000 TO 9750: Transportation and Material Moving Workers",
+"9800 TO 9830: Military Specific Occupations",
+"9840: Armed Forces",
+"9950: Not in Labor Force (ACS Code)",
+"9990: Uncodeable")
+```
+
+# Cleaning
+```{r}
+# Handle missing values
+NLSY97[NLSY97 == -1] = NA  # Refused
+NLSY97[NLSY97 == -2] = NA  # Dont know
+NLSY97[NLSY97 == -3] = NA  # Invalid missing
+NLSY97[NLSY97 == -4] = NA  # Valid missing
+NLSY97[NLSY97 == -5] = NA  # Non-interview
+
+
+# renaming:
+names(NLSY97) <- name_varlabels
+
+# identify normative agents
+dietitian_codes <- c(3030)
+normative_codes <- 3000:3260
+
+define_normative_data <- NLSY97 %>%
+  mutate(
+    normative_agent = if_any(all_of(occupation_columns), ~ . %in% normative_codes),
+   dietitian = if_any(all_of(occupation_columns), ~ . %in% dietitian_codes))
+
+# group the occupations
+parse_occ <- function(s) {
+  m <- regmatches(s, regexec("^\\s*(\\d+)(?:\\s*TO\\s*(\\d+))?", s))[[1]]
+  start <- as.integer(m[2])
+  end   <- ifelse(nchar(m[3]) == 0, start, as.integer(m[3]))
+  label <- if (start == end) as.character(start) else paste0(start, "to", end)
+  data.frame(start, end, label, stringsAsFactors = FALSE)
+}
+occ_map <- do.call(rbind, lapply(occ_groups_raw, parse_occ))
+occ_bucket <- function(code) {
+  code <- as.integer(code)
+  out <- rep(NA_character_, length(code))
+  for (i in seq_len(nrow(occ_map))) {
+    idx <- !is.na(code) & code >= occ_map$start[i] & code <= occ_map$end[i]
+    out[idx] <- occ_map$label[i]
+  }
+  out
+}
+
+reduced_occupation_data <- define_normative_data %>%
+  mutate(occupation_2009 = if_else(normative_agent, NA_integer_,
+                              .data[["YEMP OCC/JOB CODE (ROS ITEM) L1 2009"]]),
+    occupation_2010 = if_else(normative_agent, NA_integer_,
+                              .data[["YEMP OCC/JOB CODE (ROS ITEM) L1 2010"]]),
+    occupation_2011 = if_else(normative_agent, NA_integer_,
+                              .data[["YEMP OCC/JOB CODE (ROS ITEM) L1 2011"]]),
+    occupation_2015 = if_else(normative_agent, NA_integer_,
+                              .data[["YEMP OCC/JOB CODE (ROS ITEM) L1 2015"]])) %>%
+  select(-all_of(occupation_columns)) %>%
+  mutate(occ_group_2009 = occ_bucket(occupation_2009),
+         occ_group_2010 = occ_bucket(occupation_2010),
+         occ_group_2011 = occ_bucket(occupation_2011),
+         occ_group_2015 = occ_bucket(occupation_2015))%>%
+  select(-occupation_2009, -occupation_2010, -occupation_2011, -occupation_2015)%>%
+  select(-matches("^YEMP OCC/JOB CODE \\(ROS ITEM\\) L")) %>%
+  select(-matches("^CV_CHILD_BIRTH_DATE L"))
+```
+
+# further cleaning:
+
+# Identify a child birth year data frame to identify the birth year of the oldest child
+```{r}
+child_birth_year_df <- define_normative_data %>%
+  select(`PUBID - YTH ID CODE 1997`, matches("^CV_CHILD_BIRTH_DATE L")) %>%
+  rowwise() %>%
+  mutate(
+    year_of_first_born = min(c_across(starts_with("CV_CHILD_BIRTH_DATE L")), na.rm = TRUE)
+  ) %>%
+  mutate(
+    year_of_first_born = ifelse(is.infinite(year_of_first_born), NA, year_of_first_born)
+  ) %>%
+  ungroup() %>%
+  rename(id = `PUBID - YTH ID CODE 1997`)%>%
+  select(id, year_of_first_born)
+```
+
+# Figuring out who have never have a child in this time span
+```{r}
+child_count[child_count == -1] = NA  # Refused
+child_count[child_count == -2] = NA  # Dont know
+child_count[child_count == -3] = NA  # Invalid missing
+#child_count[child_count == -4] = NA  # Valid missing
+child_count[child_count == -5] = NA  # Non-interview
+
+names(child_count) <- c("id",
+"child_1997",
+"child_1998",
+"child_1999",
+"child_2000",
+"child_2001",
+"child_2002",
+"child_2003",
+"child_2004",
+"child_2005",
+"child_2006",
+"child_2007",
+"child_2008",
+"child_2009",
+"child_2010",
+"child_2011",
+"child_2013",
+"child_2015")
+
+child_count_flag <- child_count %>%
+  rowwise() %>%
+  mutate(
+    ever_child_in_panel = any(c_across(starts_with("child_")) > 0, na.rm = TRUE),
+    never_have_child = {
+      vals <- c_across(starts_with("child_"))
+      if (all(is.na(vals))) {
+        NA_integer_
+      } else if (all(is.na(vals) | vals == -4)) {
+        1L
+      } else {
+        0L
+      }
+    }
+  ) %>%
+  ungroup() %>%
+  select(id, never_have_child)
+```
+
+# Define time invariant / variant variables
+```{r}
+identification <- c(
+  "id"
+)
+
+time_invariant_var <- c(
+  "sex",
+  "is_black",
+  "is_hispanic",
+  "diabetes",
+  "normative_agent",
+  "dietitian",
+  "never_have_child",
+  "year_of_first_born"
+)
+
+time_var_var <- c(
+  "age",
+  "family_size",
+  "child_count",
+  "occ_group",
+  "area",
+  "income"
+)
+
+dependent_var <- c(
+  "soda",
+  "log_soda"
+)
+```
+
+# Address the time invariant variables
+```{r}
+ind_control <- reduced_occupation_data %>%
+  mutate(
+    is_black = case_when(
+      `KEY!RACE_ETHNICITY (SYMBOL) 1997` == 1 ~ 1,
+      is.na(`KEY!RACE_ETHNICITY (SYMBOL) 1997`) ~ NA_real_,
+      TRUE ~ 0),
+    is_hispanic = case_when(
+      `KEY!RACE_ETHNICITY (SYMBOL) 1997` == 2 ~ 1,
+      is.na(`KEY!RACE_ETHNICITY (SYMBOL) 1997`) ~ NA_real_,
+      TRUE ~ 0),
+    sex = `KEY!SEX (SYMBOL) 1997`-1) %>% # Male; 0, Female: 1 
+    rename(diabetes = `CHRONIC CONDITION - DIABETES 2013`,
+           id = `PUBID - YTH ID CODE 1997`) %>%
+  left_join(child_count_flag, by = "id") %>%
+  left_join(child_birth_year_df, by = "id")
+```
+
+## Give the proper name and move it to long form, to process time variant variables
+```{r}
+proper_names_df <- ind_control %>% 
+  rename_with(~ .x %>%
+                str_to_lower() %>%  
+                str_replace_all("[^a-z0-9]+", "_") %>% 
+                str_replace_all("^_|_$", "")) %>% 
+  rename_with(
+    ~ str_replace(.x,
+                  "^frequency_that_r_consumes_sugary_drink_(\\d{4})$",
+                  "soda_\\1"),
+    matches("^frequency_that_r_consumes_sugary_drink_")
+  )%>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^cv_age_int_date_(\\d{4})$",
+                  "age_\\1"),
+    matches("^cv_age_int_date_")
+  ) %>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^cv_income_family_(\\d{4})$",
+                  "income_\\1"),
+    matches("^cv_income_family_\\d{4}$")
+  ) %>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^cv_msa_(\\d{4})$",
+                  "area_\\1"),
+    matches("^cv_msa_\\d{4}$")
+  ) %>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^cv_hh_size_(\\d{4})$",
+                  "family_size_\\1"),
+    matches("^cv_hh_size_\\d{4}$")
+  ) %>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^cv_hh_under_18_(\\d{4})$",
+                  "child_count_\\1"),
+    matches("^cv_hh_under_18_\\d{4}$")
+  ) %>%
+  mutate(across(starts_with("soda_"),
+           ~ log1p(as.numeric(.x)),  # log(1+x)
+           .names = "log_{.col}"))
+```
+
+# Turn the data to the long form
+
+```{r}
+block_size <- 3
+df_long <- proper_names_df %>%
+  pivot_longer(
+    cols = matches("_(2009|2010|2011|2015)$"),
+    names_to = c(".value", "year"),
+    names_pattern = "(.*)_(\\d{4})"
+  ) %>%
+  mutate(year = as.integer(year)) %>%
+  select(identification,
+    year,
+    all_of(dependent_var),
+    all_of(time_invariant_var),
+    all_of(time_var_var)) %>%
+  mutate(
+    soda = ifelse(soda > 25, NA, soda),
+    log_soda = ifelse(soda > 25, NA, log_soda),
+    related_year = year - year_of_first_born,
+    related_year_bin = floor(related_year/ block_size) * block_size,
+    has_child = if_else(child_count > 0, 1L, 0L)) %>%
+  filter(!is.na(soda)) %>%
+  mutate(not_yet_treated = if_else(related_year < 0, 1L, 0L))
+```
+
+```{r}
+df_check <- df_long %>%
+  group_by(id) %>%
+  summarise(
+    not_yet = any(not_yet_treated == 1, na.rm = TRUE),
+    never_have_child = first(never_have_child)
+  ) %>%
+  count(not_yet, never_have_child)
+
+df_check
+```
+
+Notice the inconsistency here: hence we perform 2 fixes: 
+
+1. never had a child if no year_of_first_born is observed
+2. pre-treatment only if they will eventually have a child
+
+```{r}
+df_long_proper_97 <- df_long %>%
+  group_by(id) %>%
+  mutate(
+    # Ever had a child in HH in ANY observed wave?
+    ever_child_in_panel = ifelse(
+      all(is.na(has_child)),
+      NA,
+      any(has_child == 1, na.rm = TRUE)
+    ),
+    never_have_child = case_when(
+      !is.na(year_of_first_born)                    ~ 0L,
+      isTRUE(ever_child_in_panel)                   ~ 0L,
+      all(is.na(year_of_first_born)) & !isTRUE(ever_child_in_panel) ~ 1L,
+      TRUE                                          ~ NA_integer_
+    ),
+    # Row-level: pre-treatment only if a first-birth year exists and we're pre-birth
+    not_yet_treated = if_else(
+      !is.na(year_of_first_born) & related_year < 0, 1L, 0L
+    )
+  ) %>%
+  ungroup()
+```
+
+## summary: 
+
+| Category             | Variables                                                                 |
+|----------------------|---------------------------------------------------------------------------|
+| **Identification**   | `id`, `year`                                                             |
+| **Soda**             | `soda`, `log_soda`                                                       |
+| **Demographics**     | `sex`, `is_black`, `is_hispanic`, `age`, `family_size`, `child_count`, `area` |
+| **Health**           | `diabetes`                                           |
+| **Child Related**    | `never_have_child`, `year_of_first_born`, `has_child`, `not_yet_treated`  |
+| **Flags**            | `related_year`, `related_year_bin`                                       |
+| **Income & Work**    | `income`, `occ_group`                                                     |
+| **Normative Agents** | `normative_agent`, `dietitian`                                           |
+
+```{r}
+write.csv(df_long_proper_97, here("4_int", "df_long_Y97.csv"), row.names = FALSE)
+```

@@ -1,0 +1,33 @@
+
+\begin{table}[htbp]
+   \caption{Has Child × Normative: Effects on log(soda)}
+   \centering
+   \begin{tabular}{lccccccccc}
+      \tabularnewline \midrule \midrule
+      Dependent Variable: & \multicolumn{9}{c}{log\_soda}\\
+      Model:                                            & (1)           & (2)            & (3)             & (4)             & (5)           & (6)            & (7)           & (8)           & (9)\\  
+      \midrule
+      \emph{Variables}\\
+      $\beta_C$: Has child                              & 0.086$^{***}$ & 0.073$^{***}$  & 0.018           & 0.056$^{***}$   & 0.086$^{***}$ & 0.086$^{***}$  & 0.120$^{***}$ & 0.089$^{***}$ & 0.075$^{***}$\\   
+                                                        & (0.009)       & (0.013)        & (0.012)         & (0.009)         & (0.009)       & (0.010)        & (0.012)       & (0.009)       & (0.012)\\   
+      normative\_agent $\times$ $\beta_C$: Has child    & -0.040        & -0.162$^{***}$ & -0.125$^{**}$   & -0.020          & -0.040        & -0.109$^{***}$ & -0.113$^{**}$ & -0.043        & -0.159$^{***}$\\   
+                                                        & (0.042)       & (0.061)        & (0.056)         & (0.042)         & (0.042)       & (0.038)        & (0.046)       & (0.042)       & (0.058)\\   
+      \midrule
+      \emph{Fixed-effects}\\
+      year                                              & Yes           & Yes            & Yes             & Yes             & Yes           &                &               &               & \\  
+      id                                                &               &                &                 &                 &               & Yes            & Yes           &               & \\  
+      weight\_control                                   &               &                &                 &                 &               &                & Yes           &               & \\  
+      income\_percentile                                &               &                &                 &                 &               &                & Yes           &               & \\  
+      Controls                                          & weight+demo   & weight+sex+age & weight+sex+race & weight+age+race & age+sex+race  & none           & weight        & demographic   & weight+demo\\  
+      \midrule
+      \emph{Fit statistics}\\
+      Observations                                      & 65,587        & 36,635         & 43,134          & 65,587          & 65,587        & 66,016         & 36,997        & 66,016        & 36,997\\  
+      R$^2$                                             & 0.13198       & 0.05956        & 0.05460         & 0.12040         & 0.13198       & 0.59062        & 0.57261       & 0.13025       & 0.06763\\  
+      RMSE                                              & 0.77397       & 0.77673        & 0.77631         & 0.77911         & 0.77397       & 0.53134        & 0.52340       & 0.77447       & 0.77306\\  
+      \midrule \midrule
+      \multicolumn{10}{l}{\emph{Clustered (id) standard-errors in parentheses}}\\
+      \multicolumn{10}{l}{\emph{Signif. Codes: ***: 0.01, **: 0.05, *: 0.1}}\\
+   \end{tabular}
+\end{table}
+
+

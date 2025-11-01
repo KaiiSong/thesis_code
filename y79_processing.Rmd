@@ -1,0 +1,470 @@
+---
+title: 'NLSY79: cleaning and ready to merge'
+author: "Kai Song"
+date: "2025-09-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(fixest)
+library(did)
+library(stringr)
+library(ggplot2)
+library(stargazer)
+library(here)
+```
+# Introduction: 
+
+This data file input the 79_2909.csv and 79_2909_child_count.csv, and transformed into the long form stored at 4_int\df_long_Y79.\\
+
+The output includes the following groups of variables:
+
+1. **Identification**  
+   - `id`, `year`
+2. **Demographic**  
+   - `sex`, `is_black`, `is_hispanic`, `age`, `family_size`, `child_count`, `area`
+3. **Income and Employment**  
+   - `income`, `occ_group` (occupation group)
+4. **Child Related**  
+   - `never_have_child`  
+   - `year_of_first_born`  
+   - `child_count`
+5. **Flags**  
+   - `has_child`: indicator for having a child in the household during observation (2008–2022)  
+   - `not_yet_treated`: pre–first-childbirth periods (for those with a first birth between 2008–2022)  
+   - `related_year`, `related_year_bin`: current year minus the year of first birth
+6. **Soda**  
+   - `soda`, `log_soda`
+7. **Normative Agents**  
+   - `normative_agent`: medical professionals  
+   - `dietitian`: career code 3030
+8. **Other Variables**  
+   - `diabetes`: diagnosed with diabetes  
+   - `weight_control`: currently trying to lose or gain weight (selective years only)
+
+
+# Read in data and variables
+This part isnt presented in the HTML document, please refer to the mardown code.
+```{r,include=FALSE}
+NLSY79 <- read_csv("1_input/Y79_2909.csv")
+child_count <- read_csv("1_input/Y79_2909_child_count.csv")
+
+name_varlabels <- c("CCR-DR DIAGNOSED DIABETES? XRND",
+"CCR-DATE DIABETES DIAGNOSED XRND",
+"ID# (1-12686) 79",
+"RACL/ETHNIC COHORT /SCRNR 79",
+"SEX OF R 79",
+"DATE OF BIRTH OF 1ST CHILD - YEAR XRND",
+"OCCUPATION (2000 CODES) ALL JOB L1 2008",
+"OCCUPATION (2000 CODES) ALL JOB L2 2008",
+"OCCUPATION (2000 CODES) ALL JOB L3 2008",
+"OCCUPATION (2000 CODES) ALL JOB L4 2008",
+"OCCUPATION (2000 CODES) ALL JOB L5 2008",
+"R TRYING TO LOSE OR GAIN WEIGHT 2008",
+"TIMES HAVING SOFT DRK OR SODA PAST 7 DAYS 2008",
+"TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS 2008",
+"FAMILY SIZE 2008",
+"TOTAL NET FAMILY INCOME 2008",
+"AGE AT INTERVIEW 2008",
+"RS RESIDENCE IN SMSA 2008",
+"NUM BIO/STEP/ADPT CHILDREN IN HH 2008",
+"OCCUPATION (2000 CODES) ALL JOB L1 2010",
+"OCCUPATION (2000 CODES) ALL JOB L2 2010",
+"OCCUPATION (2000 CODES) ALL JOB L3 2010",
+"OCCUPATION (2000 CODES) ALL JOB L4 2010",
+"OCCUPATION (2000 CODES) ALL JOB L5 2010",
+"R TRYING TO LOSE OR GAIN WEIGHT 2010",
+"TIMES HAVING SOFT DRK OR SODA PAST 7 DAYS 2010",
+"TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS 2010",
+"FAMILY SIZE 2010",
+"TOTAL NET FAMILY INCOME 2010",
+"AGE AT INTERVIEW 2010",
+"RS RESIDENCE IN SMSA 2010",
+"NUM BIO/STEP/ADPT CHILDREN IN HH 2010",
+"OCCUPATION (2000 CODES) ALL JOB L1 2012",
+"OCCUPATION (2000 CODES) ALL JOB L2 2012",
+"OCCUPATION (2000 CODES) ALL JOB L3 2012",
+"OCCUPATION (2000 CODES) ALL JOB L4 2012",
+"OCCUPATION (2000 CODES) ALL JOB L5 2012",
+"R TRYING TO LOSE OR GAIN WEIGHT 2012",
+"TIMES HAVING SOFT DRK OR SODA PAST 7 DAYS 2012",
+"TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS 2012",
+"FAMILY SIZE 2012",
+"TOTAL NET FAMILY INCOME 2012",
+"AGE AT INTERVIEW 2012",
+"RS RESIDENCE IN SMSA 2012",
+"NUM BIO/STEP/ADPT CHILDREN IN HH 2012",
+"OCCUPATION (2000 CODES) ALL JOB L1 2014",
+"OCCUPATION (2000 CODES) ALL JOB L2 2014",
+"OCCUPATION (2000 CODES) ALL JOB L3 2014",
+"OCCUPATION (2000 CODES) ALL JOB L4 2014",
+"OCCUPATION (2000 CODES) ALL JOB L5 2014",
+"R TRYING TO LOSE OR GAIN WEIGHT 2014",
+"TIMES HAVING SOFT DRK OR SODA PAST 7 DAYS 2014",
+"TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS 2014",
+"FAMILY SIZE 2014",
+"TOTAL NET FAMILY INCOME 2014",
+"AGE AT INTERVIEW 2014",
+"RS RESIDENCE IN SMSA 2014",
+"NUM BIO/STEP/ADPT CHILDREN IN HH 2014",
+"OCCUPATION (2000 CODES) ALL JOB L1 2016",
+"OCCUPATION (2000 CODES) ALL JOB L2 2016",
+"OCCUPATION (2000 CODES) ALL JOB L3 2016",
+"OCCUPATION (2000 CODES) ALL JOB L4 2016",
+"OCCUPATION (2000 CODES) ALL JOB L5 2016",
+"R TRYING TO LOSE OR GAIN WEIGHT 2016",
+"TIMES HAVING SOFT DRK OR SODA PAST 7 DAYS 2016",
+"TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS 2016",
+"FAMILY SIZE 2016",
+"TOTAL NET FAMILY INCOME 2016",
+"AGE AT INTERVIEW 2016",
+"RS RESIDENCE IN SMSA 2016",
+"NUM BIO/STEP/ADPT CHILDREN IN HH 2016",
+"OCCUPATION (2000 CODES) ALL JOB L1 2020",
+"OCCUPATION (2000 CODES) ALL JOB L2 2020",
+"OCCUPATION (2000 CODES) ALL JOB L3 2020",
+"OCCUPATION (2000 CODES) ALL JOB L4 2020",
+"OCCUPATION (2000 CODES) ALL JOB L5 2020",
+"R TRYING TO LOSE OR GAIN WEIGHT 2020",
+"TIMES HAVING SOFT DRK OR SODA PAST 7 DAYS 2020",
+"TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS 2020",
+"FAMILY SIZE 2020",
+"TOTAL NET FAMILY INCOME 2020",
+"AGE AT INTERVIEW 2020",
+"RS RESIDENCE IN SMSA 2020",
+"NUM BIO/STEP/ADPT CHILDREN IN HH 2020",
+"OCCUPATION (2000 CODES) ALL JOB L1 2022",
+"OCCUPATION (2000 CODES) ALL JOB L2 2022",
+"OCCUPATION (2000 CODES) ALL JOB L3 2022",
+"OCCUPATION (2000 CODES) ALL JOB L4 2022",
+"OCCUPATION (2000 CODES) ALL JOB L5 2022",
+"R TRYING TO LOSE OR GAIN WEIGHT 2022",
+"TIMES HAVING SOFT DRK OR SODA PAST 7 DAYS 2022",
+"TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS 2022",
+"FAMILY SIZE 2022",
+"TOTAL NET FAMILY INCOME 2022",
+"AGE AT INTERVIEW 2022",
+"RS RESIDENCE IN SMSA 2022",
+"NUM BIO/STEP/ADPT CHILDREN IN HH 2022"
+)
+
+occupation_columns <- c(
+  "OCCUPATION (2000 CODES) ALL JOB L1 2008", "OCCUPATION (2000 CODES) ALL JOB L2 2008", "OCCUPATION (2000 CODES) ALL JOB L3 2008", "OCCUPATION (2000 CODES) ALL JOB L4 2008", "OCCUPATION (2000 CODES) ALL JOB L5 2008",
+  "OCCUPATION (2000 CODES) ALL JOB L1 2010", "OCCUPATION (2000 CODES) ALL JOB L2 2010", "OCCUPATION (2000 CODES) ALL JOB L3 2010", "OCCUPATION (2000 CODES) ALL JOB L4 2010", "OCCUPATION (2000 CODES) ALL JOB L5 2010",
+  "OCCUPATION (2000 CODES) ALL JOB L1 2012", "OCCUPATION (2000 CODES) ALL JOB L2 2012", "OCCUPATION (2000 CODES) ALL JOB L3 2012", "OCCUPATION (2000 CODES) ALL JOB L4 2012", "OCCUPATION (2000 CODES) ALL JOB L5 2012",
+  "OCCUPATION (2000 CODES) ALL JOB L1 2014", "OCCUPATION (2000 CODES) ALL JOB L2 2014", "OCCUPATION (2000 CODES) ALL JOB L3 2014", "OCCUPATION (2000 CODES) ALL JOB L4 2014", "OCCUPATION (2000 CODES) ALL JOB L5 2014",
+  "OCCUPATION (2000 CODES) ALL JOB L1 2016", "OCCUPATION (2000 CODES) ALL JOB L2 2016", "OCCUPATION (2000 CODES) ALL JOB L3 2016", "OCCUPATION (2000 CODES) ALL JOB L4 2016", "OCCUPATION (2000 CODES) ALL JOB L5 2016",
+  "OCCUPATION (2000 CODES) ALL JOB L1 2020", "OCCUPATION (2000 CODES) ALL JOB L2 2020", "OCCUPATION (2000 CODES) ALL JOB L3 2020", "OCCUPATION (2000 CODES) ALL JOB L4 2020", "OCCUPATION (2000 CODES) ALL JOB L5 2020",
+  "OCCUPATION (2000 CODES) ALL JOB L1 2022", "OCCUPATION (2000 CODES) ALL JOB L2 2022", "OCCUPATION (2000 CODES) ALL JOB L3 2022", "OCCUPATION (2000 CODES) ALL JOB L4 2022", "OCCUPATION (2000 CODES) ALL JOB L5 2022"
+)
+
+occ_groups_raw <- c("10 TO 430: Executive, Administrative and Managerial Occupations",
+"500 TO 950: Management Related Occupations",
+"1000 TO 1240: Mathematical and Computer Scientists",
+"1300 TO 1560: Engineers, Architects, Surveyers, Engineering and Related Technicians",
+"1600 TO 1760: Physical Scientists",
+"1800 TO 1860: Social Scientists and Related Workers",
+"1900 TO 1960: Life, Physical and Social Science Technicians",
+"2000 TO 2060: Counselors, Sociala and Religious Workers",
+"2100 TO 2150: Lawyers, Judges and Legal Support Workers",
+"2200 TO 2340: Teachers",
+"2400 TO 2550: Education, Training and Library Workers",
+"2600 TO 2760: Entertainers and Performers, Sports and Related Workers",
+"2800 TO 2960: Media and Communications Workers",
+"3000 TO 3260: Health Diagnosing and Treating Practitioners",
+"3300 TO 3650: Health Care Technical and Support Occupations",
+"3700 TO 3950: Protective Service Occupations",
+"4000 TO 4160: Food Preparation and Serving Related Occupations",
+"4200 TO 4250: Cleaning and Building Service Occupations",
+"4300 TO 4430: Entertainment Attendants and Related Workers",
+"4460: Funeral Related Occupations",
+"4500 TO 4650: Personal Care and Service Workers",
+"4700 TO 4960: Sales and Related Workers",
+"5000 TO 5930: Office and Administrative Support Workers",
+"6000 TO 6130: Farming, Fishing and Forestry Occupations",
+"6200 TO 6940: Construction Trade and Extraction Workers",
+"7000 TO 7620: Installation, Maintenance and Repairs Workers",
+"7700 TO 7750: Production and Operating Workers",
+"7800 TO 7850: Food Preparation Occupations",
+"7900 TO 8960: Setters, Operators and Tenders",
+"9000 TO 9750: Transportation and Material Moving Workers",
+"9800 TO 9830: Military Specific Occupations",
+"9840: Armed Forces",
+"9950: Not in Labor Force (ACS Code)",
+"9990: Uncodeable")
+```
+
+# Cleaning
+```{r}
+# Handle missing values
+NLSY79[NLSY79 == -1] = NA  # Refused
+NLSY79[NLSY79 == -2] = NA  # Dont know
+NLSY79[NLSY79 == -3] = NA  # Invalid missing
+NLSY79[NLSY79 == -4] = NA  # Valid missing
+NLSY79[NLSY79 == -5] = NA  # Non-interview
+
+child_count[child_count == -1] = NA  # Refused
+child_count[child_count == -2] = NA  # Dont know
+child_count[child_count == -3] = NA  # Invalid missing
+child_count[child_count == -4] = NA  # Valid missing
+child_count[child_count == -5] = NA  # Non-interview
+
+# renaming:
+names(NLSY79) <- name_varlabels
+
+# identify normative agents
+dietitian_codes <- c(3030)
+normative_codes <- 3000:3260
+
+define_normative_data <- NLSY79 %>%
+  mutate(
+    normative_agent = if_any(all_of(occupation_columns), ~ . %in% normative_codes),
+   dietitian = if_any(all_of(occupation_columns), ~ . %in% dietitian_codes))
+
+# group the occupations
+parse_occ <- function(s) {
+  m <- regmatches(s, regexec("^\\s*(\\d+)(?:\\s*TO\\s*(\\d+))?", s))[[1]]
+  start <- as.integer(m[2])
+  end   <- ifelse(nchar(m[3]) == 0, start, as.integer(m[3]))
+  label <- if (start == end) as.character(start) else paste0(start, "to", end)
+  data.frame(start, end, label, stringsAsFactors = FALSE)
+}
+occ_map <- do.call(rbind, lapply(occ_groups_raw, parse_occ))
+occ_bucket <- function(code) {
+  code <- as.integer(code)
+  out <- rep(NA_character_, length(code))
+  for (i in seq_len(nrow(occ_map))) {
+    idx <- !is.na(code) & code >= occ_map$start[i] & code <= occ_map$end[i]
+    out[idx] <- occ_map$label[i]
+  }
+  out
+}
+
+reduced_occupation_data <- define_normative_data %>%
+  mutate(occupation_2008 = if_else(normative_agent, NA_integer_,
+                              .data[["OCCUPATION (2000 CODES) ALL JOB L1 2008"]]),
+    occupation_2010 = if_else(normative_agent, NA_integer_,
+                              .data[["OCCUPATION (2000 CODES) ALL JOB L1 2010"]]),
+    occupation_2012 = if_else(normative_agent, NA_integer_,
+                              .data[["OCCUPATION (2000 CODES) ALL JOB L1 2012"]]),
+    occupation_2014 = if_else(normative_agent, NA_integer_,
+                              .data[["OCCUPATION (2000 CODES) ALL JOB L1 2014"]]),
+    occupation_2016 = if_else(normative_agent, NA_integer_,
+                              .data[["OCCUPATION (2000 CODES) ALL JOB L1 2016"]]),
+    occupation_2020 = if_else(normative_agent, NA_integer_,
+                              .data[["OCCUPATION (2000 CODES) ALL JOB L1 2020"]]),
+    occupation_2022 = if_else(normative_agent, NA_integer_,
+                              .data[["OCCUPATION (2000 CODES) ALL JOB L1 2022"]])) %>%
+  select(-all_of(occupation_columns)) %>%
+  mutate(occ_group_2008 = occ_bucket(occupation_2008),
+         occ_group_2010 = occ_bucket(occupation_2010),
+         occ_group_2012 = occ_bucket(occupation_2012),
+         occ_group_2014 = occ_bucket(occupation_2014),
+         occ_group_2016 = occ_bucket(occupation_2016),
+         occ_group_2020 = occ_bucket(occupation_2020),
+         occ_group_2022 = occ_bucket(occupation_2022))%>%
+  select(-occupation_2008, -occupation_2010, -occupation_2012, -occupation_2014, 
+         -occupation_2016, -occupation_2020, -occupation_2022)
+```
+
+# further cleaning:
+
+# Define time invariant / variant variables
+```{r}
+identification <- c(
+  "id"
+)
+
+time_invariant_var <- c(
+  "sex",
+  "is_black",
+  "is_hispanic",
+  "diabetes",
+  "normative_agent",
+  "dietitian",
+  "never_have_child",
+  "year_of_first_born"
+)
+
+time_var_var <- c(
+  "age",
+  "family_size",
+  "child_count",
+  "occ_group",
+  "weight_control",
+  "area",
+  "income"
+)
+
+dependent_var <- c(
+  "soda",
+  "log_soda"
+)
+```
+
+# Address the time invariant variables
+```{r}
+having_child_flag <- child_count %>%
+  rename(id = CASEID) %>%
+  mutate(never_have_child = case_when(
+      # any year > 0 → had child
+      rowSums(across(c(NUMCH79:NUMCH22), ~ .x > 0), na.rm = TRUE) > 0 ~ 0L,
+      # all NA → unknown
+      if_all(c(NUMCH79:NUMCH22), is.na) ~ NA_integer_,
+      # otherwise → all 0 (with at least one non-NA)
+      TRUE ~ 1L
+    )) %>%
+  select(id, never_have_child) #%>%
+  #count(never_have_child)
+
+ind_control <- reduced_occupation_data %>%
+  mutate(
+    is_black = case_when(
+      `RACL/ETHNIC COHORT /SCRNR 79` == 2 ~ 1,
+      is.na(`RACL/ETHNIC COHORT /SCRNR 79`) ~ NA_real_,
+      TRUE ~ 0),
+    is_hispanic = case_when(
+      `RACL/ETHNIC COHORT /SCRNR 79` == 1 ~ 1,
+      is.na(`RACL/ETHNIC COHORT /SCRNR 79`) ~ NA_real_,
+      TRUE ~ 0),
+    sex = `SEX OF R 79`-1) %>% # Male; 0, Female: 1 
+    rename(diabetes = `CCR-DR DIAGNOSED DIABETES? XRND`,
+           id = `ID# (1-12686) 79`,
+           year_of_first_born = `DATE OF BIRTH OF 1ST CHILD - YEAR XRND`) %>%
+  left_join(having_child_flag, by = "id")
+```
+
+## Give the proper name and move it to long form, to process time variant variables
+```{r}
+proper_names_df <- ind_control %>% 
+  rename_with(~ .x %>%
+                str_to_lower() %>%  
+                str_replace_all("[^a-z0-9]+", "_") %>% 
+                str_replace_all("^_|_$", "")) %>% 
+  select(-matches("^time_unit_having_soft_drink_or_soda_past_7_days_")) %>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^times_having_soft_drk_or_soda_past_7_days_(\\d{4})$",
+                  "soda_\\1"),
+    matches("^times_having_soft_drk_or_soda_past_7_days_")
+  )%>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^age_at_interview_(\\d{4})$",
+                  "age_\\1"),
+    matches("^age_at_interview_")
+  ) %>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^total_net_family_income_(\\d{4})$",
+                  "income_\\1"),
+    matches("^total_net_family_income_\\d{4}$")
+  ) %>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^rs_residence_in_smsa_(\\d{4})$",
+                  "area_\\1"),
+    matches("^rs_residence_in_smsa_\\d{4}$")
+  ) %>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^r_trying_to_lose_or_gain_weight_(\\d{4})$",
+                  "weight_control_\\1"),
+    matches("^r_trying_to_lose_or_gain_weight_\\d{4}$")
+  ) %>%
+  rename_with(
+    ~ str_replace(.x,
+                  "^num_bio_step_adpt_children_in_hh_(\\d{4})$",
+                  "child_count_\\1"),
+    matches("^num_bio_step_adpt_children_in_hh_\\d{4}$")
+  ) %>%
+  mutate(across(starts_with("soda_"),
+           ~ log1p(as.numeric(.x)),  # log(1+x)
+           .names = "log_{.col}")) %>%
+  select(-ccr_date_diabetes_diagnosed_xrnd, -racl_ethnic_cohort_scrnr_79, -sex_of_r_79)
+```
+
+# Turn the data to the long form
+
+```{r}
+block_size <- 3
+df_long <- proper_names_df %>%
+  pivot_longer(
+    cols = matches("_(2008|2010|2012|2014|2016|2020|2022)$"),
+    names_to = c(".value", "year"),
+    names_pattern = "(.*)_(\\d{4})"
+  ) %>%
+  mutate(year = as.integer(year)) %>%
+  select(identification,
+    year,
+    all_of(dependent_var),
+    all_of(time_invariant_var),
+    all_of(time_var_var)) %>%
+  mutate(
+    soda = ifelse(soda > 25, NA, soda),
+    log_soda = ifelse(soda > 25, NA, log_soda),
+    related_year = year - year_of_first_born,
+    related_year_bin = floor(related_year/ block_size) * block_size,
+    has_child = if_else(child_count > 0, 1L, 0L)) %>%
+  filter(!is.na(soda)) %>%
+  mutate(not_yet_treated = if_else(related_year < 0, 1L, 0L))
+```
+
+```{r}
+df_check <- df_long %>%
+  group_by(id) %>%
+  summarise(
+    ever_notyet = any(not_yet_treated == 1, na.rm = TRUE),
+    never_have_child = first(never_have_child)
+  ) %>%
+  count(ever_notyet, never_have_child)
+
+df_check
+
+# 17 people in the not yet treated observarions, and observed in 24 time spans
+```
+Notice the inconsistency here: hence we perform 2 fixes: 
+  1. never had a child if no year_of_first_born is observed
+  2. pre-treatment only if they will eventually have a child
+
+```{r}
+df_long_proper_79 <- df_long %>%
+  group_by(id) %>%
+  mutate(
+    # Determine if ever had a child in household during observation
+    ever_child_in_panel = any(child_count > 0, na.rm = TRUE),
+    never_have_child = case_when(
+      !is.na(year_of_first_born) ~ 0L,                              # has recorded first birth
+      ever_child_in_panel        ~ 0L,                              # or ever observed with child in HH
+      all(is.na(year_of_first_born)) & !ever_child_in_panel ~ 1L,   # no evidence of children
+      TRUE                       ~ NA_integer_ 
+    ),
+    not_yet_treated = if_else(
+      !is.na(year_of_first_born) & related_year < 0,
+      1L, 0L
+    )
+  ) %>%
+  ungroup() %>%
+  select(-ever_child_in_panel)
+```
+
+## summary: 
+
+| Category             | Variables                                                                 |
+|----------------------|---------------------------------------------------------------------------|
+| **Identification**   | `id`, `year`                                                             |
+| **Soda**             | `soda`, `log_soda`                                                       |
+| **Demographics**     | `sex`, `is_black`, `is_hispanic`, `age`, `family_size`, `child_count`, `area` |
+| **Health**           | `diabetes`, `weight_control`                                              |
+| **Child Related**    | `never_have_child`, `year_of_first_born`, `has_child`, `not_yet_treated`  |
+| **Flags**            | `related_year`, `related_year_bin`                                       |
+| **Income & Work**    | `income`, `occ_group`                                                     |
+| **Normative Agents** | `normative_agent`, `dietitian`                                           |
+
+```{r}
+write.csv(df_long_proper_79, here("4_int", "df_long_Y79.csv"), row.names = FALSE)
+```

@@ -1,0 +1,1014 @@
+---
+title: "Analysis"
+author: "Kai Song"
+date: "2025-09-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(fixest)
+library(did)
+library(stringr)
+library(ggplot2)
+library(stargazer)
+library(here)
+library(scales)
+library(knitr)
+```
+
+```{r,include=FALSE}
+df_long_Y79 <- read_csv("4_int/df_long_Y79.csv")
+df_long_Y97 <- read_csv("4_int/df_long_Y97.csv")
+
+df_total <- df_long_Y79 %>%
+  mutate(cohort = "NLSY79") %>% 
+  rbind(df_long_Y97 %>% mutate(id = id+0.5,
+                               cohort = "NLSY97",
+                               weight_control = NA_real_) %>%
+          select(-ever_child_in_panel)) %>%
+
+  mutate(age_group= cut(age,
+                      breaks = c(-Inf, 20, 30, 40, 50, Inf),
+                      labels = c("<20", "21-30", "31-40", "41-50", "50+"),
+                      right = TRUE),
+         income_percentile = ntile(income, 100)) %>%
+  select(-age)
+
+
+df_long_Y79_grouped <- df_long_Y79 %>% 
+  mutate(age_group= cut(age,
+                        breaks = c(-Inf, 20, 30, 40, 50, Inf),
+                        labels = c("<20", "21-30", "31-40", "41-50", "50+"),
+                        right = TRUE),
+                        income_percentile = ntile(income, 100)) %>%
+  select(-age)
+
+df_long_Y97_grouped <- df_long_Y97 %>% mutate(age_group= cut(age,
+                      breaks = c(-Inf, 20, 30, 40, 50, Inf),
+                      labels = c("<20", "21-30", "31-40", "41-50", "50+"),
+                      right = TRUE),
+                      income_percentile = ntile(income, 100) ) %>%
+  select(-age)
+
+
+sum(df_total$not_yet_treated == 1, na.rm = TRUE)
+# 4344 not yet treated, 
+
+sum(df_total$never_have_child == 1, na.rm = TRUE)
+# never treated 19183
+
+# Number of unique IDs not yet treated (1594)
+df_total %>%
+  filter(not_yet_treated == 1) %>%
+  distinct(id) %>%
+  nrow()
+
+# Number of unique IDs who never have a child (4678)
+df_total %>%
+  filter(never_have_child == 1) %>%
+  distinct(id) %>%
+  nrow()
+```
+
+```{r}
+desc_by_cohort <- df_total %>%
+  filter(!is.na(soda)) %>%
+  group_by(cohort) %>%
+  summarise(
+    # person-years / coverage
+    `Observations (Time and Agent)`            = n(),
+    `Number of years`          = n_distinct(year),
+    # agent-level counts (unique ids that ever meet the condition within the cohort)
+    `Number of unique agents`  = n_distinct(id),
+    `Share of female`  = n_distinct(id[!is.na(sex)& sex == 1])/n_distinct(id),
+    `Share of Black`   = n_distinct(id[!is.na(is_black)& is_black == 1])/n_distinct(id),
+    `Share of Hispanic`= n_distinct(id[!is.na(is_hispanic) & is_hispanic == 1])/n_distinct(id),
+    `Number of normative agents`= n_distinct(id[!is.na(normative_agent) & normative_agent == 1]),
+    `Share of normative agents`= n_distinct(id[!is.na(normative_agent) & normative_agent == 1])/n_distinct(id),
+    `Number of agents with no child observed` = n_distinct(id[!is.na(never_have_child) & never_have_child == 1]),
+    `Number of agents with child in the household` = n_distinct(id[!is.na(has_child) & has_child == 1])
+  ) %>%
+  # make it vertical
+  pivot_longer(cols = -cohort, names_to = "Variable", values_to = "Count") %>%
+  pivot_wider(names_from = cohort, values_from = Count)%>%
+  mutate(
+    across(where(is.numeric), ~ ifelse(. %% 1 == 0,
+                                       formatC(., format = "d", big.mark = ","), 
+                                       formatC(., format = "f", digits = 3)))
+  )
+
+desc_latex <- desc_by_cohort %>%
+  kable(format = "latex", booktabs = TRUE, caption = NULL, table.envir = NULL)
+cat(desc_latex, file = "3_output/descriptive_table1.tex")
+
+desc_by_cohort
+```
+```{r}
+agent_flags <- df_total %>%
+  filter(!is.na(soda)) %>%                    # keep only obs with SSB
+  group_by(cohort, id) %>%
+  summarise(
+    normative = any(normative_agent == 1, na.rm = TRUE),
+    pre_treat = any(related_year < 0, na.rm = TRUE),
+    ever_child_obs = any(has_child == 1, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+norm_tab <- agent_flags %>%
+  filter(normative) %>%
+  group_by(cohort) %>%
+  summarise(
+    `Observerved before having a child`                 = n_distinct(id[pre_treat]),
+    `Never observed with a child`              = n_distinct(id[!ever_child_obs]),
+    `Have child in household (more than 1 period)`     = n_distinct(id[ever_child_obs]),
+    .groups = "drop"
+  ) %>%
+  pivot_longer(cols = -cohort, names_to = "Classification", values_to = "Count") %>%
+  pivot_wider(names_from = cohort, values_from = Count)
+
+latex_norm_tab <- kable(
+  norm_tab,
+  format = "latex",
+  booktabs = TRUE,
+  caption = NULL,
+  table.envir = NULL
+)
+cat(latex_norm_tab, file = "3_output/norm_tab.tex")
+
+```
+
+```{r}
+avg_ssb <- df_total %>%
+  filter(!is.na(soda)) %>% 
+  mutate(`Agent type` = if_else(normative_agent == 1, "Normative", "General")) %>%
+  group_by(cohort, `Agent type`) %>%
+  summarise(
+    mean_soda = mean(soda, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    names_from = cohort,
+    values_from = mean_soda
+  )
+avg_ssb_latex <- avg_ssb %>%
+  mutate(
+    across(where(is.numeric), ~ ifelse(. %% 1 == 0,
+                                       formatC(., format = "d", big.mark = ","), 
+                                       formatC(., format = "f", digits = 3)))
+  ) %>% kable(format = "latex", booktabs = TRUE, caption = NULL, table.envir = NULL)
+cat(avg_ssb_latex, file = "3_output/avg_ssb_latex.tex")
+
+avg_ssb
+```
+
+Time trend and cohort trend
+```{r}
+avg_ssb_year <- df_total %>%
+  filter(!is.na(soda)) %>%                          # only keep valid SSB obs
+  group_by(cohort, year) %>%
+  summarise(mean_soda = mean(soda, na.rm = TRUE), .groups = "drop")
+
+#
+p_ssb_trend <-ggplot(avg_ssb_year, aes(x = year, y = mean_soda, 
+                         linetype = cohort)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  labs(
+    title = "Average Weekly SSB Consumption Over Time by Cohort",
+    x = "Year",
+    y = "Average SSB Servings per Week",
+    color = "Cohort",
+    linetype = "Cohort"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    text = element_text(family = "Times New Roman"),         # font
+    legend.position = "bottom",                              # move legend
+    legend.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(face = "bold", hjust = 0.5),   # center title
+    axis.title = element_text(face = "bold"),
+    aspect.ratio = 0.5
+  )
+
+ggsave("3_output/avg_ssb_time_trend.png", plot = p_ssb_trend, width = 6, height = 4, dpi = 300)
+p_ssb_trend
+```
+Dynamics
+```{r}
+psudo_event_df <- df_total %>%
+  filter(related_year > -10 & related_year < 19)
+
+psudo_es1 <- feols( soda ~ i(related_year,
+                                        ref = -1)
+                           | cohort+
+                             year, 
+                           data = psudo_event_df,
+                           vcov = ~id) 
+iplot(psudo_es1, ref.line = -1)
+
+psudo_es2 <- feols( soda ~ i(related_year,
+                                        ref = -1)
+                           | #cohort+
+                             year, 
+                           data = psudo_event_df,
+                           vcov = ~id) 
+iplot(psudo_es2, ref.line = -1)
+
+psudo_es3 <- feols( soda ~ i(related_year,
+                                        ref = -1)
+                           | cohort,
+                             #year, 
+                           data = psudo_event_df,
+                           vcov = ~id) 
+iplot(psudo_es3, ref.line = -1)
+
+psudo_es4 <- feols( soda ~ i(related_year, ref = -1),
+                           data = psudo_event_df,
+                           vcov = ~id) 
+iplot(psudo_es4, ref.line = -1)
+```
+Plot it pretty:
+```{r}
+get_es_df <- function(mod, label) {
+  td <- broom::tidy(mod, conf.int = TRUE)
+  td %>%
+    filter(grepl("^related_year::", term)) %>%
+    mutate(
+      related_year = as.integer(sub("^related_year::", "", term)),
+      model = label
+    ) %>%
+    select(model, related_year, estimate, conf.low, conf.high)
+}
+
+es_long1 <- bind_rows(
+  get_es_df(psudo_es1, "Cohort + Year FE"),
+  get_es_df(psudo_es2, "Year FE only"),
+  get_es_df(psudo_es3, "Cohort FE only")
+)
+
+baseline_rows <- es_long1 %>%
+  distinct(model) %>%
+  mutate(
+    related_year = -1,
+    estimate     = 0,
+    conf.low     = 0,
+    conf.high    = 0
+  )
+es_long <- bind_rows(es_long1, baseline_rows)
+
+# X-axis ticks every 2 years (adjust to your window)
+year_seq <- seq(min(es_long$related_year, na.rm = TRUE),
+                max(es_long$related_year, na.rm = TRUE), by = 2)
+
+# 3) Plot WITH confidence intervals
+p_es_ci <- ggplot(es_long,
+                  aes(x = related_year, y = estimate,
+                      color = model, linetype = model, group = model)) +
+  geom_hline(yintercept = 0, linewidth = 0.7, color = "gray70") +
+  geom_vline(xintercept = -1, linewidth = 0.7, color = "gray70", linetype = "dashed") +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high, fill = model),
+              alpha = 0.15, colour = NA) +
+  geom_line(aes(y = conf.low, color = model), linewidth = 0.4, alpha = 0.5) +
+  geom_line(aes(y = conf.high, color = model), linewidth = 0.4, alpha = 0.5) +
+  geom_line(linewidth = 1.1) +
+  geom_point(size = 1.8) +
+  scale_x_continuous(breaks = year_seq) +
+  scale_linetype_manual(
+    values = c(
+      "Cohort + Year FE" = "solid",
+      "Year FE only"     = "12",
+      "Cohort FE only"   = "11"
+    )
+  ) +
+  scale_color_manual(
+    values = c(
+      "Cohort + Year FE" = "#5F9EA0",
+      "Year FE only"     = "#435ebf",
+      "Cohort FE only"   = "#BDA0CB"
+    )
+  ) +
+  scale_fill_manual(
+    values = c(
+      "Cohort + Year FE" = "#5F9EA0",
+      "Year FE only"     = "#435ebf",
+      "Cohort FE only"   = "#BDA0CB"
+    )
+  ) +
+  labs(
+    title = "SSB Consumption Dynamics (with 95% CI)",
+    x = "Relative Year (current year - year receiving the first child)",
+    y = "Change in SSB consumption",
+    color = "Specification",
+    linetype = "Specification",
+    fill = "Specification"
+  ) +
+  theme_classic(base_size = 13, base_family = "Times New Roman") +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_line(color = "grey85", linewidth = 0.4),
+    panel.grid.minor.y = element_blank(),
+    panel.background   = element_blank(),
+    plot.background    = element_blank(),
+    axis.line          = element_line(color = "black", linewidth = 0.4),
+    legend.position    = "bottom",
+    legend.title       = element_text(face = "plain"),
+    plot.title         = element_text(face = "bold", hjust = 0.5),
+    axis.title         = element_text(face = "plain"),
+    aspect.ratio       = 0.45
+  )
+
+p_es_ci
+
+ggsave("3_output/dynamic_combined_CI.png", p_es_ci, width = 7, height = 4.2, dpi = 300)
+
+
+# 4) Plot without confidence intervals
+p_es_noci <- ggplot(es_long,
+       aes(x = related_year, y = estimate,
+           linetype = model, color = model, group = model)) +
+  geom_hline(yintercept = 0, linewidth = 0.7, color = "gray70") +
+  geom_vline(xintercept = -1, linewidth = 0.7, color = "gray70", linetype = "dashed") +
+  geom_line(linewidth = 1.1) +
+  geom_point(size = 1.8) +
+  scale_x_continuous(breaks = year_seq) +
+  scale_linetype_manual(
+    values = c(
+      "Cohort + Year FE" = "solid",
+      "Year FE only"     = "12",
+      "Cohort FE only"   = "11"
+    )
+  ) +
+  scale_color_manual(
+    values = c(
+      "Cohort + Year FE" = "#5F9EA0",
+      "Year FE only"     = "#435ebf",
+      "Cohort FE only"   = "#BDA0CB"
+    )
+  ) +
+  labs(
+    title = "SSB Consumption Dynamics",
+    x = "Relative Year (current year - the year having the first child)",
+    y = "The change in SSB consumption",
+    linetype = "Specification",
+    color = "Specification"
+  ) +
+  theme_classic(base_size = 13, base_family = "Times New Roman") +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_line(color = "grey85", linewidth = 0.4),
+    panel.grid.minor.y = element_blank(),
+    panel.background   = element_blank(),
+    plot.background    = element_blank(),
+    axis.line          = element_line(color = "black", linewidth = 0.4),
+    legend.position    = "bottom",
+    legend.title       = element_text(face = "plain"),
+    plot.title         = element_text(face = "bold", hjust = 0.5),
+    axis.title         = element_text(face = "plain"),
+    aspect.ratio       = 0.45
+  )
+
+p_es_noci
+ggsave("3_output/dynamic_combined_NoCI.png", p_es_noci, width = 7, height = 4.2, dpi = 300)
+```
+
+Make the control variables
+```{r}
+df_select_contro<- df_total %>%
+  filter(never_have_child == 1 | not_yet_treated == TRUE)%>% #never have child : 4678, not yet treated: 1549
+  mutate(indicator = never_have_child) %>%
+  mutate(
+    sex        = as.integer(sex),
+    age_group  = factor(age_group),
+    is_black   = as.integer(is_black),
+    is_hispanic= as.integer(is_hispanic),
+    income_percentile = income_percentile,
+    area = factor(area)
+  )
+```
+
+```{r}
+lm1 <- feols(soda ~ indicator| year + cohort, 
+            data = df_select_contro, cluster = ~id)
+
+lm2 <- feols(soda ~ indicator + is_black + is_hispanic + income_percentile| year+cohort, 
+            data = df_select_contro, cluster = ~id)
+
+lm3 <- feols(soda ~ indicator + is_black + is_hispanic+ sex + income_percentile | year + cohort, 
+            data = df_select_contro, cluster = ~id)
+
+lm4 <- feols(soda ~ indicator + is_black + is_hispanic + sex + family_size + income_percentile | year + cohort, 
+            data = df_select_contro, cluster = ~id)
+
+lm5 <- feols(soda ~ indicator + is_black + is_hispanic + sex + family_size + income_percentile | year, 
+            data = df_select_contro, cluster = ~id)
+
+lm6 <- feols(soda ~ indicator + is_black + is_hispanic + sex + family_size + income_percentile | cohort, 
+            data = df_select_contro, cluster = ~id)
+```
+
+```{r}
+coef_star <- function(mod, var = "indicator") {
+  est <- coef(mod)[var]
+  se  <- sqrt(vcov(mod)[var, var])
+  if (is.na(est) || is.na(se)) return(c("", ""))
+
+  z  <- est / se
+  p  <- 2 * (1 - pnorm(abs(z)))
+
+  stars <- if (p < 0.01) "***" else if (p < 0.05) "**" else if (p < 0.10) "*" else ""
+  c(sprintf("%.3f%s", est, stars), sprintf("(%.3f)", se))
+}
+
+# List your models
+mods <- list(lm1, lm2, lm3, lm4, lm5, lm6)
+names(mods) <- paste0("(", 1:6, ")")
+
+# Extract indicator estimates and SEs
+coef_mat <- sapply(mods, coef_star)
+
+# Combine into one table row block
+coef_df <- tibble(
+  Control = c("$\\beta_{\\text{indicator}}$", " "), 
+  !!!as.data.frame(coef_mat)
+)
+
+# Define which controls are included
+inc <- tribble(
+  ~Control,           ~`(1)`, ~`(2)`, ~`(3)`, ~`(4)`, ~`(5)`, ~`(6)`, 
+  "Race",             "",  "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$","$ \\checkmark$",
+  "Income",           "",  "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$",
+  "Sex",              "",  "",   "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$",
+  "Family size ",     "",  "",   "",   "$ \\checkmark$",   "$ \\checkmark$", "$ \\checkmark$",
+  
+  "Cohort FE",        "$ \\checkmark$",  "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$", "", "$ \\checkmark$",
+  "Year FE",          "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$", ""
+)
+
+# Combine coefficient rows with control checkmarks
+tab <- bind_rows(coef_df, inc)
+table_latex <- kable(
+  tab,
+  format = "latex",
+  booktabs = TRUE,
+  escape = FALSE,
+  align = c("l", rep("c", 6)),
+  col.names = c(" ", names(mods)),
+  table.envir = NULL
+)
+
+writeLines(table_latex, "3_output/indicator_controls_table.tex")
+```
+
+```{r}
+df_total_4_regression <- df_total %>%
+  group_by(id) %>%
+  mutate(
+    sex        = as.integer(sex),
+    age_group  = factor(age_group),
+    is_black   = as.integer(is_black),
+    is_hispanic= as.integer(is_hispanic),
+    income_percentile = income_percentile,
+    normative_agent = as.integer(normative_agent),
+    area = factor(area)
+  ) %>%
+  filter(
+    cohort == "NLSY79" |
+    any(!is.na(related_year) | has_child == 1, na.rm = TRUE)
+  ) %>%
+  ungroup()
+```
+
+```{r}
+m1<- feols(
+  log_soda ~ normative_agent*has_child,
+  cluster = ~ id,
+  data = df_total_4_regression
+)
+summary(m1)
+
+m2<- feols(
+  log_soda ~ normative_agent*has_child | cohort,
+  cluster = ~ id,
+  data = df_total_4_regression
+)
+summary(m2)
+
+m3<- feols(
+  log_soda ~ normative_agent*has_child | year,
+  cluster = ~ id,
+  data = df_total_4_regression
+)
+summary(m3)
+
+m4 <- feols(
+  log_soda ~ normative_agent*has_child | cohort + year,
+  cluster = ~ id,
+  data = df_total_4_regression
+)
+summary(m4)
+
+m5 <- feols(
+  log_soda ~ normative_agent*has_child + is_black + is_hispanic + sex + family_size + income_percentile,
+  cluster = ~ id,
+  data = df_total_4_regression
+)
+summary(m5)
+
+m6 <- feols(
+  log_soda ~ normative_agent*has_child + is_black + is_hispanic + sex + family_size + income_percentile| cohort,
+  cluster = ~ id,
+  data = df_total_4_regression
+)
+summary(m6)
+
+m7 <- feols(
+  log_soda ~ normative_agent*has_child + is_black + is_hispanic + sex + family_size + income_percentile| year,
+  cluster = ~ id,
+  data = df_total_4_regression
+)
+summary(m7)
+
+m8 <- feols(
+  log_soda ~ normative_agent*has_child + is_black + is_hispanic + sex + family_size + income_percentile|  cohort + year,
+  cluster = ~ id,
+  data = df_total_4_regression
+)
+summary(m8)
+```
+
+```{r}
+fixest::setFixest_dict(c(
+  "normative_agent"           = "$\\beta_{norm}$",
+  "has_child"                     = "$\\beta_{child}$",
+  "normative_agent:has_child" = "$\\beta_{int}$",
+  "log_soda" = "log(SSB consumption)"
+))
+
+stars <- c("***"=0.01, "**"=0.05, "*"=0.10)
+
+etable(
+  m1, m2, m3, m4, m5, m6, m7, m8,
+  keep        = c("%normative_agent", "%has_child", "%normative_agent:has_child"),
+  se.below    = TRUE,
+  digits      = 3,
+  signif.code = stars,
+  fitstat     = ~ n + r2 + rmse, 
+  tex         = TRUE,
+  extralines = list("Controls"      = c("", "", "", "", "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$", "$ \\checkmark$")),
+  file        = "3_output/results_table.tex",
+  replace     = TRUE,
+  notes       = NULL
+)
+```
+
+```{r}
+mean_elas <- 1.39
+elas_vec  <- c(1, 1.39, 2.0)
+delta     <- 0.99
+eta_vec   <- seq(0, 0.99, length.out = 100)
+
+beta_norm <- coef(m8)[["normative_agent"]]
+beta_int  <- coef(m8)[["normative_agent:has_child"]]
+ci_beta_int <- as.numeric(confint(m8)["normative_agent:has_child", ])
+
+tau_fun <- function(eta, elas, delta) {
+  -(1/elas) * (beta_norm + (1 + delta * eta) * beta_int)
+}
+
+tau_df <- expand.grid(eta = eta_vec, elasticity = elas_vec) %>%
+  mutate(
+    tau = tau_fun(eta, elasticity, delta),
+    tau_low  = -(1/elasticity) * (beta_norm + (1 + delta * eta) * ci_beta_int[1]),
+    tau_high = -(1/elasticity) * (beta_norm + (1 + delta * eta) * ci_beta_int[2])
+  )
+
+wg_df <- data.frame(
+  elasticity = elas_vec,
+  tau_wg = -(1 / elas_vec) * beta_norm
+)
+
+pol_sim_point_est <- ggplot(tau_df, aes(x = eta, y = tau, color = factor(elasticity))) +
+  geom_line(aes(linetype = "With intergenerational concern"), size = 1.2) +
+  geom_hline(
+    data = wg_df,
+    aes(yintercept = tau_wg, color = factor(elasticity),
+        linetype = "No intergenerational concern"),
+    size = 1.2
+  ) +
+  scale_color_manual(
+  values = c(
+    "1"   = "#5F9EA0",  
+    "1.39"= "#435ebf", 
+    "2"   = "#BDA0CB" 
+  )
+)+
+  labs(
+    title = expression(paste("Policy Simulation: Point Estimate of SSB tax rate as a function of ", eta)),
+    x = expression("IG Habit" ~ "(" * eta * ")"),
+    y = expression("Tax rate" ~ "(" * tau^"*" / p * ")"),
+    color = expression(paste(xi[c], ": "))
+  ) +
+  scale_linetype_manual(name = "Specification: ",
+                        values = c("With intergenerational concern" = "solid",
+                                   "No intergenerational concern"  = "12")) +
+  theme_minimal(base_size = 12) +
+  theme(
+  text = element_text(family = "Times New Roman"),
+  panel.grid.minor.x = element_blank(),
+  panel.grid.minor.y = element_blank(),
+  legend.position = "bottom",
+  legend.box = "vertical",
+  legend.title = element_text(face = "plain"),
+  legend.margin = margin(t = 0, b = 5),
+  legend.spacing.y = unit(-4, "pt"),     # tighten vertical space *between* legends
+  legend.box.spacing = unit(0, "pt"),    # tighten space *around* the legend box
+  plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
+  aspect.ratio = 0.5
+  )
+
+pol_sim_point_est
+ggsave("3_output/result_point_est.png", pol_sim_point_est, width = 7, height = 4.2, dpi = 300)
+```
+
+```{r}
+eta_key <- c(0, 0.25, 0.5, 0.75, 0.99)
+
+tau_wide <- tau_df %>%
+  mutate(eta_rounded = round(eta, 2)) %>%
+  filter(eta_rounded %in% eta_key) %>%
+  select(elasticity, eta_rounded, tau) %>%
+  group_by(elasticity, eta_rounded) %>%
+  summarise(tau = mean(tau), .groups = "drop") %>%
+  pivot_wider(
+    names_from  = eta_rounded,
+    values_from = tau
+  ) %>%
+  arrange(elasticity)
+
+# 3) WG column (no intergenerational concern)
+wg_tbl <- wg_df %>%
+  transmute(elasticity, WG_noIG = tau_wg)
+
+# 4) Combine WG and η-columns, round, label, export
+final_tbl <- wg_tbl %>%
+  left_join(tau_wide, by = "elasticity") %>%
+  mutate(across(-elasticity, ~ round(.x, 3)))
+
+colnames(final_tbl) <- c(
+  "Elasticity", "no IG",
+  "$\\eta = 0$", "$\\eta = 0.25$", "$\\eta = 0.5$", "$\\eta = 0.75$", "$\\eta = 0.99$"
+)
+
+latex_out <- kable(
+  final_tbl,
+  format   = "latex",
+  booktabs = TRUE,
+  escape   = FALSE,
+  digits   = 3
+)
+
+writeLines(latex_out, "3_output/tau_table_main.tex")
+final_tbl
+```
+
+```{r}
+tau_df_mean <- data.frame(
+  eta      = eta_vec,
+  elasticity = mean_elas,
+  tau       = tau_fun(eta_vec, mean_elas, delta),
+  tau_low   = -(1/mean_elas) * (beta_norm + (1 + delta * eta_vec) * ci_beta_int[1]),
+  tau_high  = -(1/mean_elas) * (beta_norm + (1 + delta * eta_vec) * ci_beta_int[2]),
+  tau_wg    = -(1/mean_elas) * beta_norm
+)
+
+# --- Plot ---
+pol_sim_ci <- ggplot(tau_df_mean, aes(x = eta, y = tau)) +
+  # Confidence interval ribbon
+  geom_ribbon(aes(ymin = tau_low, ymax = tau_high),
+              fill = "#435ebf", alpha = 0.15) +
+  
+  # Main line (point estimate)
+  geom_line(color = "#435ebf", size = 1.3) +
+  
+  # Horizontal dashed line: WG benchmark (no intergenerational concern)
+  geom_hline(aes(yintercept = tau_wg),
+             color = "#435ebf", linetype = "12", size = 1) +
+  
+  labs(
+    title = expression(paste("Policy Simulation: 95% CI for SSB tax rate (", xi[c], " = 1.39)")),
+    x = expression("IG Habit" ~ "(" * eta * ")"),
+    y = expression("Tax rate" ~ "(" * tau^"*" / p * ")")
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    text = element_text(family = "Times New Roman"),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
+    plot.subtitle = element_text(size = 10, hjust = 0.5),
+    aspect.ratio = 0.5
+  )
+
+pol_sim_ci
+ggsave("3_output/result_ci.png", pol_sim_ci, width = 7, height = 4.2, dpi = 300)
+```
+
+Robust check:
+no cohort:
+```{r}
+beta_norm <- coef(m7)[["normative_agent"]]
+beta_int  <- coef(m7)[["normative_agent:has_child"]]
+ci_beta_int <- as.numeric(confint(m7)["normative_agent:has_child", ])
+
+tau_fun <- function(eta, elas, delta) {
+  -(1/elas) * (beta_norm + (1 + delta * eta) * beta_int)
+}
+
+tau_df <- expand.grid(eta = eta_vec, elasticity = elas_vec) %>%
+  mutate(
+    tau = tau_fun(eta, elasticity, delta),
+    tau_low  = -(1/elasticity) * (beta_norm + (1 + delta * eta) * ci_beta_int[1]),
+    tau_high = -(1/elasticity) * (beta_norm + (1 + delta * eta) * ci_beta_int[2])
+  )
+
+wg_df <- data.frame(
+  elasticity = elas_vec,
+  tau_wg = -(1 / elas_vec) * beta_norm
+)
+
+pol_sim_point_est <- ggplot(tau_df, aes(x = eta, y = tau, color = factor(elasticity))) +
+  geom_line(aes(linetype = "With intergenerational concern"), size = 1.2) +
+  geom_hline(
+    data = wg_df,
+    aes(yintercept = tau_wg, color = factor(elasticity),
+        linetype = "No intergenerational concern"),
+    size = 1.2
+  ) +
+  scale_color_manual(
+  values = c(
+    "1"   = "#5F9EA0",  
+    "1.39"= "#435ebf", 
+    "2"   = "#BDA0CB" 
+  )
+)+
+  labs(
+    title = expression(paste("Policy Simulation: Point Estimate of SSB tax rate as a function of ", eta)),
+    x = expression("IG Habit" ~ "(" * eta * ")"),
+    y = expression("Tax rate" ~ "(" * tau^"*" / p * ")"),
+    color = expression(paste(xi[c], ": "))
+  ) +
+  scale_linetype_manual(name = "Specification: ",
+                        values = c("With intergenerational concern" = "solid",
+                                   "No intergenerational concern"  = "12")) +
+  theme_minimal(base_size = 12) +
+  theme(
+  text = element_text(family = "Times New Roman"),
+  panel.grid.minor.x = element_blank(),
+  panel.grid.minor.y = element_blank(),
+  legend.position = "bottom",
+  legend.box = "vertical",
+  legend.title = element_text(face = "plain"),
+  legend.margin = margin(t = 0, b = 5),
+  legend.spacing.y = unit(-4, "pt"),     # tighten vertical space *between* legends
+  legend.box.spacing = unit(0, "pt"),    # tighten space *around* the legend box
+  plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
+  aspect.ratio = 0.5
+  )
+
+pol_sim_point_est
+ggsave("3_output/robust_check_no_cohort_point_est.png", pol_sim_point_est, width = 7, height = 4.2, dpi = 300)
+```
+
+```{r}
+tau_df_mean <- data.frame(
+  eta      = eta_vec,
+  elasticity = mean_elas,
+  tau       = tau_fun(eta_vec, mean_elas, delta),
+  tau_low   = -(1/mean_elas) * (beta_norm + (1 + delta * eta_vec) * ci_beta_int[1]),
+  tau_high  = -(1/mean_elas) * (beta_norm + (1 + delta * eta_vec) * ci_beta_int[2]),
+  tau_wg    = -(1/mean_elas) * beta_norm
+)
+
+# --- Plot ---
+pol_sim_ci <- ggplot(tau_df_mean, aes(x = eta, y = tau)) +
+  # Confidence interval ribbon
+  geom_ribbon(aes(ymin = tau_low, ymax = tau_high),
+              fill = "#435ebf", alpha = 0.15) +
+  
+  # Main line (point estimate)
+  geom_line(color = "#435ebf", size = 1.3) +
+  
+  # Horizontal dashed line: WG benchmark (no intergenerational concern)
+  geom_hline(aes(yintercept = tau_wg),
+             color = "#435ebf", linetype = "12", size = 1) +
+  
+  labs(
+    title = expression(paste("Policy Simulation: 95% CI for SSB tax rate (", xi[c], " = 1.39)")),
+    x = expression("IG Habit" ~ "(" * eta * ")"),
+    y = expression("Tax rate" ~ "(" * tau^"*" / p * ")")
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    text = element_text(family = "Times New Roman"),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
+    plot.subtitle = element_text(size = 10, hjust = 0.5),
+    aspect.ratio = 0.5
+  )
+
+pol_sim_ci
+ggsave("3_output/robust_no_cohort_result_ci.png", pol_sim_ci, width = 7, height = 4.2, dpi = 300)
+```
+
+```{r}
+tau_wide <- tau_df %>%
+  mutate(eta_rounded = round(eta, 2)) %>%
+  filter(eta_rounded %in% eta_key) %>%
+  select(elasticity, eta_rounded, tau) %>%
+  group_by(elasticity, eta_rounded) %>%
+  summarise(tau = mean(tau), .groups = "drop") %>%
+  pivot_wider(
+    names_from  = eta_rounded,
+    values_from = tau
+  ) %>%
+  arrange(elasticity)
+
+# 3) WG column (no intergenerational concern)
+wg_tbl <- wg_df %>%
+  transmute(elasticity, WG_noIG = tau_wg)
+
+# 4) Combine WG and η-columns, round, label, export
+final_tbl <- wg_tbl %>%
+  left_join(tau_wide, by = "elasticity") %>%
+  mutate(across(-elasticity, ~ round(.x, 3)))
+
+colnames(final_tbl) <- c(
+  "Elasticity", "no IG",
+  "$\\eta = 0$", "$\\eta = 0.25$", "$\\eta = 0.5$", "$\\eta = 0.75$", "$\\eta = 0.99$"
+)
+
+latex_out <- kable(
+  final_tbl,
+  format   = "latex",
+  booktabs = TRUE,
+  escape   = FALSE,
+  digits   = 3
+)
+
+writeLines(latex_out, "3_output/tau_table_no_cohort.tex")
+final_tbl
+```
+
+no year
+```{r}
+beta_norm <- coef(m6)[["normative_agent"]]
+beta_int  <- coef(m6)[["normative_agent:has_child"]]
+ci_beta_int <- as.numeric(confint(m6)["normative_agent:has_child", ])
+
+tau_fun <- function(eta, elas, delta) {
+  -(1/elas) * (beta_norm + (1 + delta * eta) * beta_int)
+}
+
+tau_df <- expand.grid(eta = eta_vec, elasticity = elas_vec) %>%
+  mutate(
+    tau = tau_fun(eta, elasticity, delta),
+    tau_low  = -(1/elasticity) * (beta_norm + (1 + delta * eta) * ci_beta_int[1]),
+    tau_high = -(1/elasticity) * (beta_norm + (1 + delta * eta) * ci_beta_int[2])
+  )
+
+wg_df <- data.frame(
+  elasticity = elas_vec,
+  tau_wg = -(1 / elas_vec) * beta_norm
+)
+
+pol_sim_point_est <- ggplot(tau_df, aes(x = eta, y = tau, color = factor(elasticity))) +
+  geom_line(aes(linetype = "With intergenerational concern"), size = 1.2) +
+  geom_hline(
+    data = wg_df,
+    aes(yintercept = tau_wg, color = factor(elasticity),
+        linetype = "No intergenerational concern"),
+    size = 1.2
+  ) +
+  scale_color_manual(
+  values = c(
+    "1"   = "#5F9EA0",  
+    "1.39"= "#435ebf", 
+    "2"   = "#BDA0CB" 
+  )
+)+
+  labs(
+    title = expression(paste("Policy Simulation: Point Estimate of SSB tax rate as a function of ", eta)),
+    x = expression("IG Habit" ~ "(" * eta * ")"),
+    y = expression("Tax rate" ~ "(" * tau^"*" / p * ")"),
+    color = expression(paste(xi[c], ": "))
+  ) +
+  scale_linetype_manual(name = "Specification: ",
+                        values = c("With intergenerational concern" = "solid",
+                                   "No intergenerational concern"  = "12")) +
+  theme_minimal(base_size = 12) +
+  theme(
+  text = element_text(family = "Times New Roman"),
+  panel.grid.minor.x = element_blank(),
+  panel.grid.minor.y = element_blank(),
+  legend.position = "bottom",
+  legend.box = "vertical",
+  legend.title = element_text(face = "plain"),
+  legend.margin = margin(t = 0, b = 5),
+  legend.spacing.y = unit(-4, "pt"),     # tighten vertical space *between* legends
+  legend.box.spacing = unit(0, "pt"),    # tighten space *around* the legend box
+  plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
+  aspect.ratio = 0.5
+  )
+
+pol_sim_point_est
+ggsave("3_output/robust_check_no_year_point_est.png", pol_sim_point_est, width = 7, height = 4.2, dpi = 300)
+```
+
+```{r}
+tau_df_mean <- data.frame(
+  eta      = eta_vec,
+  elasticity = mean_elas,
+  tau       = tau_fun(eta_vec, mean_elas, delta),
+  tau_low   = -(1/mean_elas) * (beta_norm + (1 + delta * eta_vec) * ci_beta_int[1]),
+  tau_high  = -(1/mean_elas) * (beta_norm + (1 + delta * eta_vec) * ci_beta_int[2]),
+  tau_wg    = -(1/mean_elas) * beta_norm
+)
+
+# --- Plot ---
+pol_sim_ci <- ggplot(tau_df_mean, aes(x = eta, y = tau)) +
+  # Confidence interval ribbon
+  geom_ribbon(aes(ymin = tau_low, ymax = tau_high),
+              fill = "#435ebf", alpha = 0.15) +
+  
+  # Main line (point estimate)
+  geom_line(color = "#435ebf", size = 1.3) +
+  
+  # Horizontal dashed line: WG benchmark (no intergenerational concern)
+  geom_hline(aes(yintercept = tau_wg),
+             color = "#435ebf", linetype = "12", size = 1) +
+  
+  labs(
+    title = expression(paste("Policy Simulation: 95% CI for SSB tax rate (", xi[c], " = 1.39)")),
+    x = expression("IG Habit" ~ "(" * eta * ")"),
+    y = expression("Tax rate" ~ "(" * tau^"*" / p * ")")
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    text = element_text(family = "Times New Roman"),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
+    plot.subtitle = element_text(size = 10, hjust = 0.5),
+    aspect.ratio = 0.5
+  )
+
+pol_sim_ci
+ggsave("3_output/robust_no_year_result_ci.png", pol_sim_ci, width = 7, height = 4.2, dpi = 300)
+```
+
+```{r}
+tau_wide <- tau_df %>%
+  mutate(eta_rounded = round(eta, 2)) %>%
+  filter(eta_rounded %in% eta_key) %>%
+  select(elasticity, eta_rounded, tau) %>%
+  group_by(elasticity, eta_rounded) %>%
+  summarise(tau = mean(tau), .groups = "drop") %>%
+  pivot_wider(
+    names_from  = eta_rounded,
+    values_from = tau
+  ) %>%
+  arrange(elasticity)
+
+# 3) WG column (no intergenerational concern)
+wg_tbl <- wg_df %>%
+  transmute(elasticity, WG_noIG = tau_wg)
+
+# 4) Combine WG and η-columns, round, label, export
+final_tbl <- wg_tbl %>%
+  left_join(tau_wide, by = "elasticity") %>%
+  mutate(across(-elasticity, ~ round(.x, 3)))
+
+colnames(final_tbl) <- c(
+  "Elasticity", "no IG",
+  "$\\eta = 0$", "$\\eta = 0.25$", "$\\eta = 0.5$", "$\\eta = 0.75$", "$\\eta = 0.99$"
+)
+
+latex_out <- kable(
+  final_tbl,
+  format   = "latex",
+  booktabs = TRUE,
+  escape   = FALSE,
+  digits   = 3
+)
+
+writeLines(latex_out, "3_output/tau_table_no_year.tex")
+final_tbl
+```

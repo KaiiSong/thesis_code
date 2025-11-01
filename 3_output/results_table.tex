@@ -1,0 +1,32 @@
+
+\begingroup
+\centering
+\begin{tabular}{lcccccccc}
+   \tabularnewline \midrule \midrule
+   Dependent Variable: & \multicolumn{8}{c}{log(SSB consumption)}\\
+   Model:           & (1)            & (2)            & (3)            & (4)            & (5)            & (6)            & (7)            & (8)\\  
+   \midrule
+   \emph{Variables}\\
+   $\beta_{norm}$   & -0.175$^{***}$ & -0.229$^{***}$ & -0.214$^{***}$ & -0.230$^{***}$ & -0.0008        & -0.070$^{*}$   & -0.055         & -0.075$^{**}$\\   
+                    & (0.037)        & (0.037)        & (0.036)        & (0.037)        & (0.038)        & (0.038)        & (0.038)        & (0.038)\\   
+   $\beta_{child}$  & 0.154$^{***}$  & 0.038$^{***}$  & 0.033$^{***}$  & 0.021$^{**}$   & 0.075$^{***}$  & 0.065$^{***}$  & 0.046$^{***}$  & 0.055$^{***}$\\   
+                    & (0.009)        & (0.009)        & (0.009)        & (0.009)        & (0.013)        & (0.012)        & (0.012)        & (0.012)\\   
+   $\beta_{int}$    & -0.091$^{**}$  & -0.022         & -0.041         & -0.019         & -0.109$^{**}$  & -0.053         & -0.068         & -0.048\\   
+                    & (0.046)        & (0.043)        & (0.043)        & (0.043)        & (0.047)        & (0.044)        & (0.045)        & (0.044)\\   
+   Controls         &                &                &                &                & $ \checkmark$  & $ \checkmark$  & $ \checkmark$  & $ \checkmark$\\   
+   \midrule
+   \emph{Fixed-effects}\\
+   cohort           &                & Yes            &                & Yes            &                & Yes            &                & Yes\\  
+   year             &                &                & Yes            & Yes            &                &                & Yes            & Yes\\  
+   \midrule
+   \emph{Fit statistics}\\
+   Observations     & 69,668         & 69,668         & 69,668         & 69,668         & 60,284         & 60,284         & 60,284         & 60,284\\  
+   R$^2$            & 0.01083        & 0.08907        & 0.08028        & 0.09639        & 0.06500        & 0.12848        & 0.11939        & 0.13370\\  
+   RMSE             & 0.82389        & 0.79064        & 0.79445        & 0.78746        & 0.80197        & 0.77427        & 0.77830        & 0.77195\\  
+   \midrule \midrule
+   \multicolumn{9}{l}{\emph{Clustered (id) standard-errors in parentheses}}\\
+   \multicolumn{9}{l}{\emph{Signif. Codes: ***: 0.01, **: 0.05, *: 0.1}}\\
+\end{tabular}
+\par\endgroup
+
+

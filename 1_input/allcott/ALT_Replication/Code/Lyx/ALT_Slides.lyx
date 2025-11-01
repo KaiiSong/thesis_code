@@ -1,0 +1,8369 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\usetheme{Malmoe}
+
+\useoutertheme[subsection = false]{miniframes} 
+
+\setbeamersize{text margin left=.5cm,text margin right=.5cm}
+
+
+\makeatother
+
+\setbeamertemplate{headline}{} % This drops the headline
+
+
+\setbeamertemplate{footline}
+{
+\leavevmode%
+\hbox{%
+\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+\usebeamerfont{author in head/foot}\insertshortauthor
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+\end{beamercolorbox}}%
+\vskip0pt%
+}
+\makeatletter
+\setbeamertemplate{navigation symbols}{}
+\definecolor{red}{rgb}{0.8,0,0}
+\definecolor{green}{rgb}{0,0.5,0}
+\definecolor{blue}{rgb}{0.2,0.2,0.9}
+\definecolor{orange}{rgb}{0.8,0.4,0}
+\definecolor{teal}{rgb}{0,0.5,0.7}
+\definecolor{teal}{rgb}{0,0.5,0.7}
+\definecolor{brown}{rgb}{0.75,0.25,0}
+
+
+\newtheorem{proposition}{Proposition}\usenavigationsymbolstemplate{}
+\usepackage{graphicx}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Regressive Sin Taxes, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ with an Application to the Optimal Soda Tax
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Regressive Sin Taxes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Hunt Allcott (NYU, Microsoft Research & NBER)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Benjamin B.
+ Lockwood (Wharton & NBER)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Dmitry Taubinsky (UC Berkeley & NBER) 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Allcott, Lockwood, and Taubinsky
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+May 2019
+\end_layout
+
+\begin_layout Section
+Introduction
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Acknowledgment and disclaimer
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+We thank the Sloan Foundation for financial support.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+This paper reflects the authors' own analyses and calculations based in
+ part on data reported by Nielsen through its Homescan, RMS, and PanelViews
+ services for food and beverage categories over 2006-2016, for all retail
+ channels in the U.S.
+ market.
+ The conclusions drawn from the Nielsen data are those of the authors and
+ do not reflect the views of Nielsen.
+ Nielsen is not responsible for, had no role in, and was not involved in
+ analyzing and preparing the results reported herein.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+Governments often tax 
+\begin_inset Quotes eld
+\end_inset
+
+sin goods
+\begin_inset Quotes erd
+\end_inset
+
+ ...
+\end_layout
+
+\begin_layout Itemize
+cigarettes, alcohol, sugary drinks
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+...
+ and subsidize 
+\begin_inset Quotes eld
+\end_inset
+
+virtue goods
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+energy-efficient products, health investments 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+How do efficiency and equity considerations interact?
+\end_layout
+
+\begin_layout Itemize
+How can we use data to set optimal sin taxes?
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Paternalism
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Many public policies are at least partially motivated by paternalism
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Formula $\ \ \ \ \ $
+\end_inset
+
+(changing decisions for the benefit of the decision maker)
+\end_layout
+
+\begin_layout Itemize
+Consumer financial protection
+\end_layout
+
+\begin_layout Itemize
+Energy efficiency standards
+\end_layout
+
+\begin_layout Itemize
+Gambling restrictions
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Seat belt and helmet laws
+\end_layout
+
+\begin_layout Itemize
+Value-based health insurance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Social security and retirement savings incentives
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Sin taxes
+\begin_inset Quotes erd
+\end_inset
+
+ on cigarettes, drugs, alcohol, and unhealthy foods
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+How to 
+\emph on
+evaluate
+\emph default
+ and 
+\emph on
+optimally set
+\emph default
+ such policies?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal paternalism
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Traditional welfare analysis cannot engage with policymakers' arguments
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Revealed preference 
+\begin_inset Formula $\implies$
+\end_inset
+
+ paternalism welfare-reducing 
+\emph on
+by assumption
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Behavioral welfare analysis:
+\end_layout
+
+\begin_layout Itemize
+Continue to use revealed preference
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Do not impose the state's preferences on individuals
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Ask: what mistakes are people allegedly making?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Uninformed?
+\end_layout
+
+\begin_layout Itemize
+Not paying attention to all consequences?
+\end_layout
+
+\begin_layout Itemize
+etc.
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Measure 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ preferences using only decisions made in 
+\begin_inset Quotes eld
+\end_inset
+
+mistake-free
+\begin_inset Quotes erd
+\end_inset
+
+ conditions
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Informed
+\end_layout
+
+\begin_layout Itemize
+Attentive
+\end_layout
+
+\begin_layout Itemize
+etc.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Application: the optimal soda tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/GFRP_SugaryDrink_taxes_Global.pdf
+	scale 47
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\size scriptsize
+Source: University of North Carolina Global Food Research Program
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+This paper
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Part 1: Theoretical model
+\end_layout
+
+\begin_layout Itemize
+Optimal tax model considering four key issues:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Externalities, consumer bias, regressivity, and revenue recycling
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Generalizes and combines two literatures:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Commodity taxation in the presence of income taxation (Atkinson & Stiglitz
+ 1976; Saez 2002)
+\end_layout
+
+\begin_layout Enumerate
+Optimal sin taxes (Gruber & Koszegi 2001, 2004; Bernheim & Rangel 2004;
+ O'Donoghue & Rabin 2006; Allcott & Taubinsky 2015; Farhi & Gabaix 2017)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Delivers optimal tax formulas in terms of 
+\emph on
+measurable sufficient statistics
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Part 2: Empirical application to soda taxes
+\end_layout
+
+\begin_layout Itemize
+Estimate optimal nationwide tax on sugar-sweetened beverages
+\end_layout
+
+\begin_layout Itemize
+Use Nielsen Homescan data with new survey measuring nutrition knowledge
+ and self-control
+\end_layout
+
+\begin_layout Itemize
+Strategy related to Handel & Kolstad (2015), Bronnenberg 
+\emph on
+et al.
+
+\emph default
+ (2015)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Theoretical model
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Theory
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\size larger
+Theoretical model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Corrective motive: offset externalities and 
+\begin_inset Quotes eld
+\end_inset
+
+internalities
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Quotation
+[A soda tax] would help prevent obesity, diabetes, and premature deaths—and
+ save more in future health care costs than it would cost to implement.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset space \hspace{}
+\length 0.6in
+\end_inset
+
+ -Harvard School of Public Health study (2016)
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+https://www.hsph.harvard.edu/news/hsph-in-the-news/sugary-beverage-taxes-public-hea
+lth-spending/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Counterpoint: sin taxes are regressive
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Quotation
+A tax on soda and juice drinks would disproportionately increase taxes on
+ low-income families in Philadelphia.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset space \hspace{}
+\length 0.6in
+\end_inset
+
+ -Bernie Sanders (2016)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Counter-counterpoint: sin taxes reduce regressive harms
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Quotation
+If you think a tax on sugary drinks is regressive ...
+ try getting Type 2 diabetes.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset space \hspace{}
+\length 0.6in
+\end_inset
+
+ -
+\emph on
+Forbes
+\emph default
+ magazine article (Huehnergarth 2016)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\size small
+https://www.forbes.com/sites/nancyhuehnergarth/2016/04/25/senator-sanders-is-wrong
+-a-soda-tax-is-progressive-not-regressive/#57ca2c625715
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Furthermore: revenues can be redistributed progressively
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Quotation
+\begin_inset Quotes eld
+\end_inset
+
+They've [big soda] made their money of the backs of poor people, but this
+ money [soda tax revenue] will stay in poor neighborhoods.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset space \hspace{}
+\length 0.6in
+\end_inset
+
+ -Philadelphia Mayor Jim Kenney (2016)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Theoretical framework
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Consumers:
+\end_layout
+
+\begin_layout Itemize
+Heterogeneous (private) ability and tastes, 
+\begin_inset Formula $\theta\in\mathbb{R}_{+}^{n}$
+\end_inset
+
+, distributed 
+\begin_inset Formula $\mu(\theta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Choose bundle of 
+\series bold
+c
+\series default
+omposite and 
+\series bold
+s
+\series default
+in good (prices 1 and 
+\begin_inset Formula $p$
+\end_inset
+
+), and earnings 
+\series bold
+\emph on
+z
+\end_layout
+
+\begin_layout Itemize
+Maximize 
+\series bold
+\color blue
+decision utility
+\series default
+\color inherit
+ subject to budget constraint: 
+\begin_inset Formula 
+\[
+\max_{c,s,z}{\color{blue}U(c,s,z;\theta)}\quad\text{s.t.}\quad c+(p+t)s\leq z-T(z)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Utilitarian policy maker:
+\end_layout
+
+\begin_layout Itemize
+Chooses sin tax 
+\begin_inset Formula $t$
+\end_inset
+
+ and income tax 
+\begin_inset Formula $T(z)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Maximizes total 
+\series bold
+\color gray
+weighted
+\color inherit
+ 
+\color green
+normative utility
+\series default
+\color inherit
+ subject to revenue constraint (including fiscal 
+\series bold
+\color violet
+externality
+\series default
+\color inherit
+):
+\begin_inset Formula 
+\begin{multline*}
+\max_{t,T}\int_{\Theta}\left[{\color{gray}\alpha(\theta)}{\color{green}V\left(c(\theta),s(\theta),z(\theta);\theta\right)}\right]\mu(\theta)\\
+\text{s.t.}\quad\int_{\Theta}\left[ts(\theta)+T(z(\theta))-{\color{violet}e}s(\theta)\right]\mu(\theta)\ge R
+\end{multline*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\color{blue}U}\neq{\color{green}V}$
+\end_inset
+
+ if consumers misinformed, inattentive, present biased, etc.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Two motivations for taxing or subsidizing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Redistribution
+\end_layout
+
+\begin_layout Enumerate
+Correction
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Step 1: pure redistributive motive
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For now, assume no corrective motive (
+\begin_inset Formula $V\equiv U$
+\end_inset
+
+, 
+\begin_inset Formula $e=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Next slides: initially assume no income effects
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Diamond (1975) Ramsey rule
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Has not been characterized in sufficient statistics
+\end_layout
+
+\begin_layout Itemize
+Special cases and qualitative results:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Atkinson Stiglitz (1976): 
+\end_layout
+
+\begin_layout Itemize
+under weakly separable preferences, no differential commodity taxation for
+ redistribution 
+\end_layout
+
+\begin_layout Itemize
+Saez (2002): under more flexible preferences, shows when tax is positive
+ or negative.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+It would be extremely useful to obtain optimal commodity tax formulas
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Three considerations:
+\end_layout
+
+\begin_layout Enumerate
+Do the poor consume more 
+\begin_inset Formula $s$
+\end_inset
+
+ than the rich?
+\end_layout
+
+\begin_layout Enumerate
+How much does the tax distort 
+\begin_inset Formula $s$
+\end_inset
+
+ consumption?
+\end_layout
+
+\begin_layout Enumerate
+How much does the tax distort labor supply? Depends on income effect:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Normal good 
+\begin_inset Formula $\implies$
+\end_inset
+
+ tax reduces labor supply
+\end_layout
+
+\begin_layout Itemize
+Inferior good 
+\begin_inset Formula $\implies$
+\end_inset
+
+ tax increases labor supply
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FORMAL DERIVATIONS IN THIS NOTE:
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Encoding redistributive motives: welfare weights
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Social marginal welfare weights
+\series default
+ 
+\begin_inset Formula $g(\theta):=\alpha(\theta)V'_{c}/\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Social welfare from giving 
+\begin_inset Formula $\theta$
+\end_inset
+
+ a marginal unit of numeraire consumption
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Normalized by marginal value of public funds 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda=$
+\end_inset
+
+ marginal value of public funds (multiplier on government budget constraint
+ at the optimum)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Average 
+\begin_inset Formula $\bar{g}(z)$
+\end_inset
+
+ conditional on income 
+\begin_inset Formula $z$
+\end_inset
+
+, average 
+\begin_inset Formula $\bar{g}$
+\end_inset
+
+ across population 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If no income effects on consumption and labor supply, then 
+\begin_inset Formula $\bar{g}=1$
+\end_inset
+
+ by construction.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Related: 
+\begin_inset Formula $\hat{g}(\theta)=$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+social marginal utility of income
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $=g(\theta)$
+\end_inset
+
+ net of income effects 
+\end_layout
+
+\begin_layout Itemize
+In practice, very close to 
+\begin_inset Formula $g(\theta)$
+\end_inset
+
+ empirically
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\int_{\varTheta}\hat{g}(\theta)d\mu(\theta)=1$
+\end_inset
+
+ at optimum even with income effects
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Redistributive effects of a commodity tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 1.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Redistributive effects of a commodity tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 2.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Redistributive effects of a commodity tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 3.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Redistributive effects of a commodity tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 4.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Redistributive effects of a commodity tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 5.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Do the poor consume more 
+\begin_inset Formula $s$
+\end_inset
+
+ than the rich? (Why?)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/Theory_s_Income.pdf
+	scale 43
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Say this on this slide: Notice that the causal income effect we are used
+ to thinking about is not the same as the Engle curve.
+ The Engle curve slope contains both the income effect and between-income
+ preference heterogeneity.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Do the poor consume more 
+\begin_inset Formula $s$
+\end_inset
+
+ than the rich? (Why?)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/Theory_s_Income_b.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is the income effect on 
+\begin_inset Formula $s$
+\end_inset
+
+ consumption?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/Theory_IncomeEffect_Normal.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is the income effect on 
+\begin_inset Formula $s$
+\end_inset
+
+ consumption?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/Theory_IncomeEffect_Inferior.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is the income effect on 
+\begin_inset Formula $s$
+\end_inset
+
+ consumption?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/Theory_IncomeEffect.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Key statistic: between-income preference heterogeneity
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/Theory_s_pref.pdf
+	scale 43
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Say this on this slide: A key special case of interest here is when the
+ income effects curve lies exactly on top of the consumption-income profile.
+ In that case, between-income preference heterogeneity is zero, and that's
+ the classic Atkinson Stiglitz case.
+ We're going to look at whether we can reject that special case — and if
+ so, we need to incorporate regressivity concerns in our tax function.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal commodity tax for redistribution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Proof sketch:
+\end_layout
+
+\begin_layout Itemize
+To derive 
+\begin_inset Formula $t^{*}$
+\end_inset
+
+, consider the welfare effects of sin tax 
+\begin_inset Formula $dt$
+\end_inset
+
+ plus an income tax reduction 
+\begin_inset Formula $dT$
+\end_inset
+
+ that keeps labor supply choices constant
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For this sketch only: assume homogeneity | earnings ability 
+\begin_inset Formula $\theta$
+\end_inset
+
+, 
+\begin_inset Formula $s$
+\end_inset
+
+ is small
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dW=dt\cdot\lambda\cdot\mathbb{E}\left[\underbrace{{\color{green}\overbrace{\bar{s}(z)\left(1-g(z)\right)}^{dt\text{ mechanical effect}}}-\overbrace{\bar{s}_{inc}(z)\left(1-g(z)\right)}^{dT\text{ mechanical effect}}}_{=s_{pref}(z)\left(1-g(z)\right)}-\overbrace{{\color{red}\frac{t\cdot\zeta^{c}(z)\cdot\bar{s}(z)}{p+t}}}^{\text{substitution effect}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\lambda=$
+\end_inset
+
+ marginal value of public funds (multiplier on revenue constraint at optimum)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $g(z):=\alpha(\theta(z))V'_{c}/\lambda=$
+\end_inset
+
+ social marginal welfare weight
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\bar{s}_{inc}(z)=$
+\end_inset
+
+ consumption profile from income effects
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\bar{s}_{pref}(z):=\bar{s}(z)-\bar{s}_{inc}(z)=$
+\end_inset
+
+ consumption profile from preference heterogeneity
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\bar{\zeta}^{c}=$
+\end_inset
+
+ compensated demand elasticity
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+At optimal 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $dW=0$
+\end_inset
+
+, so
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{t^{*}}{p+t^{*}}=\frac{-Cov\left[g(z),\bar{s}_{pref}(z)\right]}{\bar{s}\bar{\zeta}^{c}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal commodity tax for redistribution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Three considerations:
+\end_layout
+
+\begin_layout Enumerate
+Do the poor consume more 
+\begin_inset Formula $s$
+\end_inset
+
+ than the rich?
+\end_layout
+
+\begin_layout Enumerate
+How much does the tax distort 
+\begin_inset Formula $s$
+\end_inset
+
+ consumption?
+\end_layout
+
+\begin_layout Enumerate
+How much does the tax distort labor supply? Depends on income effect:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Normal good 
+\begin_inset Formula $\implies$
+\end_inset
+
+ tax reduces labor supply
+\end_layout
+
+\begin_layout Itemize
+Inferior good 
+\begin_inset Formula $\implies$
+\end_inset
+
+ tax increases labor supply
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t^{*}=\left(p+t^{*}\right)\frac{-Cov\left[g(z),s_{pref}(z)\right]}{\bar{s}\bar{\zeta}^{c}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\lambda=$
+\end_inset
+
+ marginal value of public funds (multiplier on revenue constraint at optimum)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $g(z):=\alpha(\theta(z))V'_{c}/\lambda=$
+\end_inset
+
+ social marginal welfare weight
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $s_{inc}(z)=$
+\end_inset
+
+ consumption profile from income effects
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $s_{pref}(z):=\bar{s}(z)-s_{inc}(z)=$
+\end_inset
+
+ consumption profile from preference heterogeneity
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\bar{\zeta}^{c}=$
+\end_inset
+
+ compensated demand elasticity
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Pure redistributive motive: two special cases
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{t^{*}}{p+t^{*}}=\frac{-Cov\left[g(z),s_{pref}(z)\right]}{\bar{s}\bar{\zeta}^{c}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\lambda=$
+\end_inset
+
+ marginal value of public funds (multiplier on revenue constraint at optimum)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $g(z):=\alpha(\theta(z))V'_{c}/\lambda=$
+\end_inset
+
+ social marginal welfare weight
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $s_{inc}(z)=$
+\end_inset
+
+ consumption profile from income effects
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $s_{pref}(z):=\bar{s}(z)-s_{inc}(z)=$
+\end_inset
+
+ consumption profile from preference heterogeneity
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\bar{\zeta}^{c}=$
+\end_inset
+
+ compensated demand elasticity
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Two special cases:
+\end_layout
+
+\begin_layout Enumerate
+No between-income preference heterogeneity: 
+\begin_inset Formula $s_{pref}(z)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\implies$
+\end_inset
+
+ Atkinson and Stiglitz (1976): 
+\begin_inset Formula $t^{*}=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+No income effects: 
+\begin_inset Formula $s_{inc}(z)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\implies$
+\end_inset
+
+ Diamond (1975) 
+\begin_inset Quotes eld
+\end_inset
+
+many-person Ramsey rule
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{t^{*}}{p+t^{*}}=\frac{-Cov\left[g(z),\bar{s}(z)\right]}{\bar{s}\bar{\zeta}^{c}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Insight
+\series default
+: Can write general formula using 
+\begin_inset Formula $\bar{s}_{pref}(z)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Step 2: add corrective motive
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Now assume 
+\begin_inset Formula $s$
+\end_inset
+
+ is a 
+\begin_inset Quotes eld
+\end_inset
+
+sin good
+\begin_inset Quotes erd
+\end_inset
+
+ with negative internality
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FORMAL THEORY FOLLOWS IN THIS NOTE:
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Step 2: add corrective motive
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Now assume 
+\begin_inset Formula $s$
+\end_inset
+
+ is a 
+\begin_inset Quotes eld
+\end_inset
+
+sin good
+\begin_inset Quotes erd
+\end_inset
+
+ with negative internality (
+\begin_inset Formula $V_{s}<U_{s}$
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s(p;y,\theta):=$
+\end_inset
+
+ type 
+\begin_inset Formula $\theta$
+\end_inset
+
+'s demand, given after-tax earnings 
+\begin_inset Formula $y=z-T(z)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s^{V}(p;y,\theta):=$
+\end_inset
+
+ consumption if maximized 
+\begin_inset Formula $V$
+\end_inset
+
+ instead of 
+\begin_inset Formula $U$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition:
+\series default
+ money-metric bias 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ satisfies 
+\begin_inset Formula 
+\[
+s(p;y,\theta)=s^{V}(p-\gamma;y-s\gamma,\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\gamma(\theta)=$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+the compensated price reduction that has the same effect on 
+\begin_inset Formula $\theta$
+\end_inset
+
+'s demand as the bias
+\begin_inset Quotes erd
+\end_inset
+
+ (may depend on 
+\begin_inset Formula $y$
+\end_inset
+
+, 
+\begin_inset Formula $p$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Illustrating consumer bias
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/Gamma1.pdf
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Illustrating consumer bias
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/Gamma2.pdf
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Illustrating consumer bias
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/Gamma3.pdf
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Plain Layout
+Analogy: the (compensated) Social Cost of Carbon
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Internality correction benefit from sin tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/CorrectiveBenefit1.pdf
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Corrective benefit for type 
+\begin_inset Formula $\theta$
+\end_inset
+
+: 
+\begin_inset Formula $dt\cdot\left.\frac{ds(\theta)}{dt}\right|_{U}\cdot\gamma(\theta)g(\theta)=dt\cdot\zeta^{c}(\theta)\frac{s(\theta)}{p+t}\cdot\gamma(\theta)g(\theta)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Internality correction benefit from sin tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/CorrectiveBenefit2.pdf
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Corrective benefit for type 
+\begin_inset Formula $\theta$
+\end_inset
+
+: 
+\begin_inset Formula $dt\cdot\left.\frac{ds(\theta)}{dt}\right|_{U}\cdot\gamma(\theta)g(\theta)=dt\cdot\zeta^{c}(\theta)\frac{s(\theta)}{p+t}\cdot\gamma(\theta)g(\theta)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Internality correction benefit from sin tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/CorrectiveBenefit3.pdf
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Corrective benefit for type 
+\begin_inset Formula $\theta$
+\end_inset
+
+: 
+\begin_inset Formula $dt\cdot\left.\frac{ds(\theta)}{dt}\right|_{U}\cdot\gamma(\theta)g(\theta)=dt\cdot\zeta^{c}(\theta)\frac{s(\theta)}{p+t}\cdot\gamma(\theta)g(\theta)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Corrective benefit from sin tax
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Corrective benefit from 
+\series bold
+\color blue
+internality
+\series default
+\color inherit
+ and 
+\series bold
+\color red
+externality
+\series default
+\color inherit
+ correction: 
+\begin_inset Formula 
+\[
+dt\cdot\lambda\cdot\mathbb{E}\left[\bar{\zeta}^{c}(\theta)\frac{s(\theta)}{p+t}\cdot\left({\color{blue}\gamma(\theta)g(\theta)}+{\color{red}e}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\lambda=$
+\end_inset
+
+ marginal value of public funds, 
+\begin_inset Formula $e:=E/\lambda=$
+\end_inset
+
+ externality in units of public funds
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $g(\theta):=\alpha(\theta)V'_{c}/\lambda=$
+\end_inset
+
+ social marginal welfare weight, 
+\begin_inset Formula $\bar{\zeta}^{c}(\theta)=$
+\end_inset
+
+ compensated elasticity of demand
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Plain Layout
+\align right
+\begin_inset Formula 
+\[
+=dt\cdot\lambda\cdot\frac{\bar{\zeta}^{c}\bar{s}}{p+t}\cdot\left[{\color{blue}\bar{\gamma}\left(\bar{g}+\sigma\right)}+{\color{red}e}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Key statistic:
+\series default
+ 
+\emph on
+average marginal bias
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\bar{\gamma}=\frac{\int_{\varTheta}\gamma(\theta)\left(\left.\frac{ds(\theta)}{dt}\right|_{U}\right)\mu(\theta)}{\int_{\varTheta}\left(\left.\frac{ds(\theta)}{dt}\right|_{U}\right)\mu(\theta)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Key statistic:
+\series default
+ 
+\emph on
+bias correction progressivity
+\emph default
+
+\begin_inset Formula 
+\[
+\sigma:=Cov_{H}\left[g(z),\frac{\bar{\gamma}(z)}{\bar{\gamma}}\frac{\bar{\zeta}^{c}(z)}{\bar{\zeta}^{c}}\frac{\bar{s}(z)}{\bar{s}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Intuition: how correlated is corrective benefit with welfare weight?
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal commodity tax with correction and redistribution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+dW=dt\cdot\lambda\cdot\mathbb{E}\left[\zeta^{c}(\theta)\frac{s(\theta)}{p+t}\cdot{\normalcolor \left(\gamma(\theta)g(\theta)+e-t\right)}+s_{pref}(z)\left(1-\hat{g}(z)\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{alignat*}{1}
+t^{*} & ={\color{blue}\bar{\gamma}(\bar{g}+\sigma)+e}-{\color{red}\frac{p+t^{*}}{\bar{s}}\cdot\frac{Cov\left[\hat{g}(z),\bar{s}_{pref}(z)\right]}{\bar{\zeta}^{c}}}\\
+ & =\frac{{\color{blue}\bar{s}\bar{\zeta}^{c}\left(\bar{\gamma}(\bar{g}+\sigma)+e\right)}-{\color{red}pCov\left[\hat{g}(z),\bar{s}_{pref}(z)\right]}}{\bar{s}\bar{\zeta}^{c}+Cov\left[\hat{g}(z),\bar{s}_{pref}(z)\right]}
+\end{alignat*}
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\bar{\zeta}^{c}=$
+\end_inset
+
+ compensated elasticity of demand
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\bar{\gamma}=$
+\end_inset
+
+ average marginal bias
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\bar{g}=$
+\end_inset
+
+ average welfare weight, 
+\begin_inset Formula $\hat{g}(z)=$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $g(z)$
+\end_inset
+
+ net of income effects
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\size footnotesize
+ 
+\begin_inset Formula $\hat{g}(z)=$
+\end_inset
+
+ soc.
+ marg.
+ util.
+ of income for 
+\begin_inset Formula $z$
+\end_inset
+
+-earner (
+\begin_inset Formula $\approx g(z)$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\sigma=$
+\end_inset
+
+ bias correction progressivity
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\bar{s}_{pref}(z)=$
+\end_inset
+
+ between-income preference heterogeneity; 
+\begin_inset Formula $\bar{s}=$
+\end_inset
+
+ average consumption of 
+\begin_inset Formula $s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+Key intuition: optimal sin tax...
+ 
+\end_layout
+
+\begin_layout Itemize
+...increases with 
+\series bold
+\color blue
+corrective motive
+\end_layout
+
+\begin_layout Itemize
+...decreases with 
+\series bold
+\color red
+redistributive motive
+\series default
+\color inherit
+ (scaled by inverse elasticity)
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Illustrating consumer bias
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 1.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Illustrating consumer bias
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 6.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Illustrating consumer bias
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 7.pdf
+	scale 43
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Note analogy: the (compensated) Social Cost of Carbon
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Internality correction benefit from sin tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 8.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Internality correction benefit
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 9.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Internality correction benefit
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/SimpleTheory 10.pdf
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal sin tax
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+t^{*}=\frac{\overbrace{\bar{\gamma}(\bar{g}+\sigma)+e}^{\text{corrective motive}}-\overbrace{\frac{p}{\bar{s}\bar{\zeta}^{c}}Cov\left[\hat{g}(z),s_{pref}(z)\right]}^{\text{redistributive motive}}}{1+\frac{1}{\bar{s}\bar{\zeta}^{c}}Cov\left[\hat{g}(z),s_{pref}(z)\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+t^{*}=\overbrace{\bar{\gamma}(1+\sigma)+e}^{\text{corrective motive}}-\overbrace{\left(p+t^{*}\right)\frac{Cov\left[g(z),s_{pref}(z)\right]}{\bar{s}\bar{\zeta}^{c}}}^{\text{redistributive motive}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size footnotesize
+\begin_inset Formula $\bar{\gamma}=\frac{\int_{\varTheta}\gamma(\theta)\left(\left.\frac{ds(\theta)}{dt}\right|_{u}\right)\mu(\theta)}{\int_{\varTheta}\left(\left.\frac{ds(\theta)}{dt}\right|_{u}\right)\mu(\theta)}$
+\end_inset
+
+
+\family default
+: average marginal bias
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\sigma:=Cov_{H}\left[g(z),\frac{\bar{\gamma}(z)}{\bar{\gamma}}\frac{\bar{\zeta}^{c}(z)}{\bar{\zeta}^{c}}\frac{\bar{s}(z)}{\bar{s}}\right]$
+\end_inset
+
+: bias correction progressivity
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $g(z)=$
+\end_inset
+
+ social marginal welfare weight
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $s_{pref}(z):=\bar{s}(z)-s_{inc}(z)=$
+\end_inset
+
+ consumption profile from preference heterogeneity
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Five sufficient statistics:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\bar{s}(z)$
+\end_inset
+
+: consumption-income profile
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\xi$
+\end_inset
+
+: causal income effect
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\bar{\zeta}^{c},\bar{\zeta}^{c}(z)$
+\end_inset
+
+: demand elasticity by income
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\bar{\gamma},\bar{\gamma}(z)$
+\end_inset
+
+: bias by income
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $e$
+\end_inset
+
+: externality
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Empirical results
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Empirics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\size larger
+Empirical application: 
+\end_layout
+
+\begin_layout Frame
+
+\size larger
+Sugar-sweetened beverage (
+\begin_inset Quotes eld
+\end_inset
+
+SSB
+\begin_inset Quotes erd
+\end_inset
+
+) taxes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The soda tax debate
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/Pictures.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Data
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+RMS (Retail Measurement Services)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Price and quantity sold by UPC, store, and week for 2006-2016
+\end_layout
+
+\begin_layout Itemize
+35,000 stores covering ~40% of U.S.
+ grocery sales
+\end_layout
+
+\begin_layout Itemize
+Also merchandising conditions: 
+\begin_inset Quotes eld
+\end_inset
+
+feature
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+display
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Homescan
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Grocery purchase scanner data for 2006-2016
+\end_layout
+
+\begin_layout Itemize
+61,000 households/year, most households stay multiple years
+\end_layout
+
+\begin_layout Itemize
+Observe household demographics: income, education, age, household composition,
+ race/ethnicity, etc.
+\end_layout
+
+\begin_layout Itemize
+Key limitation: do not observe 
+\begin_inset Quotes eld
+\end_inset
+
+away from home
+\begin_inset Quotes erd
+\end_inset
+
+ consumption
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+PanelViews survey
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+October 2017
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset include
+LatexCommand input
+filename "../../Output/Analysis/NumbersForText/PanelViewsResponses.tex"
+
+\end_inset
+
+responses from 
+\begin_inset CommandInset include
+LatexCommand input
+filename "../../Output/Analysis/NumbersForText/PanelViewsHouseholds.tex"
+
+\end_inset
+
+Homescan households
+\end_layout
+
+\begin_layout Itemize
+Self-reported SSB intake
+\end_layout
+
+\begin_layout Itemize
+Nutrition knowledge, self-control, and preferences
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Homescan descriptive statistics
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+
+\size small
+Household-by-year data
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\size footnotesize
+\begin_inset CommandInset include
+LatexCommand input
+filename "../../Output/Analysis/SumStats1.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Definition of sugar-sweetened beverages
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Define taxable SSBs using common existing definitions.
+ Includes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Soft drinks (e.g.
+ Coke, Pepsi)
+\end_layout
+
+\begin_layout Itemize
+Sweetened juice drinks (Tang)
+\end_layout
+
+\begin_layout Itemize
+Sports and energy drinks (Gatorade, Monster)
+\end_layout
+
+\begin_layout Itemize
+Packaged coffee/tea (Frappuccino)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Five sufficient statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t^{*}=\overbrace{\bar{\gamma}(1+\sigma)+e}^{\text{corrective motive}}-\overbrace{\left(p+t^{*}\right)\frac{Cov\left[g(z),s_{pref}(z)\right]}{\bar{s}\bar{\zeta}^{c}}}^{\text{redistributive motive}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\bar{s}(z)$
+\end_inset
+
+: consumption-income profile
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\xi$
+\end_inset
+
+: causal income effect
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\bar{\zeta}^{c},\bar{\zeta}^{c}(z)$
+\end_inset
+
+: demand elasticity by income
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\bar{\gamma},\bar{\gamma}(z)$
+\end_inset
+
+: bias by income
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $e$
+\end_inset
+
+: externality
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Key statistic: SSB consumption vs.
+ income, 
+\begin_inset Formula $\bar{s}(z)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescriptiveCorrelations/kg_Purchased_AdultEq_Income.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Average Homescan SSB purchases 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 4.0% of recommended calories
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+DescriptiveCorrelations.do
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Self-reported SSB consumption
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+SSB consumption: 
+\emph on
+For each of the following types of drinks, please tell us how many 12-ounce
+ servings you drink in an average week.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Regular soft drinks, packaged tea/coffee, sports drinks, energy drinks,
+ sweetened juice drinks, etc.
+\end_layout
+
+\begin_layout Itemize
+Adapted from BEVQ-15 questionnaire (Hedrick 
+\emph on
+et al.
+
+\emph default
+ 2012)
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Homescan purchases vs.
+ self-reported intake
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescriptiveCorrelations/Homescan_PanelViews_Consumption_Income.pdf
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+PanelViews survey descriptive statistics
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+
+\size small
+Respondent-level data
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\size small
+\begin_inset CommandInset include
+LatexCommand input
+filename "../../Output/Analysis/SumStats2.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Five sufficient statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t^{*}=\overbrace{\bar{\gamma}(1+\sigma)+e}^{\text{corrective motive}}-\overbrace{\left(p+t^{*}\right)\frac{Cov\left[g(z),s_{pref}(z)\right]}{\bar{s}\bar{\zeta}^{c}}}^{\text{redistributive motive}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\bar{s}(z)$
+\end_inset
+
+: consumption-income profile
+\end_layout
+
+\begin_layout Enumerate
+
+\color black
+\begin_inset Formula $\xi$
+\end_inset
+
+: causal income effect
+\end_layout
+
+\begin_layout Enumerate
+
+\color black
+\begin_inset Formula $\bar{\zeta}^{c},\bar{\zeta}^{c}(z)$
+\end_inset
+
+: demand elasticity by income
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\bar{\gamma},\bar{\gamma}(z)$
+\end_inset
+
+: bias by income
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $e$
+\end_inset
+
+: externality
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Empirical strategy: price elasticity and income effects
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Regression equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ln s_{it}=-\zeta\ln p_{i,t}+\nu\boldsymbol{f}_{i}+\xi\ln z_{ct}+\omega_{t}+\mu_{ic}+\varepsilon_{it}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $i=$
+\end_inset
+
+ households, 
+\begin_inset Formula $c=$
+\end_inset
+
+ counties, 
+\begin_inset Formula $t=$
+\end_inset
+
+ quarters
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $s_{it}=$
+\end_inset
+
+ SSB consumption (liters/adult equivalent)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $p_{it}=$
+\end_inset
+
+ average price paid ($/liter)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\boldsymbol{f}_{it}=$
+\end_inset
+
+ share of household 
+\begin_inset Formula $i$
+\end_inset
+
+'s UPCs that are 
+\begin_inset Quotes eld
+\end_inset
+
+featured
+\begin_inset Quotes erd
+\end_inset
+
+ or on 
+\begin_inset Quotes eld
+\end_inset
+
+display
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $z_{ct}=$
+\end_inset
+
+ county mean (pre-tax) income
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\omega_{t}=$
+\end_inset
+
+ quarter-of-sample indicators
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\mu_{ic}=$
+\end_inset
+
+ household-by-county fixed effects
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi$
+\end_inset
+
+: income elasticity
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\zeta$
+\end_inset
+
+: price elasticity
+\end_layout
+
+\begin_layout Itemize
+Instrument for 
+\begin_inset Formula $\ln p_{it}$
+\end_inset
+
+ with local price instrument 
+\begin_inset Formula $Z_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Inspired by DellaVigna and Gentzkow (2017) and Hitsch, Hortacsu & Lin (2017)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Relative prices vary across retail chains
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Average price of most popular SSB UPC, at each RMS chain
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescribingInstrument/BetweenRetailerPriceVariation.pdf
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Uniform pricing within retail chains
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Average price of most popular SSB UPC, across stores at example RMS chain
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescribingInstrument/WithinRetailerPriceVariation.pdf
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local price instrument
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+1.
+ Get average leave-out price at chain-county-UPC level
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\ln p_{jkw}=$
+\end_inset
+
+ average ln(price) for UPC 
+\begin_inset Formula $k$
+\end_inset
+
+ in store 
+\begin_inset Formula $j$
+\end_inset
+
+ in week 
+\begin_inset Formula $w$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\ln p_{kw}=$
+\end_inset
+
+ national average ln(price)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\ln p_{krt,-c}=$
+\end_inset
+
+ average of 
+\begin_inset Formula $\ln p_{jkw}-\ln p_{kw}$
+\end_inset
+
+ at retailer 
+\begin_inset Formula $r$
+\end_inset
+
+'s stores outside of county 
+\begin_inset Formula $c$
+\end_inset
+
+ in quarter 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Variation generated by retailer 
+\begin_inset Formula $r$
+\end_inset
+
+'s idiosyncratic pricing decisions
+\end_layout
+
+\begin_layout Itemize
+Not driven by national prices 
+\emph on
+or
+\emph default
+ purely local prices
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+2.
+ Fit to each household's specific purchasing patterns
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s_{ijkc}=$
+\end_inset
+
+ household 
+\begin_inset Formula $i$
+\end_inset
+
+'s total purchases of UPC 
+\begin_inset Formula $k$
+\end_inset
+
+ (in liters) at RMS store 
+\begin_inset Formula $j$
+\end_inset
+
+ while living in county 
+\begin_inset Formula $c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s_{ic}=$
+\end_inset
+
+ household 
+\begin_inset Formula $i$
+\end_inset
+
+'s total SSB purchases while living in county 
+\begin_inset Formula $c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\pi_{ijkc}=s_{ijkc}/s_{ic}=$
+\end_inset
+
+ share of SSB purchases that are UPC 
+\begin_inset Formula $k$
+\end_inset
+
+ at store 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Household 
+\begin_inset Formula $i's$
+\end_inset
+
+ predicted local price deviation in quarter 
+\begin_inset Formula $t$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Z_{it}=\sum_{k.j\in RMS}\pi_{ijkc}\ln p_{krt,-c}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Z_{it}$
+\end_inset
+
+ is idiosyncratic price variation for the products household 
+\begin_inset Formula $i$
+\end_inset
+
+ buys.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local price instrument: identifying assumption
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Identifying assumption:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Formula 
+\[
+Z_{it}\bot\varepsilon_{it}|(\boldsymbol{f}_{it},z_{ct},\omega_{t},\mu_{ic})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+When retail chains vary prices across quarters, they do not observe and
+ respond to chain-specific demand shocks
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Comments:
+\end_layout
+
+\begin_layout Itemize
+Control for retailer-specific advertising
+\end_layout
+
+\begin_layout Itemize
+Not sensitive to alternative IVs and fixed effects that proxy for chain-specific
+ demand shocks
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Preferable to other approaches:
+\end_layout
+
+\begin_layout Itemize
+Prior tax changes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Low power
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Hausman (1996) instruments
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Assumes away national-level demand shocks from seasonality or ads
+\end_layout
+
+\begin_layout Itemize
+Low power: most variation is at chain level
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+First stage for contemporaneous prices
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescribingInstrument/1stStage.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Reduced form for contemporaneous prices
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescribingInstrument/ReducedForm.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+First stage
+\begin_inset Quotes erd
+\end_inset
+
+: Instruments predict correct lags
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Regressions of price paid on local price IV
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand input
+filename "../../Output/Analysis/PriceAndIncomeElasticity_First.tex"
+
+\end_inset
+
+
+\size default
+
+\begin_inset Formula 
+\[
+\ln p_{it}=\sum_{l=0}^{L}\rho_{l}Z_{i,t-l}+\sum_{l=0}^{L}\nu_{l}\boldsymbol{f}_{i,t-l}+\xi\ln z_{ct}+\omega_{t}+\mu_{ic}+\varepsilon_{it}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $s_{it}=$
+\end_inset
+
+ SSB consumption (liters/adult equivalent), 
+\begin_inset Formula $p_{it}=$
+\end_inset
+
+ average price paid ($/liter)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\boldsymbol{f}_{it}=$
+\end_inset
+
+ share of household 
+\begin_inset Formula $i$
+\end_inset
+
+'s UPCs that are 
+\begin_inset Quotes eld
+\end_inset
+
+featured
+\begin_inset Quotes erd
+\end_inset
+
+ or on 
+\begin_inset Quotes eld
+\end_inset
+
+display
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $z_{ct}=$
+\end_inset
+
+ county mean income, 
+\begin_inset Formula $\omega_{t}=$
+\end_inset
+
+ quarter-of-sample indicators, 
+\begin_inset Formula $\mu_{ic}=$
+\end_inset
+
+ household-by-county FEs
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lags not significant; zero lag specification minimizes AIC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand input
+filename "../../Output/Analysis/PriceAndIncomeElasticity_IVLag.tex"
+
+\end_inset
+
+
+\size default
+
+\begin_inset Formula 
+\[
+\ln s_{it}=\sum_{l=0}^{L}\zeta_{l}\ln p_{i,t-l}+\sum_{l=0}^{L}\nu_{l}\boldsymbol{f}_{i,t-l}+\xi\ln z_{ct}+\omega_{t}+\mu_{ic}+\varepsilon_{it}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $s_{it}=$
+\end_inset
+
+ SSB consumption (liters/adult equivalent), 
+\begin_inset Formula $p_{it}=$
+\end_inset
+
+ average price paid ($/liter)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\boldsymbol{f}_{it}=$
+\end_inset
+
+ share of household 
+\begin_inset Formula $i$
+\end_inset
+
+'s UPCs that are 
+\begin_inset Quotes eld
+\end_inset
+
+featured
+\begin_inset Quotes erd
+\end_inset
+
+ or on 
+\begin_inset Quotes eld
+\end_inset
+
+display
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $z_{ct}=$
+\end_inset
+
+ county mean income, 
+\begin_inset Formula $\omega_{t}=$
+\end_inset
+
+ quarter-of-sample indicators, 
+\begin_inset Formula $\mu_{ic}=$
+\end_inset
+
+ household-by-county FEs
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV estimates of price elasticity and income effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\size footnotesize
+\color black
+\begin_inset CommandInset include
+LatexCommand input
+filename "../../Output/Analysis/PriceAndIncomeElasticity_IV_Slides.tex"
+
+\end_inset
+
+
+\size default
+\color inherit
+
+\begin_inset Formula 
+\[
+\ln s_{it}=-\zeta\ln p_{it}+\nu\boldsymbol{f}_{it}+\xi\ln z_{ct}+\omega_{t}+\mu_{ic}+\varepsilon_{it}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $s_{it}=$
+\end_inset
+
+ SSB consumption (liters/adult equivalent), 
+\begin_inset Formula $p_{it}=$
+\end_inset
+
+ average price paid ($/liter)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\boldsymbol{f}_{it}=$
+\end_inset
+
+ share of household 
+\begin_inset Formula $i$
+\end_inset
+
+'s UPCs that are 
+\begin_inset Quotes eld
+\end_inset
+
+featured
+\begin_inset Quotes erd
+\end_inset
+
+ or on 
+\begin_inset Quotes eld
+\end_inset
+
+display
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $z_{ct}=$
+\end_inset
+
+ county mean income, 
+\begin_inset Formula $\omega_{t}=$
+\end_inset
+
+ quarter-of-sample indicators, 
+\begin_inset Formula $\mu_{ic}=$
+\end_inset
+
+ household-by-county FEs
+\end_layout
+
+\begin_layout Itemize
+Column (4): construct IV with deviation from regional (instead of national)
+ average price
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Key statistic: price elasticity of SSB demand, 
+\begin_inset Formula $\bar{\zeta}(z)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/PriceElasticityByIncome.pdf
+	scale 76
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Income elasticity of SSB demand, 
+\begin_inset Formula $\xi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescribingInstrument/IncomeEffects.pdf
+	scale 76
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Key statistic: between-income pref.
+ heterogeneity, 
+\begin_inset Formula $s_{pref}(z)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/PrefHetVsIncomeEffects.pdf
+	scale 76
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Five sufficient statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t^{*}=\overbrace{\bar{\gamma}(1+\sigma)+e}^{\text{corrective motive}}-\overbrace{\left(p+t^{*}\right)\frac{Cov\left[g(z),s_{pref}(z)\right]}{\bar{s}\bar{\zeta}^{c}}}^{\text{redistributive motive}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\bar{s}(z)$
+\end_inset
+
+: consumption-income profile
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\xi$
+\end_inset
+
+: causal income effect
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\bar{\zeta}^{c},\bar{\zeta}^{c}(z)$
+\end_inset
+
+: demand elasticity by income
+\end_layout
+
+\begin_layout Enumerate
+
+\color black
+\begin_inset Formula $\bar{\gamma},\bar{\gamma}(z)$
+\end_inset
+
+: bias by income
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $e$
+\end_inset
+
+: externality
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Measuring bias
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Alleged biases:
+\end_layout
+
+\begin_layout Enumerate
+Imperfect information
+\end_layout
+
+\begin_layout Enumerate
+Self-control problems
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Recall: 
+\begin_inset Formula $s(\theta,z,y,p)=s^{V}(\theta,z,y-s\gamma,p-\gamma)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\gamma(\theta)=$
+\end_inset
+
+ compensated price reduction that has the same effect as bias
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\series bold
+
+\begin_inset Quotes eld
+\end_inset
+
+Counterfactual normative consumer
+\begin_inset Quotes erd
+\end_inset
+
+ strategy:
+\end_layout
+
+\begin_layout Itemize
+See also Bronnenberg 
+\emph on
+et al.
+
+\emph default
+ (2015), Handel and Kolstad (2015)
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Enumerate
+Measure bias proxies using surveys
+\end_layout
+
+\begin_layout Enumerate
+Predict each household's SSB consumption if they (counterfactually) had
+ the information and self-control of unbiased (normative) consumers
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Key unconfoundedness assumption
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Transform quantity effect to money-metric bias using elasticity
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bias proxy: nutrition knowledge
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+28 questions from GNKQ (Kliemann 
+\emph on
+et al.
+
+\emph default
+ 2016)
+\end_layout
+
+\begin_layout Itemize
+Example 1: 
+\emph on
+If a person wanted to buy a yogurt at the supermarket, which would have
+ the least sugar/sweetener?
+\emph default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+0% fat cherry yogurt
+\end_layout
+
+\begin_layout Itemize
+Plain yogurt
+\end_layout
+
+\begin_layout Itemize
+Creamy fruit yogurt
+\end_layout
+
+\begin_layout Itemize
+Not sure
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Example 2: 
+\emph on
+Which is the main type of fat present in each of these foods? (olive oil,
+ sunflower oil, butter, eggs)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Monounsaturated fat
+\end_layout
+
+\begin_layout Itemize
+Polyunsaturated fat
+\end_layout
+
+\begin_layout Itemize
+Saturated fat
+\end_layout
+
+\begin_layout Itemize
+Cholesterol
+\end_layout
+
+\begin_layout Itemize
+Not sure
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Scaled to share of questions correct.
+ Average score 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 
+\begin_inset CommandInset include
+LatexCommand input
+filename "../../Output/Analysis/NumbersForText/AverageKnowledgeScore.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bias proxy: self-control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Please indicate how much each of the following statements reflects how you
+ typically are: I drink soda pop or other sugar-sweetened beverages more
+ often than I should.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Definitely (0)
+\end_layout
+
+\begin_layout Itemize
+Mostly (1/3)
+\end_layout
+
+\begin_layout Itemize
+Somewhat (2/3)
+\end_layout
+
+\begin_layout Itemize
+Not at all (1)
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Also answer that same question about spouse: 
+\emph on
+The other head of household in my house drinks soda pop or other sugar-sweetened
+ beverages more often than they should
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two-respondent households 
+\begin_inset Formula $\implies$
+\end_inset
+
+ multiple measurements 
+\begin_inset Formula $\implies$
+\end_inset
+
+ measurement error correction
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Preference controls
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Taste: 
+\emph on
+Leaving aside any health or nutrition considerations, how much would you
+ say you like the taste and generally enjoy drinking the following? 
+\emph default
+(scale from 0-10)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fruit juice
+\end_layout
+
+\begin_layout Itemize
+Juice drinks
+\end_layout
+
+\begin_layout Itemize
+Regular soft drinks
+\end_layout
+
+\begin_layout Itemize
+Diet soft drinks
+\end_layout
+
+\begin_layout Itemize
+Tea/coffee
+\end_layout
+
+\begin_layout Itemize
+Sports drinks
+\end_layout
+
+\begin_layout Itemize
+Energy drinks
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Health importance: 
+\emph on
+In general, how important is it to you to stay healthy, for example by maintaini
+ng a healthy weight, avoiding diabetes and heart disease, etc.? 
+\emph default
+(scale from 0-10)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Quantity effect of bias
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/RationalConsumerBenchmark1.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bias (in dollars) is quantity effect divided by price elasticity
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Graphics/RationalConsumerBenchmark2.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Predicted normative consumer: implementation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Log-linearize demand around rational consumption level.
+ By definition of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+\ln s(p;y,\theta)\approx\text{\ln}s^{V}+\zeta^{c}\frac{\gamma}{p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Then bias (in dollars) is bias (in quantity) scaled by price elasticity:
+\begin_inset Formula 
+\[
+\gamma\approx\frac{\ln s-\ln s^{V}}{\zeta^{c}/p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Use Slutsky equation to calculate compensated elasticity:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\zeta^{c}(\theta)=\zeta(\theta)+\underbrace{\frac{1}{1-T'(z)}}_{\text{pre-}\rightarrow\text{post-tax income}}\cdot\underbrace{\xi_{inc}(\theta)}_{\text{pre-tax income elasticity}}\cdot\underbrace{\frac{ps}{z}}_{\text{budget share}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Predicted normative consumer: implementation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+s(p;y,\theta)=s^{V}(p-\gamma;y-s\gamma,\theta)\quad\Rightarrow\quad\gamma\approx\frac{\ln s-\ln s^{V}}{\zeta^{c}/p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+@dmitry, @hunt: flagging that I made several changes to this slide, feel
+ free to revert
+\end_layout
+
+\end_inset
+
+To estimate 
+\begin_inset Formula $\ln s^{V}$
+\end_inset
+
+ for respondent 
+\begin_inset Formula $i$
+\end_inset
+
+...
+\end_layout
+
+\begin_layout Enumerate
+Define:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\boldsymbol{b}_{i}=$
+\end_inset
+
+ bias components
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b_{\text{info }}^{V}=$
+\end_inset
+
+ score of nutritionists/dietitians
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $b_{\text{self-control}}^{V}=1$
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+not at all
+\begin_inset Quotes erd
+\end_inset
+
+ drink SSBs more often than I should
+\begin_inset Quotes erd
+\end_inset
+
+)
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Estimate relationship between consumption and bias (with controls):
+\begin_inset Formula 
+\[
+\ln(s_{i}+1)=\boldsymbol{\tau}\boldsymbol{b}_{i}+\beta^{a}\boldsymbol{a}_{i}+\beta^{x}\boldsymbol{x}_{i}+\mu_{c}+\varepsilon_{i}
+\]
+
+\end_inset
+
+
+\size footnotesize
+
+\begin_inset Formula $\boldsymbol{a}_{i}=$
+\end_inset
+
+ preferences, 
+\begin_inset Formula $\boldsymbol{x}_{i}=$
+\end_inset
+
+ demographics, 
+\begin_inset Formula $\mu_{c}=$
+\end_inset
+
+ county fixed effects
+\size default
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Predict rational consumption 
+\begin_inset Formula $s^{V}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\ln(\hat{s}_{i}^{V}+1)=\boldsymbol{\tau}\boldsymbol{b}^{V}+\beta^{a}\boldsymbol{a}_{i}+\beta^{x}\boldsymbol{x}_{i}+\mu_{c}+\varepsilon_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+Key assumption: 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma_{i}\perp s_{i}^{V}|(\boldsymbol{a}_{i},\boldsymbol{x}_{i},\omega_{t},\mu_{c})$
+\end_inset
+
+ 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\boldsymbol{b}_{i}\bot\varepsilon_{i}|(\boldsymbol{a}_{i},\boldsymbol{x}_{i},\omega_{t},\mu_{c})$
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+unconfoundedness
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Pitfalls of relating bias measures to behavior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+
+\series bold
+Two pitfalls typically not addressed in the literature
+\end_layout
+
+\begin_layout Enumerate
+Measurement error: Coefficients on bias proxies are attenuated
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Not an issue with nutrition knowledge: 89% test-re
+\color black
+test reliability (Kleimann 
+\emph on
+et al.
+
+\emph default
+ 2016)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Missing data: Outcomes are at the household level, thus need household bias
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset VSpace medskip
+\end_inset
+
+We observe responses from both heads in only 
+\begin_inset Formula $\sim30\%$
+\end_inset
+
+ of two-head households
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+Solution: Extension of two-sample 2SLS
+\end_layout
+
+\begin_layout Itemize
+Instrument spouse 1's self-control ratings with spouse 2's self-control
+ ratings
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+First-stage estimated on subsample with both reporting
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Predict average nutrition knowledge when spouse response missing using respondin
+g spouse's nutrition knowledge
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Again, 
+\begin_inset Quotes eld
+\end_inset
+
+first-stage
+\begin_inset Quotes erd
+\end_inset
+
+ estimated on subsample with both reporting
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Nutrition knowledge vs.
+ consumption
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescriptiveCorrelations/SSB_Knowledge.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Self-control vs.
+ consumption
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescriptiveCorrelations/SSB_SelfControl.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regressions of SSB purchases on bias proxies
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand input
+filename "../../Output/Analysis/HMSBiasEffects.tex"
+
+\end_inset
+
+
+\size default
+
+\begin_inset Formula 
+\[
+\ln(s_{i}+1)=\boldsymbol{\tau}\boldsymbol{b}_{i}+\beta_{a}\boldsymbol{a}_{i}+\beta_{x}\boldsymbol{x}_{i}+\mu_{c}+\varepsilon_{i}
+\]
+
+\end_inset
+
+
+\size footnotesize
+
+\begin_inset Formula $\boldsymbol{b}_{i}=$
+\end_inset
+
+ bias proxies, 
+\begin_inset Formula $\boldsymbol{a}_{i}=$
+\end_inset
+
+ preferences, 
+\begin_inset Formula $\boldsymbol{x}_{i}=$
+\end_inset
+
+ demographics, 
+\begin_inset Formula $\mu_{c}=$
+\end_inset
+
+ county fixed effects
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Nutrition knowledge vs.
+ income
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescriptiveCorrelations/Knowledge_Income.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Self-control vs.
+ income
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescriptiveCorrelations/SelfControl_Income.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Taste for soda vs.
+ income
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescriptiveCorrelations/taste_soda_Income.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Health importance vs.
+ income
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/DescriptiveCorrelations/health_importance_Income.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Share of consumption explained by bias
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/BiasEffect_HMS_Income.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Key statistic: average marginal bias by income, 
+\begin_inset Formula $\bar{\gamma}(z)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/gamma_HMS_Income.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Larger estimated bias using self-reported intake
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Analysis/gamma_Income.pdf
+	scale 78
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Five sufficient statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t^{*}=\overbrace{\bar{\gamma}(1+\sigma)+e}^{\text{corrective motive}}-\overbrace{\left(p+t^{*}\right)\frac{Cov\left[g(z),s_{pref}(z)\right]}{\bar{s}\bar{\zeta}^{c}}}^{\text{redistributive motive}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\bar{s}(z)$
+\end_inset
+
+: consumption-income profile
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\xi$
+\end_inset
+
+: causal income effect
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\bar{\zeta}^{c},\bar{\zeta}^{c}(z)$
+\end_inset
+
+: demand elasticity by income
+\end_layout
+
+\begin_layout Enumerate
+
+\color lightgray
+\begin_inset Formula $\bar{\gamma},\bar{\gamma}(z)$
+\end_inset
+
+: bias by income
+\end_layout
+
+\begin_layout Enumerate
+
+\color black
+\begin_inset Formula $e$
+\end_inset
+
+: externality
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Health system externalities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+1 cent/oz is total cost to health system (Wang 
+\emph on
+et al.
+
+\emph default
+ 2012)
+\end_layout
+
+\begin_layout Itemize
+~85% of costs covered by insurance (Yong, Bertko & Kronick 2011; Cawley
+ and Meyerhoefer 2012)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $e\approx$
+\end_inset
+
+ 0.85/cents per ounce
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Optimal tax computation
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Optimal tax computation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\size larger
+Computing the optimal sugar-sweetened beverage tax
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Setup for optimal SSB tax simulations
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Frame
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+t
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula 
+\begin{align*}
+U(c,s,z;\theta) & =c+\overbrace{a(c)b(\theta)\left(\frac{s^{1-1/\zeta^{c}}}{1-1/\zeta^{c}}\right)}^{\text{SSB subutility}}-\overbrace{\Psi\left(z/w(\theta)\right)}^{\text{Effort cost}}\\
+V(c,s,z;\theta) & =c+a(c)b(\theta)\left(\frac{s^{1-1/\zeta^{c}}}{1-1/\zeta^{c}}\right)-\Psi\left(z/w(\theta)\right)-\textcolor{red}{\tilde{\gamma}(\theta)s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c=$
+\end_inset
+
+ numeraire consumption, 
+\begin_inset Formula $s=$
+\end_inset
+
+ SSB consumption, 
+\begin_inset Formula $z=$
+\end_inset
+
+ income 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\zeta^{c}=$
+\end_inset
+
+ compensated price elasticity of SSB demand
+\end_layout
+
+\begin_layout Itemize
+product 
+\begin_inset Formula $a(c)b(\theta)$
+\end_inset
+
+ controls level of SSB consumption
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size small
+components 
+\begin_inset Formula $a(c)$
+\end_inset
+
+ and 
+\begin_inset Formula $b(\theta)$
+\end_inset
+
+ control income effects vs.
+ preference heterogeneity
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\tilde{\gamma}(\theta)$
+\end_inset
+
+ is structural bias (can calibrate from money metric bias)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Psi(z/w)$
+\end_inset
+
+: convex disutility of effort function
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Computing optimal 
+\begin_inset Formula $t$
+\end_inset
+
+ using sufficient statistics formula
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Recall:
+\begin_inset Formula 
+\[
+t^{*}=\frac{\overbrace{\bar{\gamma}(\bar{g}+\sigma)+e}^{\text{corrective motive}}-\overbrace{\frac{p}{\bar{s}\bar{\zeta}^{c}}Cov\left[\hat{g}(z),s_{pref}(z)\right]}^{\text{redistributive motive}}}{1+\frac{1}{\bar{s}\bar{\zeta}^{c}}Cov\left[\hat{g}(z),s_{pref}(z)\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+Estimates of population parameters:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bar{s}=\input{../../Output/Simulations/NumbersForText/sBar.tex}$
+\end_inset
+
+ (ounces per week)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bar{\zeta}^{c}=\input{../../Output/Simulations/NumbersForText/zetaBar.tex}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bar{\gamma}=\input{../../Output/Simulations/NumbersForText/gammaBar.tex}$
+\end_inset
+
+ (cents per ounce)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $g(z)$
+\end_inset
+
+ assuming Pareto weights 
+\begin_inset Formula $\alpha(\theta)=1/(\text{status quo after-tax income})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bar{g}=1$
+\end_inset
+
+, and 
+\begin_inset Formula $\hat{g}(z)\approx g(z)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Assuming no labor supply income effects, and SSBs are small budget share
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $e=0.85$
+\end_inset
+
+ (cents per ounce)
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+Next: covariances 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $Cov\left[g(z),s_{pref}(z)\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Computing optimal 
+\begin_inset Formula $t$
+\end_inset
+
+ using sufficient statistics formula
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Income distribution consistent with status quo in US economy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $w(\theta)$
+\end_inset
+
+ to match US income distribution and income tax
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pre- & post-tax income from Piketty Saez Zucman (2017)
+\end_layout
+
+\begin_layout Itemize
+Assume taxable income elasticity = 0.33 (Chetty 
+\emph on
+et al.
+
+\emph default
+ 2012)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Redistributive motive
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Assume Pareto weights: 
+\begin_inset Formula $\alpha(\theta)=1/(\text{total consumption in status quo})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Corrective motive 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\tilde{\gamma}(\theta)$
+\end_inset
+
+ to match Homescan/PanelViews estimates
+\end_layout
+
+\begin_layout Itemize
+Externality: 0.85 cents/oz health system cost
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Policy constraints
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Baseline: hold income tax schedule fixed (SSB tax rebated lump sum)
+\end_layout
+
+\begin_layout Itemize
+Also compute results under 
+\emph on
+optimal
+\emph default
+ income tax
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sufficient statistics estimates by income bin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\size small
+\begin_inset CommandInset include
+LatexCommand include
+filename "../../Output/Simulations/manual_computation_table_slides.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+Letting 
+\begin_inset Formula $n$
+\end_inset
+
+ index rows,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma=\frac{1}{\bar{\gamma}\bar{\zeta}^{c}\bar{s}}\left(\sum_{n}f_{n}(g_{n}\bar{\gamma}_{n}\bar{\zeta}_{n}^{c}\bar{s}_{n})-\sum_{n}f_{n}g_{n}\cdot\sum_{n}f_{n}\bar{\gamma}_{n}\bar{\zeta}_{n}^{c}\bar{s}_{n}\right)=\input{../../Output/Simulations/NumbersForText/sigma.tex}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Cov\left[g(z),s_{pref}(z)\right]=\sum_{n}f_{n}(g_{n}s_{pref,n})-\sum_{n}f_{n}g_{n}\cdot\sum_{n}f_{n}s_{pref,n}=\input{../../Output/Simulations/NumbersForText/covgsPref.tex}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Computing the optimal SSB tax
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Baseline calculation under 
+\emph on
+existing
+\emph default
+ income tax: 
+\begin_inset Formula 
+\begin{alignat*}{1}
+t^{*} & \approx\frac{\bar{\gamma}(1+\sigma)+e-\frac{p}{\bar{s}\bar{\zeta}^{c}}\left(Cov\left[g(z),s(z)\right]+{\color{blue}\mathcal{A}}\right)}{1+\frac{1}{\bar{s}\bar{\zeta}^{c}}\left(Cov\left[g(z),s(z)\right]+{\color{blue}\mathcal{A}}\right)},\\
+ & \approx\frac{\left[\input{../../Output/Simulations/NumbersForText/gammaBar.tex}(1+\input{../../Output/Simulations/NumbersForText/sigma.tex})+0.85\right]-\frac{\input{../../Output/Simulations/NumbersForText/ssbprice.tex}}{\input{../../Output/Simulations/NumbersForText/sBar.tex}\cdot\input{../../Output/Simulations/NumbersForText/zetaBar.tex}}\left(\input{../../Output/Simulations/NumbersForText/covgs.tex}+{\color{blue}\input{../../Output/Simulations/NumbersForText/fixedinctaxexpec.tex}}\right)}{1+\frac{1}{\input{../../Output/Simulations/NumbersForText/sBar.tex}\cdot\input{../../Output/Simulations/NumbersForText/zetaBar.tex}}\left(\input{../../Output/Simulations/NumbersForText/covgs.tex}+\input{../../Output/Simulations/NumbersForText/fixedinctaxexpec.tex}\right)}\\
+ & \approx\input{../../Output/Simulations/NumbersForText/optTaxbaseline.tex}.
+\end{alignat*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\color{blue}\mathcal{A}}=\mathbb{E}\left[\frac{T'(z(\theta))}{1-T'(z(\theta))}\zeta_{z}(\theta)s(\theta)\xi(\theta)\right]$
+\end_inset
+
+: fiscal externality through income tax.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+Optimal SSB taxes lower under optimal income tax than status quo:
+\end_layout
+
+\begin_layout Itemize
+Using inverse Pareto weights, optimal income taxes higher than status quo
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\implies$
+\end_inset
+
+ fiscal externalities from labor supply distortions larger under optimal
+ income tax
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\implies$
+\end_inset
+
+ 
+\begin_inset Formula $t^{*}$
+\end_inset
+
+ lower under optimal income tax
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Computing the optimal SSB tax: results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand include
+filename "../../Output/Simulations/opt_tax_table.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+In the background: the income tax
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Frame
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+t
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Output/Simulations/Figures/income_tax.pdf
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align right
+
+\size tiny
+Each point represents 1% of population.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Welfare and equivalent variation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Simulations/Figures/welfarebaseline.pdf
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+Optimal tax is 
+\begin_inset Formula $\input{../../Output/Simulations/NumbersForText/optTaxbaseline.tex}$
+\end_inset
+
+ cents per ounce.
+ Net effect on social welfare: $
+\begin_inset Formula $\input{../../Output/Simulations/NumbersForText/dwbaseline.tex}$
+\end_inset
+
+ per capita, 
+\begin_inset Formula $\approx$
+\end_inset
+
+ $
+\begin_inset Formula $\input{../../Output/Simulations/NumbersForText/dwPopbaseline.tex}$
+\end_inset
+
+ billion across U.S.
+ adult equivalents.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Welfare and equivalent variation: self-reported intake
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Simulations/Figures/welfareselfReports.pdf
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+Optimal tax is 
+\begin_inset Formula $\input{../../Output/Simulations/NumbersForText/optTaxselfReports.tex}$
+\end_inset
+
+ cents per ounce.
+ Net effect on social welfare: $
+\begin_inset Formula $\input{../../Output/Simulations/NumbersForText/dwselfReports.tex}$
+\end_inset
+
+ per capita, 
+\begin_inset Formula $\approx$
+\end_inset
+
+ $
+\begin_inset Formula $\input{../../Output/Simulations/NumbersForText/dwPopselfReports.tex}$
+\end_inset
+
+ billion across U.S.
+ adult equivalents.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+How optimal internality tax varies with key parameters
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Output/Simulations/Figures/opt_soda_tax.pdf
+	scale 49
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align right
+
+\size tiny
+Externality cost not included.
+ Simulations hold fixed US income tax schedule.
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+BBL says: suppressing this until we regenerate this figure using sufficient
+ statistics values, as numbers don't quite match those reported in tables.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal SSB tax for different marginal value of revenues
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../Output/Simulations/Figures/across_mvpfs.pdf
+	scale 52
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conclusion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+
+\series bold
+Theory of regressive sin taxes
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Generalize and unify results from literatures in public and behavioral economics
+, and bring them closer to empirical implementation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Methodology: (Behavioral) sufficient statistics
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Highlight role of demand elasticity, source of between income consumption
+ variation, regressivity of bias
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Empirical application: optimal soda tax
+\end_layout
+
+\begin_layout Itemize
+Direct measurement of statistics from theory
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+New estimate of elasticity
+\end_layout
+
+\begin_layout Enumerate
+New estimate of bias (as a money-metric)
+\end_layout
+
+\begin_layout Enumerate
+First to unpack the between-income consumption variation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Higher-income consumers less biased and like soda less
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Likely result: recent city-level taxes somewhat too low
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\series bold
+Theory + evidence combination
+\end_layout
+
+\begin_layout Itemize
+Portable and flexible methodology for optimal policy in many domains
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conclusion: guiding principles for policy makers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Allcott, Lockwood, and Taubinsky (2019, 
+\emph on
+JEP)
+\end_layout
+
+\begin_layout Enumerate
+Focus on counteracting externalities and internalities, not on minimizing
+ SSB consumption.
+\end_layout
+
+\begin_layout Enumerate
+Target corrective policies at those with largest externalities and internalities.
+\end_layout
+
+\begin_layout Enumerate
+Tax grams of sugar, not ounces of liquid.
+\end_layout
+
+\begin_layout Enumerate
+Tax diet drinks and fruit juice if and only if they also cause uninternalized
+ health harms.
+\end_layout
+
+\begin_layout Enumerate
+When judging regressivity, consider internality beneﬁts, not just who pays
+ the taxes.
+\end_layout
+
+\begin_layout Enumerate
+If possible, implement taxes statewide.
+\end_layout
+
+\begin_layout Enumerate
+The beneﬁts of sugar-sweetened beverage taxes probably exceed their costs.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Principle 4: tax grams of sugar, not volume of liquid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../../TaxSugarNotVolume/Output/SugarContentHistogram.pdf
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Health gains from sugar content taxes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../../TaxSugarNotVolume/Output/WeightLoss.pdf
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conclusion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Recap:
+\end_layout
+
+\begin_layout Enumerate
+Theoretical framework with broad potential applications
+\end_layout
+
+\begin_layout Enumerate
+Novel empirical estimates of elasticities and bias
+\end_layout
+
+\begin_layout Enumerate
+Policy implication: recent city-level taxes may be too low
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Broader vision:
+\end_layout
+
+\begin_layout Itemize
+Consider important behaviorally motivated policies where traditional welfare
+ analysis is sidelined
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Energy efficiency
+\end_layout
+
+\begin_layout Itemize
+Lotteries
+\end_layout
+
+\begin_layout Itemize
+Credit cards
+\end_layout
+
+\begin_layout Itemize
+Payday lending
+\end_layout
+
+\begin_layout Itemize
+Smoking
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Deliver actionable policy recommendations
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\size larger
+Appendix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal income tax formula
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Frame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+label=income1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula 
+\[
+T'(z^{*})=\frac{\mathbb{E}\left[(g(z^{*})\gamma(\theta)+e-t)\frac{\xi(\theta)s(\theta)\zeta_{z}^{c}(\theta)}{\zeta_{z}^{c}(z^{*})z^{*}}|z(\theta)=z^{*}\right]+\frac{1}{\zeta_{z}^{c}zh(z^{*})}\mathbb{E}\left[(1-\hat{g}(z))|z\geq z^{*}\right]}{1+\frac{1}{\zeta_{z}^{c}(z^{*})zh(z^{*})}\mathbb{E}\left[(1-\hat{g}(z))|z\geq z^{*}\right]}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $T(z)=$
+\end_inset
+
+ non-linear income tax
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $g(z)=\alpha(\theta(z))V'_{c}/\lambda=$
+\end_inset
+
+ social marginal welfare weight on people earning income 
+\begin_inset Formula $z$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\bar{\gamma}(z)=$
+\end_inset
+
+ average marginal bias
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $p=$
+\end_inset
+
+ price of sin good; 
+\begin_inset Formula $t=$
+\end_inset
+
+ sin tax
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\eta(z)=$
+\end_inset
+
+ income effect on sin good consumption
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\zeta_{z}^{c}=$
+\end_inset
+
+ elasticity of taxable income with respect to income tax
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperlink{opt_tax1}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+beamergotobutton
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Back
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
