@@ -1,11 +1,11 @@
-Hi, thank you for checking the code. This .txt file is designed to help you nevigate my work.
+Hi, thank you for checking the code. This .txt file is designed to help you navigate my work.
 
 1. There are 3 main files: 
-    a. 1_input: raw data downloaded from NLS nevigator
-    b. 3_output: graph, txt file output for latex
+    a. 1_input: raw data downloaded from NLS Navigator
+    b. 3_output: graph, txt file output for LaTeX
     c. 4_int: processed data, for use later
-2. All codes are in the 3 rmd files, with analysis output the result presented in thesis,
-  the other two initially process and clean the data
-3. All rmd files are self-contained: i.e. the environment and the order of running the code does not matter.
-4. You do NOT need to paste your local address into any file to run, as I have set up the 2_NLS.RProj, which anchor your paths.
-5. There are graphs from old analysis result in the 3_output
+2. All codes are in the 3 rmd files, with the analysis output and the result presented in the thesis.
+  The other two initially process and clean the data
+3. All rmd files are self-contained: i.e. the environment and the order of running the code do not matter.
+4. You do NOT need to paste your local address into any file to run, as I have set up the 2_NLS.RProj, which anchors your paths.
+5. There are graphs from old analysis results in the 3_output
