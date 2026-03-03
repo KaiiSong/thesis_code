@@ -1,0 +1,3751 @@
+H00049.00    [H40-CHRC-2]                                   Survey Year: XRND
+  PRIMARY VARIABLE
+
+             CCR - DOCTOR EVER DIAGNOSED DIABETES OR HIGH BLOOD SUGAR?
+ 
+Has a doctor ever told you that you have diabetes or high blood sugar?
+ 
+COMMENT: The QNAME for this variable in the year-specific questionnaires is 
+Q11-H40CHRC-2
+ 
+     451       1 YES   (Go To H00050.00)
+    7995       0 NO
+  -------
+    8446
+ 
+Refusal(-1)           11
+Don't Know(-2)         7
+TOTAL =========>    8464   VALID SKIP(-4)    4222     NON-INTERVIEW(-5)       0
+ 
+Min:              0        Max:              1        Mean:                 .05
+ 
+Lead In: H00046.00[Default] H00048.00[Default]
+Default Next Question: H00051.00
+--------------------------------------------------------------------------------
+H00050.01    [H40-CHRC-2A~Y]                                Survey Year: XRND
+  PRIMARY VARIABLE
+
+             CCR - DATE DIABETES OR HIGH BLOOD SUGAR DIAGNOSED
+ 
+In what month and year was that first diagnosed?
+ 
+(ENTER MONTH AND YEAR)
+ 
+COMMENT: The QNAME for this variable in the year-specific questionnaires is 
+Q11-H40CHRC-2A
+ 
+      25           0 TO 1978: < 1978
+       4        1979
+       6        1980
+       1        1981
+       4        1982
+       5        1983
+       7        1984
+       9        1985
+       4        1986
+       5        1987
+       8        1988
+       7        1989
+      13        1990
+      15        1991
+      15        1992
+       8        1993
+      13        1994
+      22        1995
+      21        1996
+      19        1997
+      43        1998
+      32        1999
+      51        2000
+      26        2001
+      40        2002
+      16        2003
+      18        2004
+       5        2005
+       3        2006
+  -------
+     445
+ 
+Refusal(-1)            0
+Don't Know(-2)         6
+TOTAL =========>     451   VALID SKIP(-4)   12235     NON-INTERVIEW(-5)       0
+ 
+Min:           1960        Max:           2006        Mean:             1994.95
+ 
+Earliest (NonMissing): DECEMBER/1960
+Latest   (NonMissing): MARCH/2006
+ 
+Lead In: H00050.00[Default]
+Default Next Question: H00051.00
+--------------------------------------------------------------------------------
+R00001.00    [CASEID]                                       Survey Year: 1979
+  PRIMARY VARIABLE
+
+             IDENTIFICATION CODE
+ 
+ORIGINAL QUESTION NAME: CASEID
+ 
+NOTE: THIS NUMBER WAS ASSIGNED ACCORDING TO THE RECORD NUMBER OF EACH RESPONDENT
+ON THE TAPE. THE FIRST RESPONDENT WAS ASSIGNED ID#1, THE SECOND WAS ASSIGNED 
+ID#2, ETC.
+ 
+ACTUAL NUMBER
+ 
+UNIVERSE: All
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12686   VALID SKIP(-4)       0     NON-INTERVIEW(-5)       0
+ 
+Min:              1        Max:          12686        Mean:              6343.5
+ 
+Lead In: None.
+Default Next Question: R00001.49
+--------------------------------------------------------------------------------
+R02147.00    [SAMPLE_RACE]                                  Survey Year: 78SCRN
+  PRIMARY VARIABLE
+
+             R'S RACIAL/ETHNIC COHORT FROM SCREENER
+ 
+UNIVERSE: Entire Sample
+ 
+    2002       1 HISPANIC
+    3174       2 BLACK
+    7510       3 NON-BLACK, NON-HISPANIC
+  -------
+   12686
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12686   VALID SKIP(-4)       0     NON-INTERVIEW(-5)       0
+ 
+Min:              1        Max:              3        Mean:                2.43
+ 
+
+
+NOTE: AUGUST 26, 1980  DENNIS GREY
+ 
+DESCRIPTION:
+COHORT=3;
+IF R(1736.)=4 ! R(1736.)=8 ! R(1736.)=11 ! R(1736.)=14 THEN COHORT=1;
+IF R(1736.)=17 ! R(1736.)=20 THEN COHORT=1;
+IF R(1736.)=3 ! R(1736.)=7 ! R(1736.)=10 ! R(1736.)=13 THEN COHORT=2;
+IF R(1736.)=16 ! R(1736.)=19 THEN COHORT=2;
+R(2147.)=COHORT;
+ 
+Lead In: R02146.00[Default]
+Default Next Question: R02148.00
+--------------------------------------------------------------------------------
+R02148.00    [SAMPLE_SEX]                                   Survey Year: 1979
+  PRIMARY VARIABLE
+
+             SEX OF R
+ 
+UNIVERSE: Entire sample
+ 
+    6403       1 MALE
+    6283       2 FEMALE
+  -------
+   12686
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12686   VALID SKIP(-4)       0     NON-INTERVIEW(-5)       0
+ 
+Min:              1        Max:              2        Mean:                 1.5
+ 
+
+
+NOTE: AUGUST 26, 1980  DENNIS GREY
+MARCH 1, 1986  NORC
+ 
+DESCRIPTION:
+IF (R(1736.)>0 & R(1736.)<=4) ! (R(1736.)>=9 & R(1736.)<=11) THEN SEX=1;
+IF R(1736.)>=15 & R(1736.)<=17 THEN SEX=1;
+IF (R(1736.)>=5 & R(1736.)<=8) ! (R(1736.)>=12 & R(1736.)<=14) THEN SEX=
+IF R(1736.)>=18 & R(1736.)<=20 THEN SEX=2;
+R(2148.)=SEX;
+SEX CODE CHANGED ON 42 CASES
+ 
+Lead In: R02147.00[Default]
+Default Next Question: R02149.00
+--------------------------------------------------------------------------------
+R99000.02    [C1DOB~Y]                                      Survey Year: XRND
+  PRIMARY VARIABLE
+
+             DATE OF BIRTH OF 1ST CHILD - YEAR
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    1309           0 TO 1978: < 1978
+     576        1979
+     634        1980
+     681        1981
+     696        1982
+     660        1983
+     563        1984
+     532        1985
+     459        1986
+     462        1987
+     435        1988
+     397        1989
+     351        1990
+     262        1991
+     242        1992
+     200        1993
+     173        1994
+     152        1995
+     114        1996
+     112        1997
+      68        1998
+      67        1999
+      45        2000
+      50        2001
+      27        2002
+      21        2003
+      14        2004
+      12        2005
+      13        2006
+       8        2007
+       4        2008
+       7        2009
+       1        2010
+       2        2011
+       4        2012
+       2        2013
+  -------
+    9355
+ 
+Refusal(-1)            2
+Don't Know(-2)         4
+Invalid Skip(-3)       6
+TOTAL =========>    9367   VALID SKIP(-4)    3319     NON-INTERVIEW(-5)       0
+ 
+Lead In: R99000.01[Default]
+Default Next Question: R99003.00
+--------------------------------------------------------------------------------
+T12980.00    [OCCALL-EMP.01]                                Survey Year: 2008
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #01
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER (UPDATED IN 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     762          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+     275         500 TO 950: Management Related Occupations
+     143        1000 TO 1240: Mathematical and Computer Scientists
+      99        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+      15        1600 TO 1760: Physical Scientists
+      14        1800 TO 1860: Social Scientists and Related Workers
+      16        1900 TO 1960: Life, Physical and Social Science Technicians
+     123        2000 TO 2060: Counselors, Sociala and Religious Workers
+      44        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+     292        2200 TO 2340: Teachers
+      95        2400 TO 2550: Education, Training and Library Workers
+      52        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      34        2800 TO 2960: Media and Communications Workers
+     156        3000 TO 3260: Health Diagnosing and Treating Practitioners
+     287        3300 TO 3650: Health Care Technical and Support Occupations
+     168        3700 TO 3950: Protective Service Occupations
+     266        4000 TO 4160: Food Preparation and Serving Related Occupations
+     283        4200 TO 4250: Cleaning and Building Service Occupations
+      20        4300 TO 4430: Entertainment Attendants and Related Workers
+     177        4500 TO 4650: Personal Care and Service Workers
+     488        4700 TO 4960: Sales and Related Workers
+     943        5000 TO 5930: Office and Administrative Support Workers
+      33        6000 TO 6130: Farming, Fishing and Forestry Occupations
+     404        6200 TO 6940: Construction Trade and Extraction Workers
+     257        7000 TO 7620: Installation, Maintenance and Repairs Workers
+     142        7700 TO 7750: Production and Operating Workers
+      15        7800 TO 7850: Food Preparation Occupations
+     365        7900 TO 8960: Setters, Operators and Tenders
+     464        9000 TO 9750: Transportation and Material Moving Workers
+       7        9840: Armed Forces
+       4        9990: Uncodeable
+  -------
+    6443
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6443   VALID SKIP(-4)    1314     NON-INTERVIEW(-5)    4929
+ 
+Min:             10        Max:           9990        Mean:             4412.05
+ 
+Lead In: T12975.00[Default]
+Default Next Question: T12985.00
+--------------------------------------------------------------------------------
+T12981.00    [OCCALL-EMP.02]                                Survey Year: 2008
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #02
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER (UPDATED IN 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     173          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      74         500 TO 950: Management Related Occupations
+      32        1000 TO 1240: Mathematical and Computer Scientists
+      20        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       2        1600 TO 1760: Physical Scientists
+       2        1800 TO 1860: Social Scientists and Related Workers
+       2        1900 TO 1960: Life, Physical and Social Science Technicians
+      33        2000 TO 2060: Counselors, Sociala and Religious Workers
+       5        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      54        2200 TO 2340: Teachers
+       8        2400 TO 2550: Education, Training and Library Workers
+      39        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      13        2800 TO 2960: Media and Communications Workers
+      44        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      64        3300 TO 3650: Health Care Technical and Support Occupations
+      33        3700 TO 3950: Protective Service Occupations
+      88        4000 TO 4160: Food Preparation and Serving Related Occupations
+      79        4200 TO 4250: Cleaning and Building Service Occupations
+       8        4300 TO 4430: Entertainment Attendants and Related Workers
+      74        4500 TO 4650: Personal Care and Service Workers
+     179        4700 TO 4960: Sales and Related Workers
+     222        5000 TO 5930: Office and Administrative Support Workers
+      10        6000 TO 6130: Farming, Fishing and Forestry Occupations
+     113        6200 TO 6940: Construction Trade and Extraction Workers
+      60        7000 TO 7620: Installation, Maintenance and Repairs Workers
+      13        7700 TO 7750: Production and Operating Workers
+       9        7800 TO 7850: Food Preparation Occupations
+      68        7900 TO 8960: Setters, Operators and Tenders
+     134        9000 TO 9750: Transportation and Material Moving Workers
+       2        9840: Armed Forces
+       3        9990: Uncodeable
+  -------
+    1660
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    1660   VALID SKIP(-4)    6097     NON-INTERVIEW(-5)    4929
+ 
+Min:             10        Max:           9990        Mean:             4466.18
+ 
+Lead In: T12976.00[Default]
+Default Next Question: T12986.00
+--------------------------------------------------------------------------------
+T12982.00    [OCCALL-EMP.03]                                Survey Year: 2008
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #03
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER (UPDATED IN 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+      38          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      20         500 TO 950: Management Related Occupations
+       7        1000 TO 1240: Mathematical and Computer Scientists
+       1        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       1        1600 TO 1760: Physical Scientists
+       1        1800 TO 1860: Social Scientists and Related Workers
+       9        2000 TO 2060: Counselors, Sociala and Religious Workers
+      12        2200 TO 2340: Teachers
+       5        2400 TO 2550: Education, Training and Library Workers
+      11        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       2        2800 TO 2960: Media and Communications Workers
+      11        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      19        3300 TO 3650: Health Care Technical and Support Occupations
+       8        3700 TO 3950: Protective Service Occupations
+      19        4000 TO 4160: Food Preparation and Serving Related Occupations
+      18        4200 TO 4250: Cleaning and Building Service Occupations
+       1        4300 TO 4430: Entertainment Attendants and Related Workers
+       8        4500 TO 4650: Personal Care and Service Workers
+      44        4700 TO 4960: Sales and Related Workers
+      48        5000 TO 5930: Office and Administrative Support Workers
+       1        6000 TO 6130: Farming, Fishing and Forestry Occupations
+      24        6200 TO 6940: Construction Trade and Extraction Workers
+      13        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       4        7700 TO 7750: Production and Operating Workers
+       1        7800 TO 7850: Food Preparation Occupations
+      19        7900 TO 8960: Setters, Operators and Tenders
+      36        9000 TO 9750: Transportation and Material Moving Workers
+       1        9990: Uncodeable
+  -------
+     382
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>     382   VALID SKIP(-4)    7375     NON-INTERVIEW(-5)    4929
+ 
+Min:             10        Max:           9990        Mean:              4521.2
+ 
+Lead In: T12977.00[Default]
+Default Next Question: T12987.00
+--------------------------------------------------------------------------------
+T12983.00    [OCCALL-EMP.04]                                Survey Year: 2008
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #04
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER (UPDATED IN 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+      11          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       4         500 TO 950: Management Related Occupations
+       1        1000 TO 1240: Mathematical and Computer Scientists
+       1        1900 TO 1960: Life, Physical and Social Science Technicians
+       1        2000 TO 2060: Counselors, Sociala and Religious Workers
+       2        2200 TO 2340: Teachers
+       1        2400 TO 2550: Education, Training and Library Workers
+       3        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       6        3300 TO 3650: Health Care Technical and Support Occupations
+       4        4000 TO 4160: Food Preparation and Serving Related Occupations
+       4        4200 TO 4250: Cleaning and Building Service Occupations
+       5        4500 TO 4650: Personal Care and Service Workers
+       6        4700 TO 4960: Sales and Related Workers
+      14        5000 TO 5930: Office and Administrative Support Workers
+       6        6200 TO 6940: Construction Trade and Extraction Workers
+       3        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       4        7700 TO 7750: Production and Operating Workers
+       1        7800 TO 7850: Food Preparation Occupations
+      12        7900 TO 8960: Setters, Operators and Tenders
+       9        9000 TO 9750: Transportation and Material Moving Workers
+       2        9990: Uncodeable
+  -------
+     100
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>     100   VALID SKIP(-4)    7657     NON-INTERVIEW(-5)    4929
+ 
+Min:             10        Max:           9990        Mean:              5143.1
+ 
+Lead In: T12978.00[Default]
+Default Next Question: T12988.00
+--------------------------------------------------------------------------------
+T12984.00    [OCCALL-EMP.05]                                Survey Year: 2008
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #05
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER (UPDATED IN 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       3         500 TO 950: Management Related Occupations
+       1        2200 TO 2340: Teachers
+       1        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       1        3300 TO 3650: Health Care Technical and Support Occupations
+       1        4000 TO 4160: Food Preparation and Serving Related Occupations
+       1        4200 TO 4250: Cleaning and Building Service Occupations
+       3        4500 TO 4650: Personal Care and Service Workers
+       4        4700 TO 4960: Sales and Related Workers
+       2        5000 TO 5930: Office and Administrative Support Workers
+       1        6000 TO 6130: Farming, Fishing and Forestry Occupations
+       2        6200 TO 6940: Construction Trade and Extraction Workers
+       1        7900 TO 8960: Setters, Operators and Tenders
+       5        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      26
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      26   VALID SKIP(-4)    7731     NON-INTERVIEW(-5)    4929
+ 
+Min:            530        Max:           9610        Mean:             5267.69
+ 
+Lead In: T12979.00[Default]
+Default Next Question: T12989.00
+--------------------------------------------------------------------------------
+T20568.00    [Q11-GENHLTH_6A]                               Survey Year: 2008
+  PRIMARY VARIABLE
+
+             R CURRENTLY TRYING TO LOSE OR GAIN WEIGHT?
+ 
+Are you now trying to lose weight, gain weight, stay about the same, or are you 
+not trying to do anything about your weight?
+ 
+    3639       1 Lose weight
+     221       2 Gain weight
+    1930       3 Stay about the same
+    1952       4 Not trying to do anything
+  -------
+    7742
+ 
+Refusal(-1)            7
+Don't Know(-2)         3
+TOTAL =========>    7752   VALID SKIP(-4)       5     NON-INTERVIEW(-5)    4929
+ 
+Min:              1        Max:              4        Mean:                2.28
+ 
+Lead In: T20567.00[Default]  T20565.00[0:0]
+Default Next Question: T20569.00
+--------------------------------------------------------------------------------
+T20577.00    [Q11-GENHLTH_7F_1]                             Survey Year: 2008
+  PRIMARY VARIABLE
+
+             TIMES HAVING A SOFT DRINK OR SODA CONTAINED SUGAR IN THE PAST 7 
+             DAYS
+ 
+(In the past seven days, how many times did you...)
+ 
+...Have a soft drink or soda that contained sugar? (Do not include diet soft 
+drinks or sodas, or carbonated water.)
+ 
+ 
+        # TIMES:
+ 
+    3230           0
+    2976           1 TO 4
+    1172           5 TO 9
+     217          10 TO 14
+      26          15 TO 19
+      75          20 TO 24
+       9          25 TO 29
+       6          30 TO 34
+       6          35 TO 39
+       3          40 TO 44
+       8          50 TO 99999999: 50+
+  -------
+    7728
+ 
+Refusal(-1)            4
+Don't Know(-2)        20
+TOTAL =========>    7752   VALID SKIP(-4)       5     NON-INTERVIEW(-5)    4929
+ 
+Min:              0        Max:            100        Mean:                2.56
+ 
+Lead In: T20576.00[Default]
+Default Next Question: T20578.00
+--------------------------------------------------------------------------------
+T20578.00    [Q11-GENHLTH_7F_2]                             Survey Year: 2008
+  PRIMARY VARIABLE
+
+             TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS
+ 
+(INTERVIEWER: ENTER "PER DAY" OR "PER WEEK".)
+ 
+    1559       1 Per day
+    6174       2 Per week
+  -------
+    7733
+ 
+Refusal(-1)            5
+Don't Know(-2)        14
+TOTAL =========>    7752   VALID SKIP(-4)       5     NON-INTERVIEW(-5)    4929
+ 
+Min:              1        Max:              2        Mean:                 1.8
+ 
+Lead In: T20577.00[Default]
+Default Next Question: T20579.00
+--------------------------------------------------------------------------------
+T22099.00    [FAMSIZE]                                      Survey Year: 2008
+  PRIMARY VARIABLE
+
+             FAMILY SIZE
+ 
+COMMENT: Family Size
+ 
+    1680           1
+    1928           2
+    1622           3
+    1546           4
+     633           5
+     237           6
+      69           7
+      26           8
+       7           9
+       9          10 TO 999: 10+
+  -------
+    7757
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7757   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    4929
+ 
+Min:              1        Max:             12        Mean:                2.84
+ 
+Lead In: T22098.00[Default]
+Default Next Question: T22100.00
+--------------------------------------------------------------------------------
+T22100.00    [TNFI_TRUNC]                                   Survey Year: 2008
+  PRIMARY VARIABLE
+
+             TOTAL NET FAMILY INCOME IN PAST CALENDAR YEAR *KEY* (TRUNCATED)
+ 
+COMMENT: Total Net Family Income in 2007
+ 
+NOTE: FOR VARIABLE CREATION, SEE APPENDIX 2: TOTAL NET FAMILY INCOME TRUNCATED 
+VALUES ARE EQUAL TO THE AVERAGE VALUE OF THE TOP 2% OF RESPONDENTS WHO ARE U.S. 
+RESIDENTS.  IF THE NUMBER OF TRUNCATED VALUES EXCEEDS THAT WHICH WOULD HAVE BEEN
+TRUNCATED AT THE TRADITIONAL TRUNCATION LEVEL OF 100,001 FOR THIS ITEM, VALUES 
+OVER THAT TRADITIONAL TRUNCATION LEVEL ARE AVERAGED.  OVERSEAS RESPONDENTS WHOSE
+DOLLAR INCOME COULD NOT BE DETERMINED ARE CODED -3.
+ 
+ACTUAL DOLLARS
+ 
+     240           0
+      40           1 TO 999
+      58        1000 TO 1999
+      32        2000 TO 2999
+      51        3000 TO 3999
+      35        4000 TO 4999
+      37        5000 TO 5999
+      42        6000 TO 6999
+      85        7000 TO 7999
+      63        8000 TO 8999
+      62        9000 TO 9999
+     299       10000 TO 14999
+     284       15000 TO 19999
+     289       20000 TO 24999
+    1397       25000 TO 49999
+    3713       50000 TO 99999999: 50000+
+  -------
+    6727
+ 
+Refusal(-1)          229
+Don't Know(-2)       801
+TOTAL =========>    7757   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    4929
+ 
+Min:              0        Max:         454737        Mean:            73386.12
+ 
+Lead In: T22099.00[Default]
+Default Next Question: T22101.00
+--------------------------------------------------------------------------------
+T22108.00    [AGEATINT]                                     Survey Year: 2008
+  PRIMARY VARIABLE
+
+             AGE OF R AT INTERVIEW DATE
+ 
+COMMENT: Age at interview date
+ 
+     585          43
+    1072          44
+    1101          45
+    1075          46
+    1080          47
+     965          48
+     818          49
+     838          50
+     222          51
+       1          52
+  -------
+    7757
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7757   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    4929
+ 
+Min:             43        Max:             52        Mean:               46.64
+ 
+Lead In: T22107.00[Default]
+Default Next Question: T22108.01
+--------------------------------------------------------------------------------
+T22123.00    [SMSARES]                                      Survey Year: 2008
+  PRIMARY VARIABLE
+
+             IS R'S CURRENT RESIDENCE IN SMSA?
+ 
+COMMENT: R's residence in SMSA?
+ 
+NOTE: SEE APPENDIX 6: URBAN-RURAL AND SMSA-CENTRAL CITY VARIABLES
+ 
+REVISION NOTE: 556 VALUES WERE REVISED FOR THIS VARIABLE IN OCTOBER, 2011.  SEE 
+ERRATA LISTING FOR FURTHER INFORMATION.
+ 
+     545           1: NOT IN SMSA
+    4346           2: SMSA, NOT CENTRAL CITY
+    2592           3: SMSA, IN CENTRAL CITY
+     188           4: SMSA, CENTRAL CITY NOT KNOWN
+  -------
+    7671
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)      31
+TOTAL =========>    7702   VALID SKIP(-4)      55     NON-INTERVIEW(-5)    4929
+ 
+Min:              1        Max:              4        Mean:                2.32
+ 
+Lead In: T22122.00[Default]
+Default Next Question: T22124.00
+--------------------------------------------------------------------------------
+T22178.00    [NUMCH08]                                      Survey Year: 2008
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    3393           0
+    1785           1
+    1737           2
+     598           3
+     177           4
+      50           5
+      10           6
+       4           7
+       3           8
+  -------
+    7757
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7757   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    4929
+ 
+Min:              0        Max:              8        Mean:                1.05
+ 
+Lead In: T22177.00[Default]
+Default Next Question: T22179.00
+--------------------------------------------------------------------------------
+T23265.00    [OCCALL-EMP.01]                                Survey Year: 2010
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #01
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER
+(UPDATED 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     713          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+     261         500 TO 950: Management Related Occupations
+     140        1000 TO 1240: Mathematical and Computer Scientists
+     101        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+      13        1600 TO 1760: Physical Scientists
+      13        1800 TO 1860: Social Scientists and Related Workers
+      12        1900 TO 1960: Life, Physical and Social Science Technicians
+     125        2000 TO 2060: Counselors, Sociala and Religious Workers
+      46        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+     298        2200 TO 2340: Teachers
+      92        2400 TO 2550: Education, Training and Library Workers
+      53        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      32        2800 TO 2960: Media and Communications Workers
+     151        3000 TO 3260: Health Diagnosing and Treating Practitioners
+     280        3300 TO 3650: Health Care Technical and Support Occupations
+     179        3700 TO 3950: Protective Service Occupations
+     231        4000 TO 4160: Food Preparation and Serving Related Occupations
+     294        4200 TO 4250: Cleaning and Building Service Occupations
+      22        4300 TO 4430: Entertainment Attendants and Related Workers
+     182        4500 TO 4650: Personal Care and Service Workers
+     464        4700 TO 4960: Sales and Related Workers
+     930        5000 TO 5930: Office and Administrative Support Workers
+      33        6000 TO 6130: Farming, Fishing and Forestry Occupations
+     384        6200 TO 6940: Construction Trade and Extraction Workers
+     255        7000 TO 7620: Installation, Maintenance and Repairs Workers
+     131        7700 TO 7750: Production and Operating Workers
+      14        7800 TO 7850: Food Preparation Occupations
+     349        7900 TO 8960: Setters, Operators and Tenders
+     459        9000 TO 9750: Transportation and Material Moving Workers
+       7        9840: Armed Forces
+       8        9990: Uncodeable
+  -------
+    6272
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6272   VALID SKIP(-4)    1293     NON-INTERVIEW(-5)    5121
+ 
+Min:             10        Max:           9990        Mean:              4428.7
+ 
+Lead In: T23260.00[Default]
+Default Next Question: T31865.00
+--------------------------------------------------------------------------------
+T23266.00    [OCCALL-EMP.02]                                Survey Year: 2010
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #02
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER
+(UPDATED 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     158          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      59         500 TO 950: Management Related Occupations
+      20        1000 TO 1240: Mathematical and Computer Scientists
+      16        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       1        1600 TO 1760: Physical Scientists
+       4        1800 TO 1860: Social Scientists and Related Workers
+       1        1900 TO 1960: Life, Physical and Social Science Technicians
+      35        2000 TO 2060: Counselors, Sociala and Religious Workers
+      12        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      73        2200 TO 2340: Teachers
+      10        2400 TO 2550: Education, Training and Library Workers
+      49        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       9        2800 TO 2960: Media and Communications Workers
+      44        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      78        3300 TO 3650: Health Care Technical and Support Occupations
+      30        3700 TO 3950: Protective Service Occupations
+      76        4000 TO 4160: Food Preparation and Serving Related Occupations
+      95        4200 TO 4250: Cleaning and Building Service Occupations
+       3        4300 TO 4430: Entertainment Attendants and Related Workers
+      57        4500 TO 4650: Personal Care and Service Workers
+     140        4700 TO 4960: Sales and Related Workers
+     180        5000 TO 5930: Office and Administrative Support Workers
+       8        6000 TO 6130: Farming, Fishing and Forestry Occupations
+     107        6200 TO 6940: Construction Trade and Extraction Workers
+      52        7000 TO 7620: Installation, Maintenance and Repairs Workers
+      12        7700 TO 7750: Production and Operating Workers
+       3        7800 TO 7850: Food Preparation Occupations
+      57        7900 TO 8960: Setters, Operators and Tenders
+     112        9000 TO 9750: Transportation and Material Moving Workers
+       1        9840: Armed Forces
+       4        9990: Uncodeable
+  -------
+    1506
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    1506   VALID SKIP(-4)    6059     NON-INTERVIEW(-5)    5121
+ 
+Min:             10        Max:           9990        Mean:              4346.8
+ 
+Lead In: T23261.00[Default]
+Default Next Question: T31866.00
+--------------------------------------------------------------------------------
+T23267.00    [OCCALL-EMP.03]                                Survey Year: 2010
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #03
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER
+(UPDATED 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+      33          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      17         500 TO 950: Management Related Occupations
+       4        1000 TO 1240: Mathematical and Computer Scientists
+       3        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       3        2000 TO 2060: Counselors, Sociala and Religious Workers
+       1        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      13        2200 TO 2340: Teachers
+       3        2400 TO 2550: Education, Training and Library Workers
+       8        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       2        2800 TO 2960: Media and Communications Workers
+       6        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      19        3300 TO 3650: Health Care Technical and Support Occupations
+      12        3700 TO 3950: Protective Service Occupations
+      14        4000 TO 4160: Food Preparation and Serving Related Occupations
+       7        4200 TO 4250: Cleaning and Building Service Occupations
+       4        4300 TO 4430: Entertainment Attendants and Related Workers
+      10        4500 TO 4650: Personal Care and Service Workers
+      33        4700 TO 4960: Sales and Related Workers
+      34        5000 TO 5930: Office and Administrative Support Workers
+       1        6000 TO 6130: Farming, Fishing and Forestry Occupations
+      21        6200 TO 6940: Construction Trade and Extraction Workers
+       7        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       4        7700 TO 7750: Production and Operating Workers
+      14        7900 TO 8960: Setters, Operators and Tenders
+      24        9000 TO 9750: Transportation and Material Moving Workers
+       1        9840: Armed Forces
+       1        9990: Uncodeable
+  -------
+     299
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>     299   VALID SKIP(-4)    7266     NON-INTERVIEW(-5)    5121
+ 
+Min:             10        Max:           9990        Mean:             4382.21
+ 
+Lead In: T23262.00[Default]
+Default Next Question: T31867.00
+--------------------------------------------------------------------------------
+T23268.00    [OCCALL-EMP.04]                                Survey Year: 2010
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #04
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER
+(UPDATED 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       4          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       6         500 TO 950: Management Related Occupations
+       3        1000 TO 1240: Mathematical and Computer Scientists
+       2        2000 TO 2060: Counselors, Sociala and Religious Workers
+       2        2200 TO 2340: Teachers
+       1        2400 TO 2550: Education, Training and Library Workers
+       2        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       5        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       7        3300 TO 3650: Health Care Technical and Support Occupations
+       3        4000 TO 4160: Food Preparation and Serving Related Occupations
+       1        4200 TO 4250: Cleaning and Building Service Occupations
+       2        4500 TO 4650: Personal Care and Service Workers
+       3        4700 TO 4960: Sales and Related Workers
+       9        5000 TO 5930: Office and Administrative Support Workers
+       4        6200 TO 6940: Construction Trade and Extraction Workers
+       3        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       1        7700 TO 7750: Production and Operating Workers
+       6        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      64
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      64   VALID SKIP(-4)    7501     NON-INTERVIEW(-5)    5121
+ 
+Min:            120        Max:           9720        Mean:             4149.06
+ 
+Lead In: T23263.00[Default]
+Default Next Question: T31868.00
+--------------------------------------------------------------------------------
+T23269.00    [OCCALL-EMP.05]                                Survey Year: 2010
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #05
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER
+(UPDATED 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       3         500 TO 950: Management Related Occupations
+       1        1000 TO 1240: Mathematical and Computer Scientists
+       1        2000 TO 2060: Counselors, Sociala and Religious Workers
+       3        2200 TO 2340: Teachers
+       1        3300 TO 3650: Health Care Technical and Support Occupations
+       1        4200 TO 4250: Cleaning and Building Service Occupations
+       1        4700 TO 4960: Sales and Related Workers
+       2        5000 TO 5930: Office and Administrative Support Workers
+       1        6200 TO 6940: Construction Trade and Extraction Workers
+       1        7900 TO 8960: Setters, Operators and Tenders
+       1        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      16
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      16   VALID SKIP(-4)    7549     NON-INTERVIEW(-5)    5121
+ 
+Min:            530        Max:           9130        Mean:             3704.38
+ 
+Lead In: T23264.00[Default]
+Default Next Question: T31869.00
+--------------------------------------------------------------------------------
+T30272.00    [Q11-GENHLTH_6A]                               Survey Year: 2010
+  PRIMARY VARIABLE
+
+             R CURRENTLY TRYING TO LOSE OR GAIN WEIGHT?
+ 
+Are you now trying to lose weight, gain weight, stay about the same, or are you 
+not trying to do anything about your weight?
+ 
+    3552       1 Lose weight
+     207       2 Gain weight
+    1832       3 Stay about the same
+    1958       4 Not trying to do anything
+  -------
+    7549
+ 
+Refusal(-1)            3
+Don't Know(-2)         3
+TOTAL =========>    7555   VALID SKIP(-4)      10     NON-INTERVIEW(-5)    5121
+ 
+Min:              1        Max:              4        Mean:                2.29
+ 
+Lead In: T30271.00[Default]  T30269.00[0:0]
+Default Next Question: T30273.00
+--------------------------------------------------------------------------------
+T30281.00    [Q11-GENHLTH_7F_1]                             Survey Year: 2010
+  PRIMARY VARIABLE
+
+             TIMES HAVING A SOFT DRINK OR SODA CONTAINED SUGAR IN THE PAST 7 
+             DAYS
+ 
+(In the past seven days, how many times did you...)
+ 
+...Have a soft drink or soda that contained sugar? (Do not include diet soft 
+drinks or sodas, or carbonated water.)
+ 
+ 
+        # TIMES:
+ 
+    3436           0
+    1106           1
+     852           2
+     615           3
+     324           4
+     282           5
+      54           6
+     577           7
+      20           8
+       5           9
+      63          10
+      27          12
+       1          13
+      78          14
+     105          15 TO 999: 15+
+  -------
+    7545
+ 
+Refusal(-1)            0
+Don't Know(-2)        10
+TOTAL =========>    7555   VALID SKIP(-4)      10     NON-INTERVIEW(-5)    5121
+ 
+Min:              0        Max:            100        Mean:                2.18
+ 
+Lead In: T30280.00[Default]
+Default Next Question: T30282.00
+--------------------------------------------------------------------------------
+T30282.00    [Q11-GENHLTH_7F_2]                             Survey Year: 2010
+  PRIMARY VARIABLE
+
+             TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS
+ 
+(INTERVIEWER: ENTER "PER DAY" OR "PER WEEK".)
+ 
+    1348       1 Per day
+    6195       2 Per week
+  -------
+    7543
+ 
+Refusal(-1)            1
+Don't Know(-2)        11
+TOTAL =========>    7555   VALID SKIP(-4)      10     NON-INTERVIEW(-5)    5121
+ 
+Min:              1        Max:              2        Mean:                1.82
+ 
+Lead In: T30281.00[Default]
+Default Next Question: T30283.00
+--------------------------------------------------------------------------------
+T31077.00    [FAMSIZE]                                      Survey Year: 2010
+  PRIMARY VARIABLE
+
+             FAMILY SIZE
+ 
+COMMENT: Family Size
+ 
+    1723           1
+    2017           2
+    1562           3
+    1365           4
+     580           5
+     206           6
+      69           7
+      22           8
+      13           9
+       8          10 TO 999: 10+
+  -------
+    7565
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7565   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5121
+ 
+Min:              1        Max:             12        Mean:                2.76
+ 
+Lead In: T31076.00[Default]
+Default Next Question: T31078.00
+--------------------------------------------------------------------------------
+T31078.00    [TNFI_TRUNC]                                   Survey Year: 2010
+  PRIMARY VARIABLE
+
+             TOTAL NET FAMILY INCOME IN PAST CALENDAR YEAR *KEY* (TRUNCATED)
+ 
+COMMENT: Total Net Family Income in 2009
+ 
+NOTE: FOR VARIABLE CREATION, SEE APPENDIX 2: TOTAL NET FAMILY INCOME TRUNCATED 
+VALUES ARE EQUAL TO THE AVERAGE VALUE OF THE TOP 2% OF RESPONDENTS WHO ARE U.S. 
+RESIDENTS.  IF THE NUMBER OF TRUNCATED VALUES EXCEEDS THAT WHICH WOULD HAVE BEEN
+TRUNCATED AT THE TRADITIONAL TRUNCATION LEVEL OF 100,001 FOR THIS ITEM, VALUES 
+OVER THAT TRADITIONAL TRUNCATION LEVEL ARE AVERAGED.  OVERSEAS RESPONDENTS WHOSE
+DOLLAR INCOME COULD NOT BE DETERMINED ARE CODED -3.
+ 
+ACTUAL DOLLARS
+ 
+     195           0
+      45           1 TO 999
+      41        1000 TO 1999
+      62        2000 TO 2999
+      37        3000 TO 3999
+      29        4000 TO 4999
+      34        5000 TO 5999
+      32        6000 TO 6999
+      49        7000 TO 7999
+      86        8000 TO 8999
+      55        9000 TO 9999
+     321       10000 TO 14999
+     276       15000 TO 19999
+     324       20000 TO 24999
+    1361       25000 TO 49999
+    3452       50000 TO 99999999: 50000+
+  -------
+    6399
+ 
+Refusal(-1)          236
+Don't Know(-2)       929
+Invalid Skip(-3)       1
+TOTAL =========>    7565   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5121
+ 
+Min:              0        Max:         440692        Mean:            72551.23
+ 
+Lead In: T31077.00[Default]
+Default Next Question: T31080.00
+--------------------------------------------------------------------------------
+T31087.00    [AGEATINT]                                     Survey Year: 2010
+  PRIMARY VARIABLE
+
+             AGE OF R AT INTERVIEW DATE
+ 
+COMMENT: Age at interview date
+ 
+     652          45
+    1058          46
+    1080          47
+    1034          48
+    1071          49
+     907          50
+     794          51
+     816          52
+     153          53
+  -------
+    7565
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7565   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5121
+ 
+Min:             45        Max:             53        Mean:               48.55
+ 
+Lead In: T31086.00[Default]
+Default Next Question: T31087.01
+--------------------------------------------------------------------------------
+T31102.00    [SMSARES]                                      Survey Year: 2010
+  PRIMARY VARIABLE
+
+             IS R'S CURRENT RESIDENCE IN SMSA?
+ 
+COMMENT: R's residence in SMSA?
+ 
+NOTE: SEE APPENDIX 6: URBAN-RURAL AND SMSA-CENTRAL CITY VARIABLES
+ 
+     524           1: NOT IN SMSA
+    4129           2: SMSA, NOT CENTRAL CITY
+    2491           3: SMSA, IN CENTRAL CITY
+     339           4: SMSA, CENTRAL CITY NOT KNOWN
+  -------
+    7483
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)      25
+TOTAL =========>    7508   VALID SKIP(-4)      57     NON-INTERVIEW(-5)    5121
+ 
+Min:              1        Max:              4        Mean:                2.35
+ 
+Lead In: T31101.00[Default]
+Default Next Question: T31103.00
+--------------------------------------------------------------------------------
+T31158.00    [NUMCH10]                                      Survey Year: 2010
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    3554           0
+    1782           1
+    1526           2
+     512           3
+     146           4
+      32           5
+      11           6
+       2           7
+  -------
+    7565
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7565   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5121
+ 
+Min:              0        Max:              7        Mean:                 .95
+ 
+Lead In: T31157.00[Default]
+Default Next Question: T31159.00
+--------------------------------------------------------------------------------
+T33087.00    [OCCALL-EMP.01]                                Survey Year: 2012
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #01
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER (UPDATED 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     685          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+     269         500 TO 950: Management Related Occupations
+     126        1000 TO 1240: Mathematical and Computer Scientists
+      90        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+      15        1600 TO 1760: Physical Scientists
+      10        1800 TO 1860: Social Scientists and Related Workers
+      14        1900 TO 1960: Life, Physical and Social Science Technicians
+     122        2000 TO 2060: Counselors, Sociala and Religious Workers
+      47        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+     281        2200 TO 2340: Teachers
+      88        2400 TO 2550: Education, Training and Library Workers
+      55        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      39        2800 TO 2960: Media and Communications Workers
+     159        3000 TO 3260: Health Diagnosing and Treating Practitioners
+     274        3300 TO 3650: Health Care Technical and Support Occupations
+     156        3700 TO 3950: Protective Service Occupations
+     227        4000 TO 4160: Food Preparation and Serving Related Occupations
+     304        4200 TO 4250: Cleaning and Building Service Occupations
+      21        4300 TO 4430: Entertainment Attendants and Related Workers
+       0        4460: Funeral Related Occupations
+     187        4500 TO 4650: Personal Care and Service Workers
+     431        4700 TO 4960: Sales and Related Workers
+     859        5000 TO 5930: Office and Administrative Support Workers
+      31        6000 TO 6130: Farming, Fishing and Forestry Occupations
+     321        6200 TO 6940: Construction Trade and Extraction Workers
+     252        7000 TO 7620: Installation, Maintenance and Repairs Workers
+     113        7700 TO 7750: Production and Operating Workers
+      16        7800 TO 7850: Food Preparation Occupations
+     302        7900 TO 8960: Setters, Operators and Tenders
+     442        9000 TO 9750: Transportation and Material Moving Workers
+       0        9800 TO 9830: Military Specific Occupations
+      13        9840: Armed Forces
+       0        9950: Not in Labor Force (ACS Code)
+       5        9990: Uncodeable
+  -------
+    5954
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    5954   VALID SKIP(-4)    1346     NON-INTERVIEW(-5)    5386
+ 
+Min:             10        Max:           9990        Mean:             4373.12
+ 
+Lead In: T33082.00[Default]
+Default Next Question: T33092.00
+--------------------------------------------------------------------------------
+T33088.00    [OCCALL-EMP.02]                                Survey Year: 2012
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #02
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER (UPDATED 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     177          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      57         500 TO 950: Management Related Occupations
+      25        1000 TO 1240: Mathematical and Computer Scientists
+      14        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       3        1600 TO 1760: Physical Scientists
+       3        1800 TO 1860: Social Scientists and Related Workers
+       0        1900 TO 1960: Life, Physical and Social Science Technicians
+      40        2000 TO 2060: Counselors, Sociala and Religious Workers
+       9        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      74        2200 TO 2340: Teachers
+      11        2400 TO 2550: Education, Training and Library Workers
+      46        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       8        2800 TO 2960: Media and Communications Workers
+      45        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      84        3300 TO 3650: Health Care Technical and Support Occupations
+      40        3700 TO 3950: Protective Service Occupations
+      70        4000 TO 4160: Food Preparation and Serving Related Occupations
+     112        4200 TO 4250: Cleaning and Building Service Occupations
+       9        4300 TO 4430: Entertainment Attendants and Related Workers
+       1        4460: Funeral Related Occupations
+      65        4500 TO 4650: Personal Care and Service Workers
+     164        4700 TO 4960: Sales and Related Workers
+     190        5000 TO 5930: Office and Administrative Support Workers
+      10        6000 TO 6130: Farming, Fishing and Forestry Occupations
+     102        6200 TO 6940: Construction Trade and Extraction Workers
+      60        7000 TO 7620: Installation, Maintenance and Repairs Workers
+      13        7700 TO 7750: Production and Operating Workers
+       3        7800 TO 7850: Food Preparation Occupations
+      52        7900 TO 8960: Setters, Operators and Tenders
+     124        9000 TO 9750: Transportation and Material Moving Workers
+       0        9800 TO 9830: Military Specific Occupations
+       3        9840: Armed Forces
+       0        9950: Not in Labor Force (ACS Code)
+       6        9990: Uncodeable
+  -------
+    1620
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    1620   VALID SKIP(-4)    5680     NON-INTERVIEW(-5)    5386
+ 
+Min:             10        Max:           9990        Mean:             4351.92
+ 
+Lead In: T33083.00[Default]
+Default Next Question: T33093.00
+--------------------------------------------------------------------------------
+T33089.00    [OCCALL-EMP.03]                                Survey Year: 2012
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #03
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER (UPDATED 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+      35          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      19         500 TO 950: Management Related Occupations
+       7        1000 TO 1240: Mathematical and Computer Scientists
+       1        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       0        1600 TO 1760: Physical Scientists
+       0        1800 TO 1860: Social Scientists and Related Workers
+       0        1900 TO 1960: Life, Physical and Social Science Technicians
+       9        2000 TO 2060: Counselors, Sociala and Religious Workers
+       0        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      26        2200 TO 2340: Teachers
+       0        2400 TO 2550: Education, Training and Library Workers
+       8        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       3        2800 TO 2960: Media and Communications Workers
+      13        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      29        3300 TO 3650: Health Care Technical and Support Occupations
+       9        3700 TO 3950: Protective Service Occupations
+      16        4000 TO 4160: Food Preparation and Serving Related Occupations
+      19        4200 TO 4250: Cleaning and Building Service Occupations
+       1        4300 TO 4430: Entertainment Attendants and Related Workers
+       0        4460: Funeral Related Occupations
+      14        4500 TO 4650: Personal Care and Service Workers
+      42        4700 TO 4960: Sales and Related Workers
+      49        5000 TO 5930: Office and Administrative Support Workers
+       4        6000 TO 6130: Farming, Fishing and Forestry Occupations
+      15        6200 TO 6940: Construction Trade and Extraction Workers
+      11        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       3        7700 TO 7750: Production and Operating Workers
+       1        7800 TO 7850: Food Preparation Occupations
+      14        7900 TO 8960: Setters, Operators and Tenders
+      26        9000 TO 9750: Transportation and Material Moving Workers
+       0        9800 TO 9830: Military Specific Occupations
+       0        9840: Armed Forces
+       0        9950: Not in Labor Force (ACS Code)
+       2        9990: Uncodeable
+  -------
+     376
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>     376   VALID SKIP(-4)    6924     NON-INTERVIEW(-5)    5386
+ 
+Min:             10        Max:           9990        Mean:             4277.95
+ 
+Lead In: T33084.00[Default]
+Default Next Question: T33094.00
+--------------------------------------------------------------------------------
+T33090.00    [OCCALL-EMP.04]                                Survey Year: 2012
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #04
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER (UPDATED 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       9          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       4         500 TO 950: Management Related Occupations
+       2        1000 TO 1240: Mathematical and Computer Scientists
+       0        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       0        1600 TO 1760: Physical Scientists
+       0        1800 TO 1860: Social Scientists and Related Workers
+       0        1900 TO 1960: Life, Physical and Social Science Technicians
+       0        2000 TO 2060: Counselors, Sociala and Religious Workers
+       0        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+       6        2200 TO 2340: Teachers
+       1        2400 TO 2550: Education, Training and Library Workers
+       1        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       0        2800 TO 2960: Media and Communications Workers
+       5        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       5        3300 TO 3650: Health Care Technical and Support Occupations
+       1        3700 TO 3950: Protective Service Occupations
+       3        4000 TO 4160: Food Preparation and Serving Related Occupations
+       2        4200 TO 4250: Cleaning and Building Service Occupations
+       0        4300 TO 4430: Entertainment Attendants and Related Workers
+       0        4460: Funeral Related Occupations
+       3        4500 TO 4650: Personal Care and Service Workers
+      12        4700 TO 4960: Sales and Related Workers
+      17        5000 TO 5930: Office and Administrative Support Workers
+       1        6000 TO 6130: Farming, Fishing and Forestry Occupations
+       3        6200 TO 6940: Construction Trade and Extraction Workers
+       2        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       0        7700 TO 7750: Production and Operating Workers
+       0        7800 TO 7850: Food Preparation Occupations
+       5        7900 TO 8960: Setters, Operators and Tenders
+      13        9000 TO 9750: Transportation and Material Moving Workers
+       0        9800 TO 9830: Military Specific Occupations
+       0        9840: Armed Forces
+       0        9950: Not in Labor Force (ACS Code)
+       2        9990: Uncodeable
+  -------
+      97
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      97   VALID SKIP(-4)    7203     NON-INTERVIEW(-5)    5386
+ 
+Min:             10        Max:           9990        Mean:             4822.37
+ 
+Lead In: T33085.00[Default]
+Default Next Question: T33095.00
+--------------------------------------------------------------------------------
+T33091.00    [OCCALL-EMP.05]                                Survey Year: 2012
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #05
+ 
+UNIVERSE: R is employed
+ 
+COMMENT: 2000 CENSUS CODE FOR OCCUPATION - EMPLOYER (UPDATED 2003)
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       3          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       1         500 TO 950: Management Related Occupations
+       2        1000 TO 1240: Mathematical and Computer Scientists
+       0        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       0        1600 TO 1760: Physical Scientists
+       0        1800 TO 1860: Social Scientists and Related Workers
+       0        1900 TO 1960: Life, Physical and Social Science Technicians
+       1        2000 TO 2060: Counselors, Sociala and Religious Workers
+       0        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+       1        2200 TO 2340: Teachers
+       1        2400 TO 2550: Education, Training and Library Workers
+       0        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       0        2800 TO 2960: Media and Communications Workers
+       1        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       1        3300 TO 3650: Health Care Technical and Support Occupations
+       0        3700 TO 3950: Protective Service Occupations
+       0        4000 TO 4160: Food Preparation and Serving Related Occupations
+       0        4200 TO 4250: Cleaning and Building Service Occupations
+       0        4300 TO 4430: Entertainment Attendants and Related Workers
+       0        4460: Funeral Related Occupations
+       0        4500 TO 4650: Personal Care and Service Workers
+       2        4700 TO 4960: Sales and Related Workers
+       7        5000 TO 5930: Office and Administrative Support Workers
+       1        6000 TO 6130: Farming, Fishing and Forestry Occupations
+       1        6200 TO 6940: Construction Trade and Extraction Workers
+       0        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       0        7700 TO 7750: Production and Operating Workers
+       0        7800 TO 7850: Food Preparation Occupations
+       0        7900 TO 8960: Setters, Operators and Tenders
+       3        9000 TO 9750: Transportation and Material Moving Workers
+       0        9800 TO 9830: Military Specific Occupations
+       0        9840: Armed Forces
+       0        9950: Not in Labor Force (ACS Code)
+       0        9990: Uncodeable
+  -------
+      25
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      25   VALID SKIP(-4)    7275     NON-INTERVIEW(-5)    5386
+ 
+Min:            140        Max:           9620        Mean:              4199.2
+ 
+Lead In: T33086.00[Default]
+Default Next Question: T33096.00
+--------------------------------------------------------------------------------
+T39580.00    [Q11-GENHLTH_6A]                               Survey Year: 2012
+  PRIMARY VARIABLE
+
+             R CURRENTLY TRYING TO LOSE OR GAIN WEIGHT?
+ 
+Are you now trying to lose weight, gain weight, stay about the same, or are you 
+not trying to do anything about your weight?
+ 
+    3286       1 Lose weight
+     201       2 Gain weight
+    1894       3 Stay about the same
+    1908       4 Not trying to do anything
+  -------
+    7289
+ 
+Refusal(-1)            5
+Don't Know(-2)         1
+TOTAL =========>    7295   VALID SKIP(-4)       5     NON-INTERVIEW(-5)    5386
+ 
+Min:              1        Max:              4        Mean:                2.33
+ 
+Lead In: T39579.00[Default]  T39577.00[0:0]
+Default Next Question: T39581.00
+--------------------------------------------------------------------------------
+T39589.00    [Q11-GENHLTH_7F_1]                             Survey Year: 2012
+  PRIMARY VARIABLE
+
+             TIMES HAVING A SOFT DRINK OR SODA CONTAINED SUGAR IN THE PAST 7 
+             DAYS
+ 
+(In the past seven days, how many times did you...)
+ 
+...Have a soft drink or soda that contained sugar? (Do not include diet soft 
+drinks or sodas, or carbonated water.)
+ 
+ 
+        # TIMES:
+ 
+    3419           0
+    1099           1
+     822           2
+     575           3
+     315           4
+     233           5
+      67           6
+     492           7
+      19           8
+       6           9
+      64          10
+       1          11
+       9          12
+       3          13
+      71          14
+      86          15 TO 999: 15+
+  -------
+    7281
+ 
+Refusal(-1)            2
+Don't Know(-2)        12
+TOTAL =========>    7295   VALID SKIP(-4)       5     NON-INTERVIEW(-5)    5386
+ 
+Min:              0        Max:            100        Mean:                2.06
+ 
+Lead In: T39588.00[Default]
+Default Next Question: T39590.00
+--------------------------------------------------------------------------------
+T39590.00    [Q11-GENHLTH_7F_2]                             Survey Year: 2012
+  PRIMARY VARIABLE
+
+             TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS
+ 
+(INTERVIEWER: ENTER "PER DAY" OR "PER WEEK".)
+ 
+    1125       1 Per day
+    6163       2 Per week
+  -------
+    7288
+ 
+Refusal(-1)            2
+Don't Know(-2)         5
+TOTAL =========>    7295   VALID SKIP(-4)       5     NON-INTERVIEW(-5)    5386
+ 
+Min:              1        Max:              2        Mean:                1.85
+ 
+Lead In: T39589.00[Default]
+Default Next Question: T39591.00
+--------------------------------------------------------------------------------
+T41122.00    [FAMSIZE]                                      Survey Year: 2012
+  PRIMARY VARIABLE
+
+             FAMILY SIZE
+ 
+COMMENT: Family Size
+ 
+       0           0
+    1756           1
+    2219           2
+    1540           3
+    1093           4
+     462           5
+     143           6
+      51           7
+      19           8
+       7           9
+      10          10 TO 999: 10+
+  -------
+    7300
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7300   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5386
+ 
+Min:              1        Max:             16        Mean:                2.61
+ 
+Lead In: T41121.00[Default]
+Default Next Question: T41123.00
+--------------------------------------------------------------------------------
+T41123.00    [TNFI_TRUNC]                                   Survey Year: 2012
+  PRIMARY VARIABLE
+
+             TOTAL NET FAMILY INCOME IN PAST CALENDAR YEAR *KEY* (TRUNCATED)
+ 
+COMMENT: Total Net Family Income in 2011
+ 
+NOTE: FOR VARIABLE CREATION, SEE APPENDIX 2: TOTAL NET FAMILY INCOME TRUNCATED 
+VALUES ARE EQUAL TO THE AVERAGE VALUE OF THE TOP 2% OF RESPONDENTS WHO ARE U.S. 
+RESIDENTS.  IF THE NUMBER OF TRUNCATED VALUES EXCEEDS THAT WHICH WOULD HAVE BEEN
+TRUNCATED AT THE TRADITIONAL TRUNCATION LEVEL OF 100,001 FOR THIS ITEM, VALUES 
+OVER THAT TRADITIONAL TRUNCATION LEVEL ARE AVERAGED.  OVERSEAS RESPONDENTS WHOSE
+DOLLAR INCOME COULD NOT BE DETERMINED ARE CODED -3.
+ 
+ACTUAL DOLLARS
+ 
+     200           0
+      35           1 TO 999
+      43        1000 TO 1999
+      81        2000 TO 2999
+      30        3000 TO 3999
+      28        4000 TO 4999
+      34        5000 TO 5999
+      23        6000 TO 6999
+      42        7000 TO 7999
+      81        8000 TO 8999
+      77        9000 TO 9999
+     353       10000 TO 14999
+     282       15000 TO 19999
+     301       20000 TO 24999
+    1290       25000 TO 49999
+    3406       50000 TO 99999999: 50000+
+  -------
+    6306
+ 
+Refusal(-1)          215
+Don't Know(-2)       779
+TOTAL =========>    7300   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5386
+ 
+Min:              0        Max:         497763        Mean:            75703.09
+ 
+Lead In: T41122.00[Default]
+Default Next Question: T41125.00
+--------------------------------------------------------------------------------
+T41132.00    [AGEATINT]                                     Survey Year: 2012
+  PRIMARY VARIABLE
+
+             AGE OF R AT INTERVIEW DATE
+ 
+COMMENT: Age at interview date
+ 
+       0          40
+       0          41
+       0          42
+       0          43
+       0          44
+       0          45
+       0          46
+      57          47
+     845          48
+    1016          49
+    1028          50
+    1048          51
+     975          52
+     825          53
+     780          54
+     668          55
+      58          56
+  -------
+    7300
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7300   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5386
+ 
+Min:             47        Max:             56        Mean:               51.29
+ 
+Lead In: T41131.00[Default]
+Default Next Question: T41132.01
+--------------------------------------------------------------------------------
+T41147.00    [SMSARES]                                      Survey Year: 2012
+  PRIMARY VARIABLE
+
+             IS R'S CURRENT RESIDENCE IN SMSA?
+ 
+COMMENT: R's residence in SMSA?
+ 
+NOTE: SEE APPENDIX 6: URBAN-RURAL AND SMSA-CENTRAL CITY VARIABLES
+ 
+     527           1: NOT IN SMSA
+    4083           2: SMSA, NOT CENTRAL CITY
+    2542           3: SMSA, IN CENTRAL CITY
+      88           4: SMSA, CENTRAL CITY NOT KNOWN
+  -------
+    7240
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7240   VALID SKIP(-4)      60     NON-INTERVIEW(-5)    5386
+ 
+Min:              1        Max:              4        Mean:                 2.3
+ 
+Lead In: T41146.00[Default]
+Default Next Question: T41148.00
+--------------------------------------------------------------------------------
+T41203.00    [NUMCH12]                                      Survey Year: 2012
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    3846           0
+    1768           1
+    1203           2
+     378           3
+      85           4
+      12           5
+       7           6
+       0           7
+       1           8
+       0           9
+       0          10 TO 999: 10+
+  -------
+    7300
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7300   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5386
+ 
+Min:              0        Max:              8        Mean:                 .79
+ 
+Lead In: T41202.00[Default]
+Default Next Question: T41204.00
+--------------------------------------------------------------------------------
+T42828.00    [OCCALL-EMP.01]                                Survey Year: 2014
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #01
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     680          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+     263         500 TO 950: Management Related Occupations
+     108        1000 TO 1240: Mathematical and Computer Scientists
+      83        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+      18        1600 TO 1760: Physical Scientists
+       9        1800 TO 1860: Social Scientists and Related Workers
+      15        1900 TO 1960: Life, Physical and Social Science Technicians
+     130        2000 TO 2060: Counselors, Sociala and Religious Workers
+      43        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+     243        2200 TO 2340: Teachers
+      86        2400 TO 2550: Education, Training and Library Workers
+      58        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      42        2800 TO 2960: Media and Communications Workers
+     148        3000 TO 3260: Health Diagnosing and Treating Practitioners
+     256        3300 TO 3650: Health Care Technical and Support Occupations
+     140        3700 TO 3950: Protective Service Occupations
+     217        4000 TO 4160: Food Preparation and Serving Related Occupations
+     270        4200 TO 4250: Cleaning and Building Service Occupations
+      18        4300 TO 4430: Entertainment Attendants and Related Workers
+     192        4500 TO 4650: Personal Care and Service Workers
+     396        4700 TO 4960: Sales and Related Workers
+     772        5000 TO 5930: Office and Administrative Support Workers
+      28        6000 TO 6130: Farming, Fishing and Forestry Occupations
+     288        6200 TO 6940: Construction Trade and Extraction Workers
+     236        7000 TO 7620: Installation, Maintenance and Repairs Workers
+      84        7700 TO 7750: Production and Operating Workers
+      15        7800 TO 7850: Food Preparation Occupations
+     262        7900 TO 8960: Setters, Operators and Tenders
+     417        9000 TO 9750: Transportation and Material Moving Workers
+       9        9840: Armed Forces
+       1        9990: Uncodeable
+  -------
+    5527
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    5527   VALID SKIP(-4)    1543     NON-INTERVIEW(-5)    5616
+ 
+Min:             10        Max:           9990        Mean:             4296.09
+ 
+Lead In: T42823.00[Default]
+Default Next Question: T42833.00
+--------------------------------------------------------------------------------
+T42829.00    [OCCALL-EMP.02]                                Survey Year: 2014
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #02
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     147          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      52         500 TO 950: Management Related Occupations
+      21        1000 TO 1240: Mathematical and Computer Scientists
+       6        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       7        1600 TO 1760: Physical Scientists
+       2        1800 TO 1860: Social Scientists and Related Workers
+       1        1900 TO 1960: Life, Physical and Social Science Technicians
+      37        2000 TO 2060: Counselors, Sociala and Religious Workers
+      10        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      62        2200 TO 2340: Teachers
+       7        2400 TO 2550: Education, Training and Library Workers
+      35        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      10        2800 TO 2960: Media and Communications Workers
+      37        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      66        3300 TO 3650: Health Care Technical and Support Occupations
+      31        3700 TO 3950: Protective Service Occupations
+      64        4000 TO 4160: Food Preparation and Serving Related Occupations
+      71        4200 TO 4250: Cleaning and Building Service Occupations
+       8        4300 TO 4430: Entertainment Attendants and Related Workers
+      47        4500 TO 4650: Personal Care and Service Workers
+     129        4700 TO 4960: Sales and Related Workers
+     152        5000 TO 5930: Office and Administrative Support Workers
+       7        6000 TO 6130: Farming, Fishing and Forestry Occupations
+      67        6200 TO 6940: Construction Trade and Extraction Workers
+      50        7000 TO 7620: Installation, Maintenance and Repairs Workers
+      13        7700 TO 7750: Production and Operating Workers
+       2        7800 TO 7850: Food Preparation Occupations
+      45        7900 TO 8960: Setters, Operators and Tenders
+      89        9000 TO 9750: Transportation and Material Moving Workers
+       2        9840: Armed Forces
+       1        9990: Uncodeable
+  -------
+    1278
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    1278   VALID SKIP(-4)    5792     NON-INTERVIEW(-5)    5616
+ 
+Min:             10        Max:           9990        Mean:             4235.95
+ 
+Lead In: T42824.00[Default]
+Default Next Question: T42834.00
+--------------------------------------------------------------------------------
+T42830.00    [OCCALL-EMP.03]                                Survey Year: 2014
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #03
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+      31          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      18         500 TO 950: Management Related Occupations
+       4        1000 TO 1240: Mathematical and Computer Scientists
+       7        2000 TO 2060: Counselors, Sociala and Religious Workers
+      14        2200 TO 2340: Teachers
+       7        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       2        2800 TO 2960: Media and Communications Workers
+      10        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      14        3300 TO 3650: Health Care Technical and Support Occupations
+      11        3700 TO 3950: Protective Service Occupations
+       8        4000 TO 4160: Food Preparation and Serving Related Occupations
+       9        4200 TO 4250: Cleaning and Building Service Occupations
+      13        4500 TO 4650: Personal Care and Service Workers
+      28        4700 TO 4960: Sales and Related Workers
+      34        5000 TO 5930: Office and Administrative Support Workers
+       1        6000 TO 6130: Farming, Fishing and Forestry Occupations
+      11        6200 TO 6940: Construction Trade and Extraction Workers
+       3        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       2        7700 TO 7750: Production and Operating Workers
+       2        7800 TO 7850: Food Preparation Occupations
+       9        7900 TO 8960: Setters, Operators and Tenders
+      25        9000 TO 9750: Transportation and Material Moving Workers
+       1        9990: Uncodeable
+  -------
+     264
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>     264   VALID SKIP(-4)    6806     NON-INTERVIEW(-5)    5616
+ 
+Min:             10        Max:           9990        Mean:             4222.99
+ 
+Lead In: T42825.00[Default]
+Default Next Question: T42835.00
+--------------------------------------------------------------------------------
+T42831.00    [OCCALL-EMP.04]                                Survey Year: 2014
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #04
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       4          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       2         500 TO 950: Management Related Occupations
+       3        1000 TO 1240: Mathematical and Computer Scientists
+       2        2000 TO 2060: Counselors, Sociala and Religious Workers
+       1        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+       3        2200 TO 2340: Teachers
+       2        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       1        3300 TO 3650: Health Care Technical and Support Occupations
+       1        3700 TO 3950: Protective Service Occupations
+       4        4000 TO 4160: Food Preparation and Serving Related Occupations
+       1        4200 TO 4250: Cleaning and Building Service Occupations
+       5        4700 TO 4960: Sales and Related Workers
+       8        5000 TO 5930: Office and Administrative Support Workers
+       1        6000 TO 6130: Farming, Fishing and Forestry Occupations
+       5        6200 TO 6940: Construction Trade and Extraction Workers
+       1        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       1        7700 TO 7750: Production and Operating Workers
+       1        7800 TO 7850: Food Preparation Occupations
+       7        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      53
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      53   VALID SKIP(-4)    7017     NON-INTERVIEW(-5)    5616
+ 
+Min:             50        Max:           9620        Mean:              4616.6
+ 
+Lead In: T42826.00[Default]
+Default Next Question: T42836.00
+--------------------------------------------------------------------------------
+T42832.00    [OCCALL-EMP.05]                                Survey Year: 2014
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #05
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       1          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       1        1000 TO 1240: Mathematical and Computer Scientists
+       2        2200 TO 2340: Teachers
+       1        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       1        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       2        3300 TO 3650: Health Care Technical and Support Occupations
+       1        3700 TO 3950: Protective Service Occupations
+       4        4700 TO 4960: Sales and Related Workers
+       1        5000 TO 5930: Office and Administrative Support Workers
+       1        6200 TO 6940: Construction Trade and Extraction Workers
+       2        7700 TO 7750: Production and Operating Workers
+       4        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      21
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      21   VALID SKIP(-4)    7049     NON-INTERVIEW(-5)    5616
+ 
+Min:             10        Max:           9360        Mean:             5039.05
+ 
+Lead In: T42827.00[Default]
+Default Next Question: T42837.00
+--------------------------------------------------------------------------------
+T48957.00    [Q11-GENHLTH_6A]                               Survey Year: 2014
+  PRIMARY VARIABLE
+
+             R CURRENTLY TRYING TO LOSE OR GAIN WEIGHT?
+ 
+Are you now trying to lose weight, gain weight, stay about the same, or are you 
+not trying to do anything about your weight?
+ 
+    3218       1 Lose weight
+     178       2 Gain weight
+    1789       3 Stay about the same
+    1872       4 Not trying to do anything
+  -------
+    7057
+ 
+Refusal(-1)            7
+Don't Know(-2)         2
+TOTAL =========>    7066   VALID SKIP(-4)       4     NON-INTERVIEW(-5)    5616
+ 
+Min:              1        Max:              4        Mean:                2.33
+ 
+Lead In: T48956.00[Default]  T48954.00[0:0]
+Default Next Question: T48958.00
+--------------------------------------------------------------------------------
+T48966.00    [Q11-GENHLTH_7F_1]                             Survey Year: 2014
+  PRIMARY VARIABLE
+
+             TIMES HAVING A SOFT DRINK OR SODA CONTAINED SUGAR IN THE PAST 7 
+             DAYS
+ 
+(In the past seven days, how many times did you...)
+ 
+...Have a soft drink or soda that contained sugar? (Do not include diet soft 
+drinks or sodas, or carbonated water.)
+ 
+ 
+        # TIMES:
+ 
+    3480           0
+    1061           1
+     836           2
+     543           3
+     275           4
+     203           5
+      56           6
+     375           7
+      22           8
+      11           9
+      49          10
+       1          11
+      17          12
+      59          14
+      64          15 TO 999: 15+
+  -------
+    7052
+ 
+Refusal(-1)            6
+Don't Know(-2)         8
+TOTAL =========>    7066   VALID SKIP(-4)       4     NON-INTERVIEW(-5)    5616
+ 
+Min:              0        Max:            100        Mean:                1.83
+ 
+Lead In: T48965.00[Default]
+Default Next Question: T48967.00
+--------------------------------------------------------------------------------
+T48967.00    [Q11-GENHLTH_7F_2]                             Survey Year: 2014
+  PRIMARY VARIABLE
+
+             TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS
+ 
+(INTERVIEWER: ENTER "PER DAY" OR "PER WEEK".)
+ 
+    1683       1 Per day
+    5370       2 Per week
+  -------
+    7053
+ 
+Refusal(-1)            6
+Don't Know(-2)         7
+TOTAL =========>    7066   VALID SKIP(-4)       4     NON-INTERVIEW(-5)    5616
+ 
+Min:              1        Max:              2        Mean:                1.76
+ 
+Lead In: T48966.00[Default]
+Default Next Question: T48968.00
+--------------------------------------------------------------------------------
+T50225.00    [FAMSIZE]                                      Survey Year: 2014
+  PRIMARY VARIABLE
+
+             FAMILY SIZE
+ 
+COMMENT: Family Size
+ 
+    1894           1
+    2385           2
+    1344           3
+     920           4
+     343           5
+     119           6
+      34           7
+      16           8
+       7           9
+       8          10 TO 999: 10+
+  -------
+    7070
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7070   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5616
+ 
+Min:              1        Max:             15        Mean:                2.45
+ 
+Lead In: T50223.00[Default]
+Default Next Question: T50226.00
+--------------------------------------------------------------------------------
+T50226.00    [TNFI_TRUNC]                                   Survey Year: 2014
+  PRIMARY VARIABLE
+
+             TOTAL NET FAMILY INCOME IN PAST CALENDAR YEAR *KEY* (TRUNCATED)
+ 
+COMMENT: Total Net Family Income in previous calendar year
+ 
+NOTE: FOR VARIABLE CREATION, SEE APPENDIX 2: TOTAL NET FAMILY INCOME TRUNCATED 
+VALUES ARE EQUAL TO THE AVERAGE VALUE OF THE TOP 2% OF RESPONDENTS WHO ARE U.S. 
+RESIDENTS.  IF THE NUMBER OF TRUNCATED VALUES EXCEEDS THAT WHICH WOULD HAVE BEEN
+TRUNCATED AT THE TRADITIONAL TRUNCATION LEVEL OF 100,001 FOR THIS ITEM, VALUES 
+OVER THAT TRADITIONAL TRUNCATION LEVEL ARE AVERAGED.  OVERSEAS RESPONDENTS WHOSE
+DOLLAR INCOME COULD NOT BE DETERMINED ARE CODED -3.
+ 
+ACTUAL DOLLARS
+ 
+     261           0
+      57           1 TO 999
+      49        1000 TO 1999
+      91        2000 TO 2999
+      33        3000 TO 3999
+      29        4000 TO 4999
+      30        5000 TO 5999
+      29        6000 TO 6999
+      38        7000 TO 7999
+      72        8000 TO 8999
+      77        9000 TO 9999
+     396       10000 TO 14999
+     268       15000 TO 19999
+     297       20000 TO 24999
+    1183       25000 TO 49999
+    3238       50000 TO 99999999: 50000+
+  -------
+    6148
+ 
+Refusal(-1)          247
+Don't Know(-2)       674
+Invalid Skip(-3)       1
+TOTAL =========>    7070   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5616
+ 
+Min:              0        Max:         595986        Mean:            77266.42
+ 
+Lead In: T50225.00[Default]
+Default Next Question: T50228.00
+--------------------------------------------------------------------------------
+T50236.00    [AGEATINT]                                     Survey Year: 2014
+  PRIMARY VARIABLE
+
+             AGE OF R AT INTERVIEW DATE
+ 
+COMMENT: Age at interview date
+ 
+       1          49
+     704          50
+    1004          51
+    1006          52
+     975          53
+     976          54
+     837          55
+     756          56
+     746          57
+      65          58
+  -------
+    7070
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7070   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5616
+ 
+Min:             49        Max:             58        Mean:               53.44
+ 
+Lead In: T50235.00[Default]
+Default Next Question: T50237.00
+--------------------------------------------------------------------------------
+T50260.00    [SMSARES]                                      Survey Year: 2014
+  PRIMARY VARIABLE
+
+             IS R'S CURRENT RESIDENCE IN SMSA?
+ 
+COMMENT: R's residence in SMSA?
+ 
+NOTE: SEE APPENDIX 6: URBAN-RURAL AND SMSA-CENTRAL CITY VARIABLES
+ 
+     508           1: NOT IN SMSA
+    3984           2: SMSA, NOT CENTRAL CITY
+    2461           3: SMSA, IN CENTRAL CITY
+      50           4: SMSA, CENTRAL CITY NOT KNOWN
+  -------
+    7003
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)       5
+TOTAL =========>    7008   VALID SKIP(-4)      62     NON-INTERVIEW(-5)    5616
+ 
+Min:              1        Max:              4        Mean:                2.29
+ 
+Lead In: T50259.00[Default]
+Default Next Question: T50261.00
+--------------------------------------------------------------------------------
+T50315.00    [NUMCH14]                                      Survey Year: 2014
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    4100           0
+    1599           1
+     997           2
+     288           3
+      65           4
+      17           5
+       4           6
+  -------
+    7070
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7070   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5616
+ 
+Min:              0        Max:              6        Mean:                 .68
+ 
+Lead In: T50314.00[Default]
+Default Next Question: T50316.00
+--------------------------------------------------------------------------------
+T52569.00    [OCCALL-EMP.01]                                Survey Year: 2016
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #01
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     666          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+     267         500 TO 950: Management Related Occupations
+     110        1000 TO 1240: Mathematical and Computer Scientists
+      85        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+      19        1600 TO 1760: Physical Scientists
+      10        1800 TO 1860: Social Scientists and Related Workers
+      11        1900 TO 1960: Life, Physical and Social Science Technicians
+     113        2000 TO 2060: Counselors, Sociala and Religious Workers
+      48        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+     233        2200 TO 2340: Teachers
+      88        2400 TO 2550: Education, Training and Library Workers
+      67        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      35        2800 TO 2960: Media and Communications Workers
+     134        3000 TO 3260: Health Diagnosing and Treating Practitioners
+     249        3300 TO 3650: Health Care Technical and Support Occupations
+     145        3700 TO 3950: Protective Service Occupations
+     209        4000 TO 4160: Food Preparation and Serving Related Occupations
+     272        4200 TO 4250: Cleaning and Building Service Occupations
+      18        4300 TO 4430: Entertainment Attendants and Related Workers
+     202        4500 TO 4650: Personal Care and Service Workers
+     374        4700 TO 4960: Sales and Related Workers
+     718        5000 TO 5930: Office and Administrative Support Workers
+      21        6000 TO 6130: Farming, Fishing and Forestry Occupations
+     278        6200 TO 6940: Construction Trade and Extraction Workers
+     206        7000 TO 7620: Installation, Maintenance and Repairs Workers
+      84        7700 TO 7750: Production and Operating Workers
+      12        7800 TO 7850: Food Preparation Occupations
+     246        7900 TO 8960: Setters, Operators and Tenders
+     397        9000 TO 9750: Transportation and Material Moving Workers
+       6        9840: Armed Forces
+  -------
+    5323
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    5323   VALID SKIP(-4)    1589     NON-INTERVIEW(-5)    5774
+ 
+Min:             10        Max:           9840        Mean:             4239.46
+ 
+Lead In: T52564.00[Default]
+Default Next Question: T52574.00
+--------------------------------------------------------------------------------
+T52570.00    [OCCALL-EMP.02]                                Survey Year: 2016
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #02
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     145          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      57         500 TO 950: Management Related Occupations
+      17        1000 TO 1240: Mathematical and Computer Scientists
+      12        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       1        1600 TO 1760: Physical Scientists
+       4        1800 TO 1860: Social Scientists and Related Workers
+      31        2000 TO 2060: Counselors, Sociala and Religious Workers
+       6        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      62        2200 TO 2340: Teachers
+      13        2400 TO 2550: Education, Training and Library Workers
+      35        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      17        2800 TO 2960: Media and Communications Workers
+      37        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      64        3300 TO 3650: Health Care Technical and Support Occupations
+      16        3700 TO 3950: Protective Service Occupations
+      55        4000 TO 4160: Food Preparation and Serving Related Occupations
+      72        4200 TO 4250: Cleaning and Building Service Occupations
+       7        4300 TO 4430: Entertainment Attendants and Related Workers
+       2        4460: Funeral Related Occupations
+      53        4500 TO 4650: Personal Care and Service Workers
+     135        4700 TO 4960: Sales and Related Workers
+     140        5000 TO 5930: Office and Administrative Support Workers
+       9        6000 TO 6130: Farming, Fishing and Forestry Occupations
+      70        6200 TO 6940: Construction Trade and Extraction Workers
+      36        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       8        7700 TO 7750: Production and Operating Workers
+       7        7800 TO 7850: Food Preparation Occupations
+      31        7900 TO 8960: Setters, Operators and Tenders
+     102        9000 TO 9750: Transportation and Material Moving Workers
+       1        9990: Uncodeable
+  -------
+    1245
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    1245   VALID SKIP(-4)    5667     NON-INTERVIEW(-5)    5774
+ 
+Min:             10        Max:           9990        Mean:             4201.57
+ 
+Lead In: T52565.00[Default]
+Default Next Question: T52575.00
+--------------------------------------------------------------------------------
+T52571.00    [OCCALL-EMP.03]                                Survey Year: 2016
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #03
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+      32          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      23         500 TO 950: Management Related Occupations
+       4        1000 TO 1240: Mathematical and Computer Scientists
+       3        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       1        1600 TO 1760: Physical Scientists
+       4        2000 TO 2060: Counselors, Sociala and Religious Workers
+       2        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      16        2200 TO 2340: Teachers
+       1        2400 TO 2550: Education, Training and Library Workers
+       6        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       3        2800 TO 2960: Media and Communications Workers
+      10        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      14        3300 TO 3650: Health Care Technical and Support Occupations
+       4        3700 TO 3950: Protective Service Occupations
+      13        4000 TO 4160: Food Preparation and Serving Related Occupations
+      10        4200 TO 4250: Cleaning and Building Service Occupations
+       2        4300 TO 4430: Entertainment Attendants and Related Workers
+      16        4500 TO 4650: Personal Care and Service Workers
+      27        4700 TO 4960: Sales and Related Workers
+      34        5000 TO 5930: Office and Administrative Support Workers
+       1        6000 TO 6130: Farming, Fishing and Forestry Occupations
+      16        6200 TO 6940: Construction Trade and Extraction Workers
+       8        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       5        7700 TO 7750: Production and Operating Workers
+       1        7800 TO 7850: Food Preparation Occupations
+       8        7900 TO 8960: Setters, Operators and Tenders
+      30        9000 TO 9750: Transportation and Material Moving Workers
+       1        9840: Armed Forces
+       1        9990: Uncodeable
+  -------
+     296
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>     296   VALID SKIP(-4)    6616     NON-INTERVIEW(-5)    5774
+ 
+Min:             10        Max:           9990        Mean:                4310
+ 
+Lead In: T52566.00[Default]
+Default Next Question: T52576.00
+--------------------------------------------------------------------------------
+T52572.00    [OCCALL-EMP.04]                                Survey Year: 2016
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #04
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       8          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       8         500 TO 950: Management Related Occupations
+       2        1000 TO 1240: Mathematical and Computer Scientists
+       2        2000 TO 2060: Counselors, Sociala and Religious Workers
+       1        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+       5        2200 TO 2340: Teachers
+       2        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       4        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       7        3300 TO 3650: Health Care Technical and Support Occupations
+       1        3700 TO 3950: Protective Service Occupations
+       2        4000 TO 4160: Food Preparation and Serving Related Occupations
+       2        4200 TO 4250: Cleaning and Building Service Occupations
+       3        4500 TO 4650: Personal Care and Service Workers
+       4        4700 TO 4960: Sales and Related Workers
+      11        5000 TO 5930: Office and Administrative Support Workers
+       5        6200 TO 6940: Construction Trade and Extraction Workers
+       1        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       1        7700 TO 7750: Production and Operating Workers
+       1        7800 TO 7850: Food Preparation Occupations
+       4        7900 TO 8960: Setters, Operators and Tenders
+       6        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      80
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      80   VALID SKIP(-4)    6832     NON-INTERVIEW(-5)    5774
+ 
+Min:            120        Max:           9640        Mean:             4108.25
+ 
+Lead In: T52567.00[Default]
+Default Next Question: T52577.00
+--------------------------------------------------------------------------------
+T52573.00    [OCCALL-EMP.05]                                Survey Year: 2016
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #05
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       2          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       2         500 TO 950: Management Related Occupations
+       1        2000 TO 2060: Counselors, Sociala and Religious Workers
+       1        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+       2        2200 TO 2340: Teachers
+       1        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       1        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       2        3300 TO 3650: Health Care Technical and Support Occupations
+       2        4700 TO 4960: Sales and Related Workers
+       1        5000 TO 5930: Office and Administrative Support Workers
+       1        6200 TO 6940: Construction Trade and Extraction Workers
+       1        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       2        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      19
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      19   VALID SKIP(-4)    6893     NON-INTERVIEW(-5)    5774
+ 
+Min:            150        Max:           9600        Mean:             3748.95
+ 
+Lead In: T52568.00[Default]
+Default Next Question: T52578.00
+--------------------------------------------------------------------------------
+T55997.00    [Q11-GENHLTH_6A]                               Survey Year: 2016
+  PRIMARY VARIABLE
+
+             R CURRENTLY TRYING TO LOSE OR GAIN WEIGHT?
+ 
+Are you now trying to lose weight, gain weight, stay about the same, or are you 
+not trying to do anything about your weight?
+ 
+    2956       1 Lose weight
+     197       2 Gain weight
+    1744       3 Stay about the same
+    2006       4 Not trying to do anything
+  -------
+    6903
+ 
+Refusal(-1)            6
+Don't Know(-2)         1
+TOTAL =========>    6910   VALID SKIP(-4)       2     NON-INTERVIEW(-5)    5774
+ 
+Min:              1        Max:              4        Mean:                2.41
+ 
+Lead In: T55996.00[Default]  T55994.00[0:0]
+Default Next Question: T55998.00
+--------------------------------------------------------------------------------
+T56006.00    [Q11-GENHLTH_7F_1]                             Survey Year: 2016
+  PRIMARY VARIABLE
+
+             TIMES HAVING A SOFT DRINK OR SODA CONTAINED SUGAR IN THE PAST 7 
+             DAYS
+ 
+(In the past seven days, how many times did you...)
+ 
+...Have a soft drink or soda that contained sugar? (Do not include diet soft 
+drinks or sodas, or carbonated water.)
+ 
+ 
+        # TIMES:
+ 
+    3499           0
+    1027           1
+     735           2
+     510           3
+     254           4
+     197           5
+      47           6
+     423           7
+      13           8
+      10           9
+      50          10
+      12          12
+      47          14
+      73          15 TO 999: 15+
+  -------
+    6897
+ 
+Refusal(-1)            5
+Don't Know(-2)         8
+TOTAL =========>    6910   VALID SKIP(-4)       2     NON-INTERVIEW(-5)    5774
+ 
+Min:              0        Max:            100        Mean:                1.84
+ 
+Lead In: T56005.00[Default]
+Default Next Question: T56007.00
+--------------------------------------------------------------------------------
+T56007.00    [Q11-GENHLTH_7F_2]                             Survey Year: 2016
+  PRIMARY VARIABLE
+
+             TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS
+ 
+(INTERVIEWER: ENTER "PER DAY" OR "PER WEEK".)
+ 
+    1328       1 Per day
+    5572       2 Per week
+  -------
+    6900
+ 
+Refusal(-1)            5
+Don't Know(-2)         5
+TOTAL =========>    6910   VALID SKIP(-4)       2     NON-INTERVIEW(-5)    5774
+ 
+Min:              1        Max:              2        Mean:                1.81
+ 
+Lead In: T56006.00[Default]
+Default Next Question: T56008.00
+--------------------------------------------------------------------------------
+T57707.00    [FAMSIZE]                                      Survey Year: 2016
+  PRIMARY VARIABLE
+
+             FAMILY SIZE
+ 
+COMMENT: Family Size
+ 
+    1887           1
+    2519           2
+    1275           3
+     751           4
+     305           5
+     104           6
+      41           7
+      20           8
+       4           9
+       6          10 TO 999: 10+
+  -------
+    6912
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6912   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5774
+ 
+Min:              1        Max:             13        Mean:                2.38
+ 
+Lead In: T57706.00[Default]
+Default Next Question: T57708.00
+--------------------------------------------------------------------------------
+T57708.00    [TNFI_TRUNC]                                   Survey Year: 2016
+  PRIMARY VARIABLE
+
+             TOTAL NET FAMILY INCOME IN PAST CALENDAR YEAR *KEY* (TRUNCATED)
+ 
+COMMENT: Total Net Family Income in previous calendar year
+ 
+NOTE: FOR VARIABLE CREATION, SEE APPENDIX 2: TOTAL NET FAMILY INCOME TRUNCATED 
+VALUES ARE EQUAL TO THE AVERAGE VALUE OF THE TOP 2% OF RESPONDENTS WHO ARE U.S. 
+RESIDENTS.  IF THE NUMBER OF TRUNCATED VALUES EXCEEDS THAT WHICH WOULD HAVE BEEN
+TRUNCATED AT THE TRADITIONAL TRUNCATION LEVEL OF 100,001 FOR THIS ITEM, VALUES 
+OVER THAT TRADITIONAL TRUNCATION LEVEL ARE AVERAGED.  OVERSEAS RESPONDENTS WHOSE
+DOLLAR INCOME COULD NOT BE DETERMINED ARE CODED -3.
+ 
+ACTUAL DOLLARS
+ 
+     210           0
+      42           1 TO 999
+      40        1000 TO 1999
+      60        2000 TO 2999
+      28        3000 TO 3999
+      25        4000 TO 4999
+      26        5000 TO 5999
+      24        6000 TO 6999
+      32        7000 TO 7999
+      66        8000 TO 8999
+      72        9000 TO 9999
+     342       10000 TO 14999
+     256       15000 TO 19999
+     250       20000 TO 24999
+    1173       25000 TO 49999
+    3330       50000 TO 99999999: 50000+
+  -------
+    5976
+ 
+Refusal(-1)          236
+Don't Know(-2)       690
+Invalid Skip(-3)      10
+TOTAL =========>    6912   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5774
+ 
+Min:              0        Max:         922631        Mean:            91078.71
+ 
+Lead In: T57707.00[Default]
+Default Next Question: T57709.00
+--------------------------------------------------------------------------------
+T57715.00    [AGEATINT]                                     Survey Year: 2016
+  PRIMARY VARIABLE
+
+             AGE OF R AT INTERVIEW DATE
+ 
+COMMENT: Age at interview date
+ 
+      13          51
+     720          52
+     957          53
+     991          54
+     961          55
+     964          56
+     773          57
+     762          58
+     690          59
+      81          60
+  -------
+    6912
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6912   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5774
+ 
+Min:             51        Max:             60        Mean:               55.41
+ 
+Lead In: T57714.00[Default]
+Default Next Question: T57716.00
+--------------------------------------------------------------------------------
+T57741.00    [SMSARES]                                      Survey Year: 2016
+  PRIMARY VARIABLE
+
+             IS R'S CURRENT RESIDENCE IN SMSA?
+ 
+COMMENT: R's residence in SMSA?
+ 
+NOTE: SEE APPENDIX 6: URBAN-RURAL AND SMSA-CENTRAL CITY VARIABLES
+ 
+     507           1: NOT IN SMSA
+    3960           2: SMSA, NOT CENTRAL CITY
+    2327           3: SMSA, IN CENTRAL CITY
+      56           4: SMSA, CENTRAL CITY NOT KNOWN
+  -------
+    6850
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6850   VALID SKIP(-4)      62     NON-INTERVIEW(-5)    5774
+ 
+Min:              1        Max:              4        Mean:                2.28
+ 
+Lead In: T57740.00[Default]
+Default Next Question: T57742.00
+--------------------------------------------------------------------------------
+T57797.00    [NUMCH16]                                      Survey Year: 2016
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    4308           0
+    1538           1
+     806           2
+     204           3
+      45           4
+       7           5
+       3           6
+       1           7
+  -------
+    6912
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6912   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5774
+ 
+Min:              0        Max:              7        Mean:                 .58
+ 
+Lead In: T57796.00[Default]
+Default Next Question: T57798.00
+--------------------------------------------------------------------------------
+T84283.00    [OCCALL-EMP.01]                                Survey Year: 2020
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #01
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     607          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+     219         500 TO 950: Management Related Occupations
+     106        1000 TO 1240: Mathematical and Computer Scientists
+      68        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+      17        1600 TO 1760: Physical Scientists
+      12        1800 TO 1860: Social Scientists and Related Workers
+      11        1900 TO 1960: Life, Physical and Social Science Technicians
+     107        2000 TO 2060: Counselors, Sociala and Religious Workers
+      44        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+     221        2200 TO 2340: Teachers
+      82        2400 TO 2550: Education, Training and Library Workers
+      58        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      28        2800 TO 2960: Media and Communications Workers
+     125        3000 TO 3260: Health Diagnosing and Treating Practitioners
+     225        3300 TO 3650: Health Care Technical and Support Occupations
+     100        3700 TO 3950: Protective Service Occupations
+     167        4000 TO 4160: Food Preparation and Serving Related Occupations
+     228        4200 TO 4250: Cleaning and Building Service Occupations
+      18        4300 TO 4430: Entertainment Attendants and Related Workers
+     179        4500 TO 4650: Personal Care and Service Workers
+     321        4700 TO 4960: Sales and Related Workers
+     690        5000 TO 5930: Office and Administrative Support Workers
+      19        6000 TO 6130: Farming, Fishing and Forestry Occupations
+     242        6200 TO 6940: Construction Trade and Extraction Workers
+     174        7000 TO 7620: Installation, Maintenance and Repairs Workers
+      63        7700 TO 7750: Production and Operating Workers
+      11        7800 TO 7850: Food Preparation Occupations
+     189        7900 TO 8960: Setters, Operators and Tenders
+     370        9000 TO 9750: Transportation and Material Moving Workers
+       6        9840: Armed Forces
+      13        9990: Uncodeable
+  -------
+    4720
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    4720   VALID SKIP(-4)    1815     NON-INTERVIEW(-5)    6151
+ 
+Min:             10        Max:           9990        Mean:             4237.03
+ 
+Lead In: T84278.00[Default]
+Default Next Question: T84288.00
+--------------------------------------------------------------------------------
+T84284.00    [OCCALL-EMP.02]                                Survey Year: 2020
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #02
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     122          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      51         500 TO 950: Management Related Occupations
+      14        1000 TO 1240: Mathematical and Computer Scientists
+       7        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       3        1600 TO 1760: Physical Scientists
+       3        1800 TO 1860: Social Scientists and Related Workers
+       1        1900 TO 1960: Life, Physical and Social Science Technicians
+      24        2000 TO 2060: Counselors, Sociala and Religious Workers
+       8        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      35        2200 TO 2340: Teachers
+      10        2400 TO 2550: Education, Training and Library Workers
+      31        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      10        2800 TO 2960: Media and Communications Workers
+      34        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      61        3300 TO 3650: Health Care Technical and Support Occupations
+      25        3700 TO 3950: Protective Service Occupations
+      34        4000 TO 4160: Food Preparation and Serving Related Occupations
+      45        4200 TO 4250: Cleaning and Building Service Occupations
+       8        4300 TO 4430: Entertainment Attendants and Related Workers
+      47        4500 TO 4650: Personal Care and Service Workers
+      99        4700 TO 4960: Sales and Related Workers
+     116        5000 TO 5930: Office and Administrative Support Workers
+       5        6000 TO 6130: Farming, Fishing and Forestry Occupations
+      49        6200 TO 6940: Construction Trade and Extraction Workers
+      27        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       8        7700 TO 7750: Production and Operating Workers
+       3        7800 TO 7850: Food Preparation Occupations
+      36        7900 TO 8960: Setters, Operators and Tenders
+      88        9000 TO 9750: Transportation and Material Moving Workers
+       1        9990: Uncodeable
+  -------
+    1005
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    1005   VALID SKIP(-4)    5530     NON-INTERVIEW(-5)    6151
+ 
+Min:             10        Max:           9990        Mean:             4223.14
+ 
+Lead In: T84279.00[Default]
+Default Next Question: T84289.00
+--------------------------------------------------------------------------------
+T84285.00    [OCCALL-EMP.03]                                Survey Year: 2020
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #03
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+      33          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      14         500 TO 950: Management Related Occupations
+       5        1000 TO 1240: Mathematical and Computer Scientists
+       1        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       1        1600 TO 1760: Physical Scientists
+       6        2000 TO 2060: Counselors, Sociala and Religious Workers
+       1        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      17        2200 TO 2340: Teachers
+       7        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       1        2800 TO 2960: Media and Communications Workers
+       6        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      11        3300 TO 3650: Health Care Technical and Support Occupations
+       4        3700 TO 3950: Protective Service Occupations
+      10        4000 TO 4160: Food Preparation and Serving Related Occupations
+       8        4200 TO 4250: Cleaning and Building Service Occupations
+       1        4300 TO 4430: Entertainment Attendants and Related Workers
+       9        4500 TO 4650: Personal Care and Service Workers
+      16        4700 TO 4960: Sales and Related Workers
+      32        5000 TO 5930: Office and Administrative Support Workers
+       1        6000 TO 6130: Farming, Fishing and Forestry Occupations
+       7        6200 TO 6940: Construction Trade and Extraction Workers
+       5        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       3        7700 TO 7750: Production and Operating Workers
+       8        7900 TO 8960: Setters, Operators and Tenders
+      23        9000 TO 9750: Transportation and Material Moving Workers
+       1        9990: Uncodeable
+  -------
+     231
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>     231   VALID SKIP(-4)    6304     NON-INTERVIEW(-5)    6151
+ 
+Min:             10        Max:           9990        Mean:             4113.51
+ 
+Lead In: T84280.00[Default]
+Default Next Question: T84290.00
+--------------------------------------------------------------------------------
+T84286.00    [OCCALL-EMP.04]                                Survey Year: 2020
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #04
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       5          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       1        1000 TO 1240: Mathematical and Computer Scientists
+       1        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       1        2000 TO 2060: Counselors, Sociala and Religious Workers
+       1        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+       5        2200 TO 2340: Teachers
+       1        2400 TO 2550: Education, Training and Library Workers
+       6        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       3        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       6        3300 TO 3650: Health Care Technical and Support Occupations
+       2        3700 TO 3950: Protective Service Occupations
+       1        4000 TO 4160: Food Preparation and Serving Related Occupations
+       1        4200 TO 4250: Cleaning and Building Service Occupations
+       1        4300 TO 4430: Entertainment Attendants and Related Workers
+       1        4500 TO 4650: Personal Care and Service Workers
+       5        4700 TO 4960: Sales and Related Workers
+       6        5000 TO 5930: Office and Administrative Support Workers
+       1        6000 TO 6130: Farming, Fishing and Forestry Occupations
+       2        6200 TO 6940: Construction Trade and Extraction Workers
+       1        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       4        7900 TO 8960: Setters, Operators and Tenders
+       7        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      62
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      62   VALID SKIP(-4)    6473     NON-INTERVIEW(-5)    6151
+ 
+Min:             10        Max:           9620        Mean:             4437.74
+ 
+Lead In: T84281.00[Default]
+Default Next Question: T84291.00
+--------------------------------------------------------------------------------
+T84287.00    [OCCALL-EMP.05]                                Survey Year: 2020
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #05
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       1          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       2         500 TO 950: Management Related Occupations
+       1        1800 TO 1860: Social Scientists and Related Workers
+       2        2200 TO 2340: Teachers
+       1        2400 TO 2550: Education, Training and Library Workers
+       1        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       1        5000 TO 5930: Office and Administrative Support Workers
+       1        6200 TO 6940: Construction Trade and Extraction Workers
+       1        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       1        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      12
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      12   VALID SKIP(-4)    6523     NON-INTERVIEW(-5)    6151
+ 
+Min:             10        Max:           9130        Mean:             3430.83
+ 
+Lead In: T84282.00[Default]
+Default Next Question: T84292.00
+--------------------------------------------------------------------------------
+T86249.00    [Q11-GENHLTH_6A]                               Survey Year: 2020
+  PRIMARY VARIABLE
+
+             R CURRENTLY TRYING TO LOSE OR GAIN WEIGHT?
+ 
+Are you now trying to lose weight, gain weight, stay about the same, or are you 
+not trying to do anything about your weight?
+ 
+     242       1 Lose weight
+      38       2 Gain weight
+     168       3 Stay about the same
+     181       4 Not trying to do anything
+  -------
+     629
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>     629   VALID SKIP(-4)    5906     NON-INTERVIEW(-5)    6151
+ 
+Min:              1        Max:              4        Mean:                2.46
+ 
+Lead In: T86247.00[0:0]
+Default Next Question: T86250.00
+--------------------------------------------------------------------------------
+T86253.00    [Q11-GENHLTH_7F_1]                             Survey Year: 2020
+  PRIMARY VARIABLE
+
+             TIMES HAVING A SOFT DRINK OR SODA CONTAINED SUGAR IN THE PAST 7 
+             DAYS
+ 
+(In the past seven days, how many times did you...)
+ 
+...Have a soft drink or soda that contained sugar? (Do not include diet soft 
+drinks or sodas, or carbonated water.)
+ 
+NOTE: Time constraints removed variable during middle of round
+ 
+ 
+ 
+        # TIMES:
+ 
+    2216           0
+     617           1
+     460           2
+     308           3
+     149           4
+     122           5
+      37           6
+     226           7
+      10           8
+       2           9
+      27          10
+       8          12
+      26          14
+      39          15 TO 99: 15+
+  -------
+    4247
+ 
+Refusal(-1)            1
+Don't Know(-2)         5
+TOTAL =========>    4253   VALID SKIP(-4)    2282     NON-INTERVIEW(-5)    6151
+ 
+Min:              0        Max:             70        Mean:                1.71
+ 
+Lead In: T86252.00[Default]
+Default Next Question: T86254.00
+--------------------------------------------------------------------------------
+T86254.00    [Q11-GENHLTH_7F_2]                             Survey Year: 2020
+  PRIMARY VARIABLE
+
+             TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS
+ 
+(INTERVIEWER: ENTER "PER DAY" OR "PER WEEK".)
+ 
+NOTE: Time constraints removed variable during middle of round
+ 
+     746       1 Per day
+    3499       2 Per week
+  -------
+    4245
+ 
+Refusal(-1)            1
+Don't Know(-2)         7
+TOTAL =========>    4253   VALID SKIP(-4)    2282     NON-INTERVIEW(-5)    6151
+ 
+Min:              1        Max:              2        Mean:                1.82
+ 
+Lead In: T86253.00[Default]
+Default Next Question: T86255.00
+--------------------------------------------------------------------------------
+T87878.00    [FAMSIZE]                                      Survey Year: 2020
+  PRIMARY VARIABLE
+
+             FAMILY SIZE
+ 
+COMMENT: Family Size
+ 
+    1968           1
+    2730           2
+    1018           3
+     493           4
+     196           5
+      78           6
+      30           7
+      14           8
+       6           9
+       2          10 TO 999: 10+
+  -------
+    6535
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6535   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6151
+ 
+Min:              1        Max:             11        Mean:                2.19
+ 
+Lead In: T87876.00[Default]
+Default Next Question: T87879.00
+--------------------------------------------------------------------------------
+T87879.00    [TNFI_TRUNC]                                   Survey Year: 2020
+  PRIMARY VARIABLE
+
+             TOTAL NET FAMILY INCOME IN PAST CALENDAR YEAR *KEY* (TRUNCATED)
+ 
+COMMENT: Total Net Family Income in previous calendar year
+ 
+NOTE: FOR VARIABLE CREATION, SEE APPENDIX 2: TOTAL NET FAMILY INCOME TRUNCATED 
+VALUES ARE EQUAL TO THE AVERAGE VALUE OF THE TOP 2% OF RESPONDENTS WHO ARE U.S. 
+RESIDENTS.  IF THE NUMBER OF TRUNCATED VALUES EXCEEDS THAT WHICH WOULD HAVE BEEN
+TRUNCATED AT THE TRADITIONAL TRUNCATION LEVEL OF 100,001 FOR THIS ITEM, VALUES 
+OVER THAT TRADITIONAL TRUNCATION LEVEL ARE AVERAGED.  OVERSEAS RESPONDENTS WHOSE
+DOLLAR INCOME COULD NOT BE DETERMINED ARE CODED -3.
+ 
+ACTUAL DOLLARS
+ 
+     110           0
+      25           1 TO 999
+      31        1000 TO 1999
+      39        2000 TO 2999
+      22        3000 TO 3999
+      23        4000 TO 4999
+      26        5000 TO 5999
+      23        6000 TO 6999
+      30        7000 TO 7999
+      32        8000 TO 8999
+      59        9000 TO 9999
+     382       10000 TO 14999
+     235       15000 TO 19999
+     231       20000 TO 24999
+     986       25000 TO 49999
+    3217       50000 TO 99999999: 50000+
+  -------
+    5471
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)    1064
+TOTAL =========>    6535   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6151
+ 
+Min:              0        Max:         803437        Mean:            95196.13
+ 
+Lead In: T87878.00[Default]
+Default Next Question: T87881.00
+--------------------------------------------------------------------------------
+T87886.00    [AGEATINT]                                     Survey Year: 2020
+  PRIMARY VARIABLE
+
+             AGE OF R AT INTERVIEW DATE
+ 
+COMMENT: Age at interview date
+ 
+      30          55
+     751          56
+     908          57
+     935          58
+     942          59
+     867          60
+     720          61
+     690          62
+     643          63
+      49          64
+  -------
+    6535
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6535   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6151
+ 
+Min:             55        Max:             64        Mean:               59.32
+ 
+Lead In: T87885.00[Default]
+Default Next Question: T87887.00
+--------------------------------------------------------------------------------
+T87905.00    [SMSARES]                                      Survey Year: 2020
+  PRIMARY VARIABLE
+
+             IS R'S CURRENT RESIDENCE IN SMSA?
+ 
+COMMENT: R's residence in SMSA?
+ 
+NOTE: SEE APPENDIX 6: URBAN-RURAL AND SMSA-CENTRAL CITY VARIABLES
+ 
+     449           1: NOT IN SMSA
+    3785           2: SMSA, NOT CENTRAL CITY
+    2196           3: SMSA, IN CENTRAL CITY
+      38           4: SMSA, CENTRAL CITY NOT KNOWN
+  -------
+    6468
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)       3
+TOTAL =========>    6471   VALID SKIP(-4)      64     NON-INTERVIEW(-5)    6151
+ 
+Min:              1        Max:              4        Mean:                2.28
+ 
+Lead In: T87904.00[Default]
+Default Next Question: T87906.00
+--------------------------------------------------------------------------------
+T87961.00    [NUMCH20]                                      Survey Year: 2020
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    4629           0
+    1316           1
+     460           2
+     104           3
+      18           4
+       7           5
+       1           7
+  -------
+    6535
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6535   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6151
+ 
+Min:              0        Max:              7        Mean:                 .41
+ 
+Lead In: T87960.00[Default]
+Default Next Question: T87962.00
+--------------------------------------------------------------------------------
+T89824.00    [OCCALL-EMP.01]                                Survey Year: 2022
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #01
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+     563          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+     232         500 TO 950: Management Related Occupations
+      95        1000 TO 1240: Mathematical and Computer Scientists
+      65        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+      12        1600 TO 1760: Physical Scientists
+       8        1800 TO 1860: Social Scientists and Related Workers
+       7        1900 TO 1960: Life, Physical and Social Science Technicians
+     102        2000 TO 2060: Counselors, Sociala and Religious Workers
+      46        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+     184        2200 TO 2340: Teachers
+      71        2400 TO 2550: Education, Training and Library Workers
+      61        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      30        2800 TO 2960: Media and Communications Workers
+     124        3000 TO 3260: Health Diagnosing and Treating Practitioners
+     180        3300 TO 3650: Health Care Technical and Support Occupations
+      92        3700 TO 3950: Protective Service Occupations
+     148        4000 TO 4160: Food Preparation and Serving Related Occupations
+     214        4200 TO 4250: Cleaning and Building Service Occupations
+      19        4300 TO 4430: Entertainment Attendants and Related Workers
+     162        4500 TO 4650: Personal Care and Service Workers
+     325        4700 TO 4960: Sales and Related Workers
+     624        5000 TO 5930: Office and Administrative Support Workers
+      16        6000 TO 6130: Farming, Fishing and Forestry Occupations
+     217        6200 TO 6940: Construction Trade and Extraction Workers
+     156        7000 TO 7620: Installation, Maintenance and Repairs Workers
+      49        7700 TO 7750: Production and Operating Workers
+      10        7800 TO 7850: Food Preparation Occupations
+     172        7900 TO 8960: Setters, Operators and Tenders
+     330        9000 TO 9750: Transportation and Material Moving Workers
+       7        9840: Armed Forces
+       8        9990: Uncodeable
+  -------
+    4329
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    4329   VALID SKIP(-4)    2084     NON-INTERVIEW(-5)    6273
+ 
+Min:             10        Max:           9990        Mean:             4184.22
+ 
+Lead In: T89819.00[Default]
+Default Next Question: T89829.00
+--------------------------------------------------------------------------------
+T89825.00    [OCCALL-EMP.02]                                Survey Year: 2022
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #02
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+      98          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+      40         500 TO 950: Management Related Occupations
+      21        1000 TO 1240: Mathematical and Computer Scientists
+      11        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       2        1600 TO 1760: Physical Scientists
+       3        1800 TO 1860: Social Scientists and Related Workers
+       1        1900 TO 1960: Life, Physical and Social Science Technicians
+      33        2000 TO 2060: Counselors, Sociala and Religious Workers
+      12        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      37        2200 TO 2340: Teachers
+      16        2400 TO 2550: Education, Training and Library Workers
+      23        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+      12        2800 TO 2960: Media and Communications Workers
+      25        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      50        3300 TO 3650: Health Care Technical and Support Occupations
+      24        3700 TO 3950: Protective Service Occupations
+      26        4000 TO 4160: Food Preparation and Serving Related Occupations
+      43        4200 TO 4250: Cleaning and Building Service Occupations
+       2        4300 TO 4430: Entertainment Attendants and Related Workers
+      36        4500 TO 4650: Personal Care and Service Workers
+      81        4700 TO 4960: Sales and Related Workers
+     112        5000 TO 5930: Office and Administrative Support Workers
+       6        6000 TO 6130: Farming, Fishing and Forestry Occupations
+      38        6200 TO 6940: Construction Trade and Extraction Workers
+      33        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       9        7700 TO 7750: Production and Operating Workers
+       1        7800 TO 7850: Food Preparation Occupations
+      31        7900 TO 8960: Setters, Operators and Tenders
+      66        9000 TO 9750: Transportation and Material Moving Workers
+       2        9990: Uncodeable
+  -------
+     894
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>     894   VALID SKIP(-4)    5519     NON-INTERVIEW(-5)    6273
+ 
+Min:             10        Max:           9990        Mean:              4154.8
+ 
+Lead In: T89820.00[Default]
+Default Next Question: T89830.00
+--------------------------------------------------------------------------------
+T89826.00    [OCCALL-EMP.03]                                Survey Year: 2022
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #03
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+      22          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       7         500 TO 950: Management Related Occupations
+       4        1000 TO 1240: Mathematical and Computer Scientists
+       3        1300 TO 1560: Engineers, Architects, Surveyers, Engineering and 
+                          Related Technicians
+       1        1800 TO 1860: Social Scientists and Related Workers
+       5        2000 TO 2060: Counselors, Sociala and Religious Workers
+       4        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+      17        2200 TO 2340: Teachers
+       1        2400 TO 2550: Education, Training and Library Workers
+       2        2600 TO 2760: Entertainers and Performers, Sports and Related 
+                          Workers
+       3        2800 TO 2960: Media and Communications Workers
+       6        3000 TO 3260: Health Diagnosing and Treating Practitioners
+      10        3300 TO 3650: Health Care Technical and Support Occupations
+       4        3700 TO 3950: Protective Service Occupations
+      12        4000 TO 4160: Food Preparation and Serving Related Occupations
+      10        4200 TO 4250: Cleaning and Building Service Occupations
+       1        4300 TO 4430: Entertainment Attendants and Related Workers
+      11        4500 TO 4650: Personal Care and Service Workers
+      13        4700 TO 4960: Sales and Related Workers
+      31        5000 TO 5930: Office and Administrative Support Workers
+       7        6200 TO 6940: Construction Trade and Extraction Workers
+       1        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       2        7700 TO 7750: Production and Operating Workers
+       4        7900 TO 8960: Setters, Operators and Tenders
+      13        9000 TO 9750: Transportation and Material Moving Workers
+       4        9990: Uncodeable
+  -------
+     198
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>     198   VALID SKIP(-4)    6215     NON-INTERVIEW(-5)    6273
+ 
+Min:             10        Max:           9990        Mean:             4058.23
+ 
+Lead In: T89821.00[Default]
+Default Next Question: T89831.00
+--------------------------------------------------------------------------------
+T89827.00    [OCCALL-EMP.04]                                Survey Year: 2022
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #04
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       4          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       4         500 TO 950: Management Related Occupations
+       1        1000 TO 1240: Mathematical and Computer Scientists
+       2        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+       2        2200 TO 2340: Teachers
+       4        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       2        3300 TO 3650: Health Care Technical and Support Occupations
+       1        3700 TO 3950: Protective Service Occupations
+       3        4000 TO 4160: Food Preparation and Serving Related Occupations
+       1        4200 TO 4250: Cleaning and Building Service Occupations
+       2        4500 TO 4650: Personal Care and Service Workers
+       6        4700 TO 4960: Sales and Related Workers
+       9        5000 TO 5930: Office and Administrative Support Workers
+       4        6200 TO 6940: Construction Trade and Extraction Workers
+       3        7000 TO 7620: Installation, Maintenance and Repairs Workers
+       1        7700 TO 7750: Production and Operating Workers
+       2        7900 TO 8960: Setters, Operators and Tenders
+       4        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      55
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      55   VALID SKIP(-4)    6358     NON-INTERVIEW(-5)    6273
+ 
+Min:            120        Max:           9640        Mean:             4573.45
+ 
+Lead In: T89822.00[Default]
+Default Next Question: T89832.00
+--------------------------------------------------------------------------------
+T89828.00    [OCCALL-EMP.05]                                Survey Year: 2022
+  PRIMARY VARIABLE
+
+             OCCUPATION (CENSUS 4 DIGIT, 00 CODES) (ALL) JOB #05
+ 
+UNIVERSE: R is employed
+ 
+NOTE: SEE ATTACHMENT 3, INDUSTRY AND OCCUPATION CODES
+ 
+INCLUDES DATA FOR ALL R'S REPORTING EMPLOYER
+ 
+       3          10 TO 430: Executive, Administrative and Managerial 
+                          Occupations
+       2         500 TO 950: Management Related Occupations
+       1        2100 TO 2150: Lawyers, Judges and Legal Support Workers
+       2        3000 TO 3260: Health Diagnosing and Treating Practitioners
+       1        3300 TO 3650: Health Care Technical and Support Occupations
+       1        3700 TO 3950: Protective Service Occupations
+       1        4000 TO 4160: Food Preparation and Serving Related Occupations
+       2        4700 TO 4960: Sales and Related Workers
+       4        5000 TO 5930: Office and Administrative Support Workers
+       2        9000 TO 9750: Transportation and Material Moving Workers
+  -------
+      19
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      19   VALID SKIP(-4)    6394     NON-INTERVIEW(-5)    6273
+ 
+Min:            110        Max:           9620        Mean:             3797.37
+ 
+Lead In: T89823.00[Default]
+Default Next Question: T89833.00
+--------------------------------------------------------------------------------
+T91831.00    [Q11-GENHLTH_6A]                               Survey Year: 2022
+  PRIMARY VARIABLE
+
+             R CURRENTLY TRYING TO LOSE OR GAIN WEIGHT?
+ 
+Are you now trying to lose weight, gain weight, stay about the same, or are you 
+not trying to do anything about your weight?
+ 
+    2575       1 Lose weight
+     186       2 Gain weight
+    1758       3 Stay about the same
+    1887       4 Not trying to do anything
+  -------
+    6406
+ 
+Refusal(-1)            6
+Don't Know(-2)         1
+TOTAL =========>    6413   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6273
+ 
+Min:              1        Max:              4        Mean:                2.46
+ 
+Lead In: T91830.00[Default]  T91827.00[0:0]
+Default Next Question: T91832.00
+--------------------------------------------------------------------------------
+T91838.00    [Q11-GENHLTH_7F_1]                             Survey Year: 2022
+  PRIMARY VARIABLE
+
+             TIMES HAVING A SOFT DRINK OR SODA CONTAINED SUGAR IN THE PAST 7 
+             DAYS
+ 
+(In the past seven days, how many times did you...)
+ 
+...Have a soft drink or soda that contained sugar? (Do not include diet soft 
+drinks or sodas, or carbonated water.)
+ 
+ 
+        # TIMES:
+ 
+    3533           0
+     856           1
+     613           2
+     420           3
+     213           4
+     154           5
+      44           6
+     380           7
+      21           8
+       4           9
+      47          10
+      10          12
+      43          14
+      62          15 TO 100: 15+
+  -------
+    6400
+ 
+Refusal(-1)            7
+Don't Know(-2)         6
+TOTAL =========>    6413   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6273
+ 
+Min:              0        Max:            100        Mean:                1.69
+ 
+Lead In: T91837.00[Default]
+Default Next Question: T91839.00
+--------------------------------------------------------------------------------
+T91839.00    [Q11-GENHLTH_7F_2]                             Survey Year: 2022
+  PRIMARY VARIABLE
+
+             TIME UNIT HAVING SOFT DRINK OR SODA PAST 7 DAYS
+ 
+(INTERVIEWER: ENTER "PER DAY" OR "PER WEEK".)
+ 
+     543       1 Per day
+    5861       2 Per week
+  -------
+    6404
+ 
+Refusal(-1)            6
+Don't Know(-2)         3
+TOTAL =========>    6413   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6273
+ 
+Min:              1        Max:              2        Mean:                1.92
+ 
+Lead In: T91838.00[Default]
+Default Next Question: T91840.00
+--------------------------------------------------------------------------------
+T92996.00    [FAMSIZE]                                      Survey Year: 2022
+  PRIMARY VARIABLE
+
+             FAMILY SIZE
+ 
+COMMENT: Family Size
+ 
+    2008           1
+    2832           2
+     904           3
+     402           4
+     153           5
+      73           6
+      23           7
+      14           8
+       2           9
+       2          10 TO 999: 10+
+  -------
+    6413
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6413   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6273
+ 
+Min:              1        Max:             11        Mean:                2.11
+ 
+Lead In: T92995.00[Default]
+Default Next Question: T92997.00
+--------------------------------------------------------------------------------
+T92997.00    [TNFI_TRUNC]                                   Survey Year: 2022
+  PRIMARY VARIABLE
+
+             TOTAL NET FAMILY INCOME IN PAST CALENDAR YEAR *KEY* (TRUNCATED)
+ 
+COMMENT: Total Net Family Income in previous calendar year
+ 
+NOTE: THIS VARIABLE MAY BE TOPCODED IF DATA REQUIREMENTS ARE MET.  IF NECESSARY,
+THE TOPCODE ASSIGNED IS THE AVERAGE VALUE FOR APPROXIMATELY 2 PERCENT OF THE 
+RESPONDENTS REPORTING VALID NON-MISSING RESPONSES AT THE TOP OF THE 
+DISTRIBUTION.  ALTERNATIVE TOPCODE THRESHOLDS WILL BE APPLIED IF NECESSARY, TO 
+LOW FREQUENCY VARIABLES WITH FEWER THAN 75 VALID RESPONSES.
+ACTUAL DOLLARS
+ 
+     161           0
+      16           1 TO 999
+      34        1000 TO 1999
+      30        2000 TO 2999
+      26        3000 TO 3999
+      18        4000 TO 4999
+      16        5000 TO 5999
+      17        6000 TO 6999
+      16        7000 TO 7999
+      17        8000 TO 8999
+      42        9000 TO 9999
+     321       10000 TO 14999
+     263       15000 TO 19999
+     215       20000 TO 24999
+     935       25000 TO 49999
+    3187       50000 TO 99999999: 50000+
+  -------
+    5314
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)    1099
+TOTAL =========>    6413   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6273
+ 
+Min:              0        Max:         773981        Mean:            97971.63
+ 
+Lead In: T92996.00[Default]
+Default Next Question: T92999.00
+--------------------------------------------------------------------------------
+T93004.00    [AGEATINT]                                     Survey Year: 2022
+  PRIMARY VARIABLE
+
+             AGE OF R AT INTERVIEW DATE
+ 
+COMMENT: Age at interview date
+ 
+      21          57
+     738          58
+     892          59
+     923          60
+     929          61
+     866          62
+     707          63
+     687          64
+     617          65
+      33          66
+  -------
+    6413
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6413   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6273
+ 
+Min:             57        Max:             66        Mean:               61.31
+ 
+Lead In: T93003.00[Default]
+Default Next Question: T93005.00
+--------------------------------------------------------------------------------
+T93023.00    [SMSARES]                                      Survey Year: 2022
+  PRIMARY VARIABLE
+
+             IS R'S CURRENT RESIDENCE IN SMSA?
+ 
+COMMENT: R's residence in SMSA?
+ 
+NOTE: SEE APPENDIX 6: URBAN-RURAL AND SMSA-CENTRAL CITY VARIABLES
+ 
+     460           1: NOT IN SMSA
+    3722           2: SMSA, NOT CENTRAL CITY
+    2137           3: SMSA, IN CENTRAL CITY
+      27           4: SMSA, CENTRAL CITY NOT KNOWN
+  -------
+    6346
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)       3
+TOTAL =========>    6349   VALID SKIP(-4)      64     NON-INTERVIEW(-5)    6273
+ 
+Min:              1        Max:              4        Mean:                2.27
+ 
+Lead In: T93022.00[Default]
+Default Next Question: T93024.00
+--------------------------------------------------------------------------------
+T93079.00    [NUMCH22]                                      Survey Year: 2022
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    4790           0
+    1188           1
+     345           2
+      66           3
+      21           4
+       1           5
+       1           6
+       1           7
+  -------
+    6413
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6413   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6273
+ 
+Min:              0        Max:              7        Mean:                 .34
+ 
+Lead In: T93078.00[Default]
+Default Next Question: T93080.00

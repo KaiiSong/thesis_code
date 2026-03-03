@@ -1,0 +1,1052 @@
+R00001.00    [CASEID]                                       Survey Year: 1979
+  PRIMARY VARIABLE
+
+             IDENTIFICATION CODE
+ 
+ORIGINAL QUESTION NAME: CASEID
+ 
+NOTE: THIS NUMBER WAS ASSIGNED ACCORDING TO THE RECORD NUMBER OF EACH RESPONDENT
+ON THE TAPE. THE FIRST RESPONDENT WAS ASSIGNED ID#1, THE SECOND WAS ASSIGNED 
+ID#2, ETC.
+ 
+ACTUAL NUMBER
+ 
+UNIVERSE: All
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12686   VALID SKIP(-4)       0     NON-INTERVIEW(-5)       0
+ 
+Min:              1        Max:          12686        Mean:              6343.5
+ 
+Lead In: None.
+Default Next Question: R00001.49
+--------------------------------------------------------------------------------
+R02180.01    [NUMCH79]                                      Survey Year: 1979
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+UNIVERSE: All
+ 
+   11503           0
+     893           1
+     236           2
+      45           3
+       8           4
+       1           5
+  -------
+   12686
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12686   VALID SKIP(-4)       0     NON-INTERVIEW(-5)       0
+ 
+Min:              0        Max:              5        Mean:                 .12
+ 
+Lead In: R02179.30[Default]
+Default Next Question: R02180.02
+--------------------------------------------------------------------------------
+R04076.01    [NUMCH80]                                      Survey Year: 1980
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+UNIVERSE: All
+ 
+   10584           0
+    1125           1
+     346           2
+      71           3
+      13           4
+       1           5
+       1           6
+       0           7
+       0           8
+       0           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   12141
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12141   VALID SKIP(-4)       0     NON-INTERVIEW(-5)     545
+ 
+Min:              0        Max:              6        Mean:                 .17
+ 
+Lead In: R04075.10[Default]
+Default Next Question: R04076.02
+--------------------------------------------------------------------------------
+R06471.01    [NUMCH81]                                      Survey Year: 1981
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+UNIVERSE: All
+ 
+   10074           0
+    1464           1
+     528           2
+      98           3
+      24           4
+       6           5
+       1           6
+       0           7
+       0           8
+       0           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   12195
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12195   VALID SKIP(-4)       0     NON-INTERVIEW(-5)     491
+ 
+Min:              0        Max:              6        Mean:                 .24
+ 
+Lead In: R06470.00[Default]
+Default Next Question: R06471.02
+--------------------------------------------------------------------------------
+R08988.38    [NUMCH82]                                      Survey Year: 1982
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+    9422           0
+    1738           1
+     738           2
+     171           3
+      43           4
+       8           5
+       2           6
+       1           7
+       0           8
+       0           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   12123
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12123   VALID SKIP(-4)       0     NON-INTERVIEW(-5)     563
+ 
+Min:              0        Max:              7        Mean:                 .33
+ 
+Lead In: R08988.37[Default]
+Default Next Question: R08988.39
+--------------------------------------------------------------------------------
+R11468.30    [NUMCH83]                                      Survey Year: 1983
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+    8874           0
+    2031           1
+     978           2
+     275           3
+      44           4
+      16           5
+       2           6
+       1           7
+       0           8
+       0           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   12221
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12221   VALID SKIP(-4)       0     NON-INTERVIEW(-5)     465
+ 
+Min:              0        Max:              7        Mean:                 .42
+ 
+Lead In: R11468.29[Default]
+Default Next Question: R11468.31
+--------------------------------------------------------------------------------
+R15220.37    [NUMCH84]                                      Survey Year: 1984
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+    8192           0
+    2208           1
+    1230           2
+     336           3
+      77           4
+      22           5
+       2           6
+       2           7
+       0           8
+       0           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   12069
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12069   VALID SKIP(-4)       0     NON-INTERVIEW(-5)     617
+ 
+Min:              0        Max:              7        Mean:                 .51
+ 
+Lead In: R15220.36[Default]
+Default Next Question: R15220.38
+--------------------------------------------------------------------------------
+R18927.37    [NUMCH85]                                      Survey Year: 1985
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+    7055           0
+    2035           1
+    1284           2
+     390           3
+     104           4
+      19           5
+       5           6
+       2           7
+       0           8
+       0           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   10894
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   10894   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    1792
+ 
+Min:              0        Max:              7        Mean:                 .58
+ 
+Lead In: R18927.36[Default]
+Default Next Question: R18927.38
+--------------------------------------------------------------------------------
+R22598.37    [NUMCH86]                                      Survey Year: 1986
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+    6407           0
+    2071           1
+    1527           2
+     479           3
+     132           4
+      27           5
+       8           6
+       3           7
+       1           8
+       0           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   10655
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   10655   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    2031
+ 
+Min:              0        Max:              8        Mean:                 .69
+ 
+Lead In: R22598.36[Default]
+Default Next Question: R22598.38
+--------------------------------------------------------------------------------
+R24480.37    [NUMCH87]                                      Survey Year: 1987
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+    5856           0
+    2065           1
+    1739           2
+     612           3
+     163           4
+      35           5
+      10           6
+       5           7
+       0           8
+       0           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   10485
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   10485   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    2201
+ 
+Min:              0        Max:              7        Mean:                 .79
+ 
+Lead In: R24480.36[Default]
+Default Next Question: R24480.38
+--------------------------------------------------------------------------------
+R28776.00    [NUMCH88]                                      Survey Year: 1988
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+    5381           0
+    2074           1
+    1978           2
+     776           3
+     178           4
+      56           5
+      13           6
+       8           7
+       0           8
+       1           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   10465
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   10465   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    2221
+ 
+Min:              0        Max:              9        Mean:                 .91
+ 
+Lead In: R28775.00[Default]
+Default Next Question: R28777.00
+--------------------------------------------------------------------------------
+R30768.42    [NUMCH89]                                      Survey Year: 1989
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+ACTUAL NUMBER
+ 
+    5118           0
+    2100           1
+    2143           2
+     921           3
+     235           4
+      65           5
+      15           6
+       7           7
+       0           8
+       1           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   10605
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   10605   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    2081
+ 
+Min:              0        Max:              9        Mean:                   1
+ 
+Lead In: R30768.41[Default]
+Default Next Question: R30768.44
+--------------------------------------------------------------------------------
+R34077.00    [NUMCH90]                                      Survey Year: 1990
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+    4707           0
+    2058           1
+    2279           2
+    1016           3
+     275           4
+      70           5
+      20           6
+      11           7
+       0           8
+       0           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+   10436
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   10436   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    2250
+ 
+Min:              0        Max:              7        Mean:                1.08
+ 
+Lead In: R34076.00[Default]
+Default Next Question: R34078.00
+--------------------------------------------------------------------------------
+R36590.47    [NUMCH91]                                      Survey Year: 1991
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+ACTUAL NUMBER
+ 
+    3929           0
+    1744           1
+    2031           2
+     951           3
+     268           4
+      66           5
+      18           6
+      10           7
+       0           8
+       1           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+    9018
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    9018   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    3668
+ 
+Min:              0        Max:              9        Mean:                1.14
+ 
+Lead In: R36590.46[Default]
+Default Next Question: R36590.48
+--------------------------------------------------------------------------------
+R40094.47    [NUMCH92]                                      Survey Year: 1992
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE: SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES  ACTUAL NUMBER
+ 
+    3705           0
+    1719           1
+    2171           2
+    1027           3
+     293           4
+      66           5
+      22           6
+       9           7
+       2           8
+       2           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+    9016
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    9016   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    3670
+ 
+Min:              0        Max:              9        Mean:                1.21
+ 
+Lead In: R40094.46[Default]
+Default Next Question: R40094.48
+--------------------------------------------------------------------------------
+R44447.00    [NUMCH93]                                      Survey Year: 1993
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ORIGINAL QUESTION NAME: *CREATED
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+ACTUAL NUMBER
+ 
+    3511           0
+    1687           1
+    2255           2
+    1112           3
+     327           4
+      77           5
+      29           6
+      10           7
+       2           8
+       1           9
+       0          10
+       0          11
+       0          12
+       0          13
+       0          14
+       0          15
+       0          16 TO 99999: 16+
+  -------
+    9011
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    9011   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    3675
+ 
+Min:              0        Max:              9        Mean:                1.28
+ 
+Lead In: R44446.00[Default]
+Default Next Question: R44448.00
+--------------------------------------------------------------------------------
+R50875.00    [NUMCH94]                                      Survey Year: 1994
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+COMMENT: NUMBER OF OWN CHILDREN IN HH 1994
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    3341           0
+    1636           1
+    2288           2
+    1155           3
+     349           4
+      85           5
+      26           6
+       8           7
+       2           8
+       1           9
+       0          10 TO 999: 10+
+  -------
+    8891
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    8891   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    3795
+ 
+Min:              0        Max:              9        Mean:                1.32
+ 
+Lead In: R50874.00[Default]
+Default Next Question: R50876.00
+--------------------------------------------------------------------------------
+R51728.00    [NUMCH96]                                      Survey Year: 1996
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    3013           0
+    1570           1
+    2343           2
+    1191           3
+     372           4
+     101           5
+      29           6
+      11           7
+       6           8
+       0           9
+       0          10 TO 999: 10+
+  -------
+    8636
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    8636   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    4050
+ 
+Min:              0        Max:              8        Mean:                 1.4
+ 
+Lead In: R51727.00[Default]
+Default Next Question: R51729.00
+--------------------------------------------------------------------------------
+R64864.00    [NUMCH98]                                      Survey Year: 1998
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADPT CHILDREN IN HOUSEHOLD
+ 
+COMMENT: NUMBER OF BIO/STEP/ADPT CHILDREN IN HH 1998
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    2742           0
+    1523           1
+    2389           2
+    1203           3
+     389           4
+     109           5
+      30           6
+      10           7
+       2           8
+       2           9
+       0          10 TO 999: 10+
+  -------
+    8399
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    8399   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    4287
+ 
+Min:              0        Max:              9        Mean:                1.46
+ 
+Lead In: R64863.00[Default]
+Default Next Question: R64865.00
+--------------------------------------------------------------------------------
+R70142.00    [NUMCH00]                                      Survey Year: 2000
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+COMMENT: NUMBER OF BIO/STEP/ADPT CHILDREN IN HH 2000
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    2674           0
+    1487           1
+    2296           2
+    1079           3
+     364           4
+      93           5
+      28           6
+       6           7
+       3           8
+       2           9
+       0          10 TO 999: 10+
+  -------
+    8032
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    8032   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    4654
+ 
+Min:              0        Max:              9        Mean:                1.43
+ 
+Lead In: R70141.00[Default]
+Default Next Question: R70143.00
+--------------------------------------------------------------------------------
+R77118.00    [NUMCH02]                                      Survey Year: 2002
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+COMMENT: NUMBER OF BIO/STEP/ADPT CHILDREN IN HH 2002
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    2640           0
+    1530           1
+    2138           2
+     996           3
+     295           4
+      80           5
+      29           6
+       9           7
+       4           8
+       2           9
+       1          10 TO 999: 10+
+  -------
+    7724
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7724   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    4962
+ 
+Min:              0        Max:             10        Mean:                1.38
+ 
+Lead In: R77117.00[Default]
+Default Next Question: R77119.00
+--------------------------------------------------------------------------------
+R85043.00    [NUMCH04]                                      Survey Year: 2004
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    2766           0
+    1661           1
+    2014           2
+     854           3
+     269           4
+      62           5
+      25           6
+       6           7
+       4           8
+       0           9
+       0          10 TO 999: 10+
+  -------
+    7661
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7661   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5025
+ 
+Min:              0        Max:              8        Mean:                1.29
+ 
+Lead In: R85042.00[Default]
+Default Next Question: R85044.00
+--------------------------------------------------------------------------------
+T09960.00    [NUMCH06]                                      Survey Year: 2006
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    3036           0
+    1714           1
+    1887           2
+     712           3
+     223           4
+      54           5
+      19           6
+       4           7
+       3           8
+       0           9
+       1          10 TO 999: 10+
+  -------
+    7653
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7653   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5033
+ 
+Min:              0        Max:             10        Mean:                1.17
+ 
+Lead In: T09959.00[Default]
+Default Next Question: T09961.00
+--------------------------------------------------------------------------------
+T22178.00    [NUMCH08]                                      Survey Year: 2008
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    3393           0
+    1785           1
+    1737           2
+     598           3
+     177           4
+      50           5
+      10           6
+       4           7
+       3           8
+  -------
+    7757
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7757   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    4929
+ 
+Min:              0        Max:              8        Mean:                1.05
+ 
+Lead In: T22177.00[Default]
+Default Next Question: T22179.00
+--------------------------------------------------------------------------------
+T31158.00    [NUMCH10]                                      Survey Year: 2010
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    3554           0
+    1782           1
+    1526           2
+     512           3
+     146           4
+      32           5
+      11           6
+       2           7
+  -------
+    7565
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7565   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5121
+ 
+Min:              0        Max:              7        Mean:                 .95
+ 
+Lead In: T31157.00[Default]
+Default Next Question: T31159.00
+--------------------------------------------------------------------------------
+T41203.00    [NUMCH12]                                      Survey Year: 2012
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    3846           0
+    1768           1
+    1203           2
+     378           3
+      85           4
+      12           5
+       7           6
+       0           7
+       1           8
+       0           9
+       0          10 TO 999: 10+
+  -------
+    7300
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7300   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5386
+ 
+Min:              0        Max:              8        Mean:                 .79
+ 
+Lead In: T41202.00[Default]
+Default Next Question: T41204.00
+--------------------------------------------------------------------------------
+T50315.00    [NUMCH14]                                      Survey Year: 2014
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    4100           0
+    1599           1
+     997           2
+     288           3
+      65           4
+      17           5
+       4           6
+  -------
+    7070
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    7070   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5616
+ 
+Min:              0        Max:              6        Mean:                 .68
+ 
+Lead In: T50314.00[Default]
+Default Next Question: T50316.00
+--------------------------------------------------------------------------------
+T57797.00    [NUMCH16]                                      Survey Year: 2016
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    4308           0
+    1538           1
+     806           2
+     204           3
+      45           4
+       7           5
+       3           6
+       1           7
+  -------
+    6912
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6912   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5774
+ 
+Min:              0        Max:              7        Mean:                 .58
+ 
+Lead In: T57796.00[Default]
+Default Next Question: T57798.00
+--------------------------------------------------------------------------------
+T82268.00    [NUMCH18]                                      Survey Year: 2018
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    4590           0
+    1460           1
+     635           2
+     155           3
+      24           4
+      11           5
+       2           6
+       1           7
+  -------
+    6878
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6878   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    5808
+ 
+Min:              0        Max:              7        Mean:                 .49
+ 
+Lead In: T82267.00[Default]
+Default Next Question: T82269.00
+--------------------------------------------------------------------------------
+T87961.00    [NUMCH20]                                      Survey Year: 2020
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    4629           0
+    1316           1
+     460           2
+     104           3
+      18           4
+       7           5
+       1           7
+  -------
+    6535
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6535   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6151
+ 
+Min:              0        Max:              7        Mean:                 .41
+ 
+Lead In: T87960.00[Default]
+Default Next Question: T87962.00
+--------------------------------------------------------------------------------
+T93079.00    [NUMCH22]                                      Survey Year: 2022
+  PRIMARY VARIABLE
+
+             NUMBER OF BIO/STEP/ADOPTED CHILDREN IN HH
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    4790           0
+    1188           1
+     345           2
+      66           3
+      21           4
+       1           5
+       1           6
+       1           7
+  -------
+    6413
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>    6413   VALID SKIP(-4)       0     NON-INTERVIEW(-5)    6273
+ 
+Min:              0        Max:              7        Mean:                 .34
+ 
+Lead In: T93078.00[Default]
+Default Next Question: T93080.00

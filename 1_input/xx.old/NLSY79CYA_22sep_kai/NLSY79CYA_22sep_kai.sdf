@@ -1,0 +1,45 @@
+
+
+Reference
+Number     Year  Variable Description                                                                                        Question Name  
+----------------------------------------------------------------------------------------------------------------------------------------------
+C00001.00  XRND  ID CODE OF CHILD                                                                                            CPUBID         
+C00002.00  XRND  ID CODE OF MOTHER OF CHILD                                                                                  MPUBID         
+C00053.00  XRND  RACE OF CHILD (MOTHER'S RACIAL/ETHNIC COHORT FROM SCREENER)                                                 CRACE          
+C00054.00  XRND  SEX OF CHILD                                                                                                CSEX           
+C00057.00  XRND  DATE OF BIRTH OF CHILD - YEAR                                                                               CYRB           
+Y22670.00  XRND  VERSION_R29 CHILD/YOUNG ADULT                                                                               VERSION_R29    
+Y23952.00  2010  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #01                                                             OCC2000.01     
+Y23953.00  2010  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #02                                                             OCC2000.02     
+Y23954.00  2010  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #03                                                             OCC2000.03     
+Y23955.00  2010  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #04                                                             OCC2000.04     
+Y23956.00  2010  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #05                                                             OCC2000.05     
+Y25373.00  2010  NUMBER OF TIMES IN PAST SEVEN DAYS R DRANK A SOFT DRINK OR SODA THAT CONTAINED SUGAR                        Q14-10QA       
+Y25822.00  2010  TOTAL FAMILY INCOME FROM ALL SOURCES (BEST ESTIMATE) IN 2009                                                Q15-142        
+Y27257.00  2012  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #01                                                             OCC2000.01     
+Y27258.00  2012  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #02                                                             OCC2000.02     
+Y27259.00  2012  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #03                                                             OCC2000.03     
+Y27260.00  2012  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #04                                                             OCC2000.04     
+Y27261.00  2012  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #05                                                             OCC2000.05     
+Y28850.00  2012  WHEN R BUYS FOOD ITEM FOR FIRST TIME, HOW OFTEN R READS NUTRITIONAL INFORMATION ON THE LABEL (CATEGORICAL)  Q14-10M        
+Y28851.00  2012  WHEN R BUYS FOOD ITEM FOR FIRST TIME, HOW OFTEN R READS INGREDIENTS LIST ON THE LABEL (CATEGORICAL)         Q14-10N        
+Y28854.00  2012  NUMBER OF TIMES IN PAST SEVEN DAYS R DRANK A SOFT DRINK OR SODA THAT CONTAINED SUGAR                        Q14-10QA       
+Y29299.00  2012  TOTAL FAMILY INCOME FROM ALL SOURCES (BEST ESTIMATE) IN 2011                                                Q15-142        
+Y29674.00  2012  IS CURRENT RESIDENCE IN SMSA?                                                                               SMSARES        
+Y30794.00  2014  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #01                                                             OCC2000.01     
+Y30795.00  2014  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #02                                                             OCC2000.02     
+Y30796.00  2014  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #03                                                             OCC2000.03     
+Y30797.00  2014  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #04                                                             OCC2000.04     
+Y30798.00  2014  OCCUPATION CODE (2000 CENSUS 4-DIGIT) - JOB #05                                                             OCC2000.05     
+Y32547.00  2014  HOW MANY TIMES IN A TYPICAL WEEK R DRINKS A SOFT DRINK OR SODA THAT CONTAINED SUGAR                         Q14-10QA       
+Y32549.00  2014  WHEN R BUYS FOOD ITEM FOR FIRST TIME, HOW OFTEN R READS NUTRITIONAL INFORMATION ON THE LABEL (CATEGORICAL)  Q14-10M        
+Y32550.00  2014  WHEN R BUYS FOOD ITEM FOR FIRST TIME, HOW OFTEN R READS INGREDIENTS LIST ON THE LABEL (CATEGORICAL)         Q14-10N        
+Y32815.00  2014  HAS A DOCTOR TOLD R THAT R HAS DIABETES OR HIGH BLOOD SUGAR EVER?                                           Q14-45H        
+Y32999.00  2014  TOTAL FAMILY INCOME FROM ALL SOURCES (BEST ESTIMATE) IN REFERENCE YEAR                                      Q15-142        
+Y33329.00  2014  IS CURRENT RESIDENCE IN SMSA?                                                                               SMSARES        
+Y35951.00  2016  WHEN R BUYS FOOD ITEM FOR FIRST TIME, HOW OFTEN R READS NUTRITIONAL INFORMATION ON THE LABEL (CATEGORICAL)  Q14-10M        
+Y35952.00  2016  WHEN R BUYS FOOD ITEM FOR FIRST TIME, HOW OFTEN R READS INGREDIENTS LIST ON THE LABEL (CATEGORICAL)         Q14-10N        
+Y36216.00  2016  HAS A DOCTOR TOLD R THAT R HAS DIABETES OR HIGH BLOOD SUGAR EVER?                                           Q14-45H        
+Y36767.00  2016  IS CURRENT RESIDENCE IN SMSA?                                                                               SMSARES        
+Y42298.00  2018  HAS A DOCTOR TOLD R THAT R HAS DIABETES OR HIGH BLOOD SUGAR EVER?                                           Q14-45H        
+Y45507.00  2020  HAS A DOCTOR TOLD R THAT R HAS DIABETES OR HIGH BLOOD SUGAR EVER?                                           Q14-45H        

@@ -1,0 +1,79 @@
+R00001.00    [CASEID]                                       Survey Year: 1979
+  PRIMARY VARIABLE
+
+             IDENTIFICATION CODE
+ 
+ORIGINAL QUESTION NAME: CASEID
+ 
+NOTE: THIS NUMBER WAS ASSIGNED ACCORDING TO THE RECORD NUMBER OF EACH RESPONDENT
+ON THE TAPE. THE FIRST RESPONDENT WAS ASSIGNED ID#1, THE SECOND WAS ASSIGNED 
+ID#2, ETC.
+ 
+ACTUAL NUMBER
+ 
+UNIVERSE: All
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   12686   VALID SKIP(-4)       0     NON-INTERVIEW(-5)       0
+ 
+Min:              1        Max:          12686        Mean:              6343.5
+ 
+Lead In: None.
+Default Next Question: R00001.49
+--------------------------------------------------------------------------------
+R99000.02    [C1DOB~Y]                                      Survey Year: XRND
+  PRIMARY VARIABLE
+
+             DATE OF BIRTH OF 1ST CHILD - YEAR
+ 
+ 
+ 
+NOTE:  SEE APPENDIX 5: SUPPLEMENTAL FERTILITY FILE VARIABLES
+ 
+    1309           0 TO 1978: < 1978
+     576        1979
+     634        1980
+     681        1981
+     696        1982
+     660        1983
+     563        1984
+     532        1985
+     459        1986
+     462        1987
+     435        1988
+     397        1989
+     351        1990
+     262        1991
+     242        1992
+     200        1993
+     173        1994
+     152        1995
+     114        1996
+     112        1997
+      68        1998
+      67        1999
+      45        2000
+      50        2001
+      27        2002
+      21        2003
+      14        2004
+      12        2005
+      13        2006
+       8        2007
+       4        2008
+       7        2009
+       1        2010
+       2        2011
+       4        2012
+       2        2013
+  -------
+    9355
+ 
+Refusal(-1)            2
+Don't Know(-2)         4
+Invalid Skip(-3)       6
+TOTAL =========>    9367   VALID SKIP(-4)    3319     NON-INTERVIEW(-5)       0
+ 
+Lead In: R99000.01[Default]
+Default Next Question: R99003.00
